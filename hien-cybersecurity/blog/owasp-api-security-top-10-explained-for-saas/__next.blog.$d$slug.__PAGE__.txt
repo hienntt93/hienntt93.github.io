@@ -1,0 +1,140 @@
+1:"$Sreact.fragment"
+2:I[22016,["/hien-cybersecurity/_next/static/chunks/9dea891e704504c4.js"],""]
+6:I[97367,["/hien-cybersecurity/_next/static/chunks/ff1a16fafef87110.js","/hien-cybersecurity/_next/static/chunks/d2be314c3ece3fbe.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+3:T15a6,<h1>OWASP API Security Top 10 Explained for SaaS Teams (Practical Edition)</h1>
+<p>APIs are the core of modern SaaS — and also the easiest place to leak data or lose accounts.<br>This guide explains the most practical API risks (OWASP-style) and what teams can do this week to reduce exposure.</p>
+<hr>
+<h2>1) Broken Object Level Authorization (BOLA / IDOR)</h2>
+<p><strong>What it looks like</strong><br>Changing <code>resource_id=123</code> to <code>124</code> reveals someone else’s data.</p>
+<p><strong>How to test</strong></p>
+<ul>
+<li>Try sequential IDs, UUID swaps, and “guessable” IDs</li>
+<li>Verify access control on <em>every</em> object endpoint</li>
+</ul>
+<p><strong>Fix</strong></p>
+<ul>
+<li>Enforce authorization checks server-side per object</li>
+<li>Prefer opaque identifiers</li>
+<li>Add automated authorization tests in CI</li>
+</ul>
+<hr>
+<h2>2) Broken Authentication</h2>
+<p><strong>What it looks like</strong><br>Weak session handling, missing MFA paths, insecure reset flows, token leakage.</p>
+<p><strong>How to test</strong></p>
+<ul>
+<li>Password reset flow abuse</li>
+<li>Token reuse and refresh handling</li>
+<li>Session invalidation after logout/password change</li>
+</ul>
+<p><strong>Fix</strong></p>
+<ul>
+<li>Short-lived access tokens + secure refresh token patterns</li>
+<li>Strong rate limiting on auth endpoints</li>
+<li>MFA for privileged accounts</li>
+</ul>
+<hr>
+<h2>3) Broken Object Property Level Authorization</h2>
+<p><strong>What it looks like</strong><br>A user can modify fields they shouldn’t (e.g., <code>role=admin</code>, <code>plan=premium</code>, <code>isVerified=true</code>).</p>
+<p><strong>How to test</strong></p>
+<ul>
+<li>Add extra JSON properties to update endpoints</li>
+<li>Observe whether server ignores, accepts, or partially applies changes</li>
+</ul>
+<p><strong>Fix</strong></p>
+<ul>
+<li>Allowlist fields on the server</li>
+<li>Validate input schemas strictly</li>
+<li>Separate admin endpoints from user endpoints</li>
+</ul>
+<hr>
+<h2>4) Unrestricted Resource Consumption</h2>
+<p><strong>What it looks like</strong><br>DoS-by-design: no rate limits, expensive queries, large payloads, infinite pagination.</p>
+<p><strong>Fix</strong></p>
+<ul>
+<li>Rate limit per identity + IP</li>
+<li>Enforce payload size limits</li>
+<li>Pagination with caps</li>
+<li>Timeouts and query complexity control</li>
+</ul>
+<hr>
+<h2>5) Broken Function Level Authorization (BFLA)</h2>
+<p><strong>What it looks like</strong><br>Users can call admin-only endpoints (or internal functions) because the route is exposed.</p>
+<p><strong>Fix</strong></p>
+<ul>
+<li>Authorize by function/role at the endpoint level</li>
+<li>Separate admin routes</li>
+<li>Remove debug/admin routes in production</li>
+</ul>
+<hr>
+<h2>6) Unrestricted Access to Sensitive Business Flows</h2>
+<p><strong>What it looks like</strong><br>Abuse of business logic: brute forcing promo codes, mass account creation, invoice manipulation, trial abuse.</p>
+<p><strong>Fix</strong></p>
+<ul>
+<li>Behavioral controls (velocity checks)</li>
+<li>Idempotency and strong server-side validations</li>
+<li>Fraud signals + anomaly detection on key flows</li>
+</ul>
+<hr>
+<h2>7) Server-Side Request Forgery (SSRF)</h2>
+<p><strong>What it looks like</strong><br>The API fetches URLs (webhooks, importers, preview services) and can be abused to reach internal networks.</p>
+<p><strong>Fix</strong></p>
+<ul>
+<li>Strict allowlists for outbound domains</li>
+<li>Block private IP ranges and metadata endpoints</li>
+<li>Use safe network egress controls and dedicated fetch services</li>
+</ul>
+<hr>
+<h2>8) Security Misconfiguration</h2>
+<p><strong>What it looks like</strong><br>Verbose errors, default configs, debug mode, permissive CORS, missing TLS headers.</p>
+<p><strong>Fix</strong></p>
+<ul>
+<li>Harden configs</li>
+<li>Reduce error leakage</li>
+<li>Set secure defaults and enforce them in CI/CD</li>
+</ul>
+<hr>
+<h2>9) Improper Inventory Management</h2>
+<p><strong>What it looks like</strong><br>Unknown endpoints, forgotten versions (<code>/v1</code>, <code>/v2</code>), shadow APIs, stale documentation.</p>
+<p><strong>Fix</strong></p>
+<ul>
+<li>Maintain API inventory</li>
+<li>Remove deprecated endpoints</li>
+<li>Gate deployments with API schema checks</li>
+<li>Use automated discovery in staging</li>
+</ul>
+<hr>
+<h2>10) Unsafe Consumption of APIs</h2>
+<p><strong>What it looks like</strong><br>Your system trusts third-party APIs too much (webhooks, integrations), leading to injection or spoofing.</p>
+<p><strong>Fix</strong></p>
+<ul>
+<li>Validate inputs from external APIs</li>
+<li>Verify signatures for webhooks</li>
+<li>Use strict schema checks and allowlists</li>
+</ul>
+<hr>
+<h2>“What should I fix first?” (SaaS priority order)</h2>
+<p>If you can only do 5 things this month:</p>
+<ol>
+<li>Fix IDOR/BOLA on all object endpoints  </li>
+<li>Add rate limiting + abuse controls on auth &amp; critical flows  </li>
+<li>Lock down property-level updates (allowlist fields)  </li>
+<li>Enforce strict authZ by function/role (admin endpoints)  </li>
+<li>Create a real API inventory and remove stale versions</li>
+</ol>
+<hr>
+<h2>What a good API pentest deliverable looks like</h2>
+<p>A useful report should include:</p>
+<ul>
+<li>impacted endpoints</li>
+<li>clear reproduction steps</li>
+<li>business impact</li>
+<li>severity + prioritization</li>
+<li>remediation guidance your engineers can implement quickly</li>
+<li>retest criteria</li>
+</ul>
+<p>If you want, you can link this post from your Web/API Pentest service page and your Reports page.</p>
+0:{"buildId":"Oq3MrWRSV_mE-w9ebxw8c","rsc":["$","$1","c",{"children":[[["$","section",null,{"className":"py-24 border-b border-[var(--border)] bg-[var(--bg-subtle)]","children":["$","div",null,{"className":"section-container","children":["$","div",null,{"className":"mx-auto max-w-3xl","children":[["$","$L2",null,{"href":"/blog/","className":"text-sm font-medium text-[var(--primary)] hover:underline","children":"← Blog"}],["$","article",null,{"className":"mt-4","children":[["$","time",null,{"dateTime":"2026-03-04","className":"text-sm text-[var(--text-muted)]","children":"March 4, 2026"}],["$","h1",null,{"className":"mt-2 text-4xl font-semibold tracking-tight text-[var(--text)]","children":"OWASP API Security Top 10 Explained for SaaS Teams (Practical Edition)"}],["$","p",null,{"className":"mt-2 text-base text-[var(--text-muted)]","children":["Hien Nguyen"," · 10 min"]}],["$","div",null,{"className":"mt-3 flex flex-wrap gap-1.5","children":[["$","span","API Security",{"className":"rounded-full bg-[var(--primary)]/10 px-2.5 py-0.5 text-xs font-medium text-[var(--primary)]","children":"API Security"}],["$","span","OWASP",{"className":"rounded-full bg-[var(--primary)]/10 px-2.5 py-0.5 text-xs font-medium text-[var(--primary)]","children":"OWASP"}],["$","span","Pentesting",{"className":"rounded-full bg-[var(--primary)]/10 px-2.5 py-0.5 text-xs font-medium text-[var(--primary)]","children":"Pentesting"}],["$","span","SaaS",{"className":"rounded-full bg-[var(--primary)]/10 px-2.5 py-0.5 text-xs font-medium text-[var(--primary)]","children":"SaaS"}]]}]]}]]}]}]}],["$","section",null,{"className":"py-24 border-b border-[var(--border)] bg-[var(--bg)]","children":["$","div",null,{"className":"section-container","children":["$","div",null,{"className":"mx-auto max-w-3xl","children":[["$","div",null,{"className":"blog-prose leading-7 text-[var(--text)]","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}]}]}]],null,"$L5"]}],"loading":null,"isPartial":false}
+4:["$","div",null,{"className":"mt-12 border-t border-[var(--border)] pt-8","children":["$","$L2",null,{"href":"/blog/","className":"inline-flex items-center justify-center rounded-lg text-sm font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:ring-offset-2 border border-[var(--border)] bg-[var(--card-bg)] px-5 py-2.5 text-[var(--text)] hover:bg-[var(--bg-subtle)] hover:shadow-lg","children":"← All posts"}]}]
+5:["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]
+8:null

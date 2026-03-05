@@ -1,0 +1,182 @@
+1:"$Sreact.fragment"
+2:I[80492,["/hien-cybersecurity/_next/static/chunks/9dea891e704504c4.js"],"default"]
+3:I[62319,["/hien-cybersecurity/_next/static/chunks/9dea891e704504c4.js"],"default"]
+4:I[39756,["/hien-cybersecurity/_next/static/chunks/ff1a16fafef87110.js","/hien-cybersecurity/_next/static/chunks/d2be314c3ece3fbe.js"],"default"]
+5:I[37457,["/hien-cybersecurity/_next/static/chunks/ff1a16fafef87110.js","/hien-cybersecurity/_next/static/chunks/d2be314c3ece3fbe.js"],"default"]
+6:I[22016,["/hien-cybersecurity/_next/static/chunks/9dea891e704504c4.js"],""]
+7:I[79929,["/hien-cybersecurity/_next/static/chunks/9dea891e704504c4.js"],"default"]
+11:I[68027,["/hien-cybersecurity/_next/static/chunks/ff1a16fafef87110.js","/hien-cybersecurity/_next/static/chunks/d2be314c3ece3fbe.js"],"default"]
+:HL["/hien-cybersecurity/_next/static/chunks/5d1c664ee0aa98ae.css","style"]
+:HL["/hien-cybersecurity/_next/static/media/83afe278b6a6bb3c-s.p.3a6ba036.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+0:{"P":null,"b":"Oq3MrWRSV_mE-w9ebxw8c","c":["","blog","how-saas-startups-fail-aws-security-audits",""],"q":"","i":false,"f":[[["",{"children":["blog",{"children":[["slug","how-saas-startups-fail-aws-security-audits","d"],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/hien-cybersecurity/_next/static/chunks/5d1c664ee0aa98ae.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/hien-cybersecurity/_next/static/chunks/9dea891e704504c4.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","className":"inter_f107cc5e-module__qDQ43a__variable","suppressHydrationWarning":true,"children":[["$","head",null,{"children":["$","script",null,{"dangerouslySetInnerHTML":{"__html":"\n(function() {\n  var key = 'theme';\n  var stored = localStorage.getItem(key) || 'system';\n  var resolved = 'light';\n  if (stored === 'dark') resolved = 'dark';\n  else if (stored === 'system' && typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: dark)').matches) resolved = 'dark';\n  document.documentElement.classList.add(resolved);\n})();\n"}}]}],["$","body",null,{"className":"inter_f107cc5e-module__qDQ43a__className min-h-screen flex flex-col bg-white text-slate-900 antialiased dark:bg-slate-950 dark:text-slate-100","children":["$","$L2",null,{"children":[["$","$L3",null,{}],["$","main",null,{"className":"flex-1","children":["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","div",null,{"className":"section-container flex min-h-[60vh] flex-col items-center justify-center py-20","children":[["$","h1",null,{"className":"text-3xl font-semibold text-slate-900 dark:text-white","children":"404 — Page not found"}],["$","p",null,{"className":"mt-3 text-base text-slate-600 dark:text-slate-400","children":"The page you’re looking for doesn’t exist or has been moved."}],["$","$L6",null,{"href":"/","className":"mt-6 text-sm font-medium text-[var(--primary)] hover:underline focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:ring-offset-2","children":"← Back to home"}]]}],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","$L7",null,{}],["$","footer",null,{"className":"border-t border-[var(--border)] bg-[var(--bg-subtle)]","children":["$","div",null,{"className":"section-container py-16","children":[["$","div",null,{"className":"grid gap-10 sm:grid-cols-2 lg:grid-cols-4","children":[["$","div",null,{"className":"lg:col-span-1","children":[["$","p",null,{"className":"text-lg font-semibold text-[var(--text)]","children":"Hien Nguyen Cybersecurity"}],["$","p",null,{"className":"mt-3 text-sm leading-relaxed text-[var(--text-muted)]","children":"Cloud Security • Offensive Security • Security Architecture"}],["$","div",null,{"className":"mt-4 flex gap-4","children":[["$","a",null,{"href":"https://github.com/hienntt93","target":"_blank","rel":"noopener noreferrer","className":"text-sm font-medium text-[var(--text-muted)] hover:text-[var(--primary)]","children":"GitHub"}],["$","a",null,{"href":"https://www.linkedin.com/in/hienntt/","target":"_blank","rel":"noopener noreferrer","className":"text-sm font-medium text-[var(--text-muted)] hover:text-[var(--primary)]","children":"LinkedIn"}]]}]]}],["$","div",null,{"children":[["$","h3",null,{"className":"text-sm font-semibold uppercase tracking-wider text-[var(--text-muted)]","children":"Company"}],["$","ul",null,{"className":"mt-4 space-y-2.5","children":[["$","li","Main site",{"children":["$","a",null,{"href":"https://hienntt93.github.io/","target":"_blank","rel":"noopener noreferrer","className":"text-sm text-[var(--text-muted)] hover:text-[var(--text)]","children":"Main site"}]}],["$","li","About",{"children":["$","$L6",null,{"href":"/about/","className":"text-sm text-[var(--text-muted)] hover:text-[var(--text)]","children":"About"}]}],["$","li","Contact",{"children":["$","$L6",null,{"href":"/contact/","className":"text-sm text-[var(--text-muted)] hover:text-[var(--text)]","children":"Contact"}]}],["$","li","GitHub",{"children":"$L8"}],"$L9"]}]]}],"$La","$Lb"]}],"$Lc"]}]}]]}]}]]}]]}],{"children":["$Ld",{"children":["$Le",{"children":["$Lf",{},null,false,false]},null,false,false]},null,false,false]},null,false,false],"$L10",false]],"m":"$undefined","G":["$11",[]],"S":true}
+13:I[97367,["/hien-cybersecurity/_next/static/chunks/ff1a16fafef87110.js","/hien-cybersecurity/_next/static/chunks/d2be314c3ece3fbe.js"],"OutletBoundary"]
+14:"$Sreact.suspense"
+16:I[97367,["/hien-cybersecurity/_next/static/chunks/ff1a16fafef87110.js","/hien-cybersecurity/_next/static/chunks/d2be314c3ece3fbe.js"],"ViewportBoundary"]
+18:I[97367,["/hien-cybersecurity/_next/static/chunks/ff1a16fafef87110.js","/hien-cybersecurity/_next/static/chunks/d2be314c3ece3fbe.js"],"MetadataBoundary"]
+8:["$","a",null,{"href":"https://github.com/hienntt93","target":"_blank","rel":"noopener noreferrer","className":"text-sm text-[var(--text-muted)] hover:text-[var(--text)]","children":"GitHub"}]
+9:["$","li","LinkedIn",{"children":["$","a",null,{"href":"https://www.linkedin.com/in/hienntt/","target":"_blank","rel":"noopener noreferrer","className":"text-sm text-[var(--text-muted)] hover:text-[var(--text)]","children":"LinkedIn"}]}]
+a:["$","div",null,{"children":[["$","h3",null,{"className":"text-sm font-semibold uppercase tracking-wider text-[var(--text-muted)]","children":"Services"}],["$","ul",null,{"className":"mt-4 space-y-2.5","children":[["$","li","Services",{"children":["$","$L6",null,{"href":"/services/","className":"text-sm text-[var(--text-muted)] hover:text-[var(--text)]","children":"Services"}]}],["$","li","Web / API Pentest",{"children":["$","$L6",null,{"href":"/services/web-api-pentest/","className":"text-sm text-[var(--text-muted)] hover:text-[var(--text)]","children":"Web / API Pentest"}]}],["$","li","AWS Security Audit",{"children":["$","$L6",null,{"href":"/services/aws-security-audit/","className":"text-sm text-[var(--text-muted)] hover:text-[var(--text)]","children":"AWS Security Audit"}]}],["$","li","Offensive Security",{"children":["$","$L6",null,{"href":"/services/offensive-security/","className":"text-sm text-[var(--text-muted)] hover:text-[var(--text)]","children":"Offensive Security"}]}],["$","li","GRC Compliance",{"children":["$","$L6",null,{"href":"/services/grc-compliance/","className":"text-sm text-[var(--text-muted)] hover:text-[var(--text)]","children":"GRC Compliance"}]}]]}]]}]
+b:["$","div",null,{"children":[["$","h3",null,{"className":"text-sm font-semibold uppercase tracking-wider text-[var(--text-muted)]","children":"Resources"}],["$","ul",null,{"className":"mt-4 space-y-2.5","children":[["$","li","Blog",{"children":["$","$L6",null,{"href":"/blog/","className":"text-sm text-[var(--text-muted)] hover:text-[var(--text)]","children":"Blog"}]}],["$","li","Case Studies",{"children":["$","$L6",null,{"href":"/case-studies/","className":"text-sm text-[var(--text-muted)] hover:text-[var(--text)]","children":"Case Studies"}]}],["$","li","Reports",{"children":["$","$L6",null,{"href":"/reports/","className":"text-sm text-[var(--text-muted)] hover:text-[var(--text)]","children":"Reports"}]}]]}]]}]
+c:["$","div",null,{"className":"mt-12 border-t border-[var(--border)] pt-8","children":["$","p",null,{"className":"text-center text-sm text-[var(--text-muted)]","children":["© ",2026," Hien Nguyen. All rights reserved."]}]}]
+d:["$","$1","c",{"children":[null,["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+e:["$","$1","c",{"children":[null,["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+f:["$","$1","c",{"children":["$L12",null,["$","$L13",null,{"children":["$","$14",null,{"name":"Next.MetadataOutlet","children":"$@15"}]}]]}]
+10:["$","$1","h",{"children":[null,["$","$L16",null,{"children":"$L17"}],["$","div",null,{"hidden":true,"children":["$","$L18",null,{"children":["$","$14",null,{"name":"Next.Metadata","children":"$L19"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}]
+1a:T164c,<h1>How SaaS Startups Fail AWS Security Audits (and How to Pass Without Slowing Down)</h1>
+<p>Most AWS audit failures are not “advanced hacking.” They’re predictable gaps:<br>public data exposure, weak identity boundaries, missing logging, and untracked infrastructure drift.</p>
+<p>This post is a practical list of what breaks audits — and a fix plan that doesn’t destroy engineering velocity.</p>
+<hr>
+<h2>Failure #1: IAM sprawl and hidden privilege escalation paths</h2>
+<p><strong>Symptoms</strong></p>
+<ul>
+<li>Too many admins</li>
+<li>Shared roles used across apps</li>
+<li>Wildcard permissions (<code>*</code>) “temporarily” left behind</li>
+</ul>
+<p><strong>Why auditors care</strong><br>Identity is the real perimeter. If a role can escalate, one compromised workload can become “full AWS takeover.”</p>
+<p><strong>Fix</strong></p>
+<ul>
+<li>Inventory principals (users/roles) and remove unused</li>
+<li>Enforce least privilege with permission boundaries where useful</li>
+<li>Detect escalation paths (e.g., ability to attach policies, pass roles, write to IAM)</li>
+</ul>
+<p>Minimal baseline:</p>
+<ul>
+<li>No long-lived root usage</li>
+<li>MFA everywhere (especially privileged roles)</li>
+<li>Separate roles per environment (dev/stage/prod)</li>
+</ul>
+<hr>
+<h2>Failure #2: Public S3 exposure (and data classification chaos)</h2>
+<p><strong>Symptoms</strong></p>
+<ul>
+<li>Public buckets (sometimes “accidentally”)</li>
+<li>Buckets that <em>should</em> be private but have broad policies</li>
+<li>Sensitive data landing in the wrong place</li>
+</ul>
+<p><strong>Fix</strong></p>
+<ul>
+<li>Block public access at account + bucket level</li>
+<li>Enable default encryption</li>
+<li>Add bucket policies that explicitly deny insecure transport (no TLS)</li>
+<li>Introduce simple data classification rules: “what can be in S3 and where”</li>
+</ul>
+<hr>
+<h2>Failure #3: Missing CloudTrail/CloudWatch baselines (no audit trail)</h2>
+<p><strong>Symptoms</strong></p>
+<ul>
+<li>CloudTrail not enabled everywhere</li>
+<li>Logs not centralized</li>
+<li>Short retention</li>
+<li>No alerting on sensitive actions</li>
+</ul>
+<p><strong>Why it fails audits</strong><br>You can’t prove what happened, when it happened, and who did it.</p>
+<p><strong>Fix</strong></p>
+<ul>
+<li>Enable CloudTrail org-wide (all regions)</li>
+<li>Centralize logs into a protected logging account</li>
+<li>Set retention and immutability where possible</li>
+<li>Alert on critical IAM and S3 events</li>
+</ul>
+<p>Baseline alerts:</p>
+<ul>
+<li>policy changes</li>
+<li>new access keys</li>
+<li>disabling logging</li>
+<li>public bucket policy changes</li>
+</ul>
+<hr>
+<h2>Failure #4: Security groups as “allow all” networks</h2>
+<p><strong>Symptoms</strong></p>
+<ul>
+<li><code>0.0.0.0/0</code> inbound for SSH/RDP</li>
+<li>Wide inbound rules “for debugging”</li>
+<li>Production databases reachable from more places than intended</li>
+</ul>
+<p><strong>Fix</strong></p>
+<ul>
+<li>Default deny mindset</li>
+<li>No public SSH/RDP; use SSM Session Manager or VPN/bastion with strict access</li>
+<li>Segment by environment and tier (web/app/db)</li>
+<li>Enforce review on any <code>0.0.0.0/0</code> rule</li>
+</ul>
+<hr>
+<h2>Failure #5: No guardrails for infrastructure-as-code changes</h2>
+<p><strong>Symptoms</strong></p>
+<ul>
+<li>Terraform exists, but no policy checks</li>
+<li>Changes merged without security review</li>
+<li>Drift between Terraform and live resources</li>
+</ul>
+<p><strong>Fix</strong></p>
+<ul>
+<li>Add IaC security gates (policy-as-code + scanning) to CI</li>
+<li>Use “required checks” on PRs</li>
+<li>Add drift detection weekly (at minimum)</li>
+</ul>
+<hr>
+<h2>Failure #6: Weak secrets management</h2>
+<p><strong>Symptoms</strong></p>
+<ul>
+<li>Secrets in env vars across many services</li>
+<li>Secrets in CI logs</li>
+<li>Shared credentials for multiple apps</li>
+</ul>
+<p><strong>Fix</strong></p>
+<ul>
+<li>Central secret store (AWS Secrets Manager / Parameter Store + KMS)</li>
+<li>Rotate secrets</li>
+<li>Restrict secret read permissions per workload</li>
+<li>Scan repos for secrets and block merges</li>
+</ul>
+<hr>
+<h2>Failure #7: No vulnerability management story</h2>
+<p><strong>Symptoms</strong></p>
+<ul>
+<li>“We patch when we can”</li>
+<li>No tracking of critical CVEs</li>
+<li>No ownership of remediation</li>
+</ul>
+<p><strong>Fix</strong></p>
+<ul>
+<li>Define a patch SLA by severity</li>
+<li>Track “critical” vulnerabilities weekly</li>
+<li>Provide an executive summary view (audit-friendly)</li>
+<li>Automate where possible (base images, dependency updates, AMI pipeline)</li>
+</ul>
+<hr>
+<h2>A practical 2-week audit readiness plan (startup-friendly)</h2>
+<p><strong>Day 1–2: Identity + logging</strong></p>
+<ul>
+<li>MFA + remove unused IAM</li>
+<li>CloudTrail everywhere</li>
+<li>Central log storage and retention</li>
+</ul>
+<p><strong>Day 3–5: Data + network</strong></p>
+<ul>
+<li>Block public S3</li>
+<li>Encrypt buckets by default</li>
+<li>Clean up security group exposure</li>
+</ul>
+<p><strong>Week 2: Guardrails</strong></p>
+<ul>
+<li>IaC checks in CI</li>
+<li>Drift detection</li>
+<li>Vulnerability SLA and tracking</li>
+</ul>
+<p>This plan gets most SaaS startups from “audit panic” to “audit baseline” without heavy bureaucracy.</p>
+<hr>
+<h2>Want an AWS audit that’s practical (not a PDF dump)?</h2>
+<p>A good audit should produce:</p>
+<ul>
+<li>a prioritized risk list</li>
+<li>clear fixes your engineers can implement quickly</li>
+<li>guardrails so issues don’t come back next month</li>
+<li>reporting that works for founders and auditors</li>
+</ul>
+<p>If that’s what you want, check the AWS Security Audit service page and the report examples.</p>
+12:[["$","section",null,{"className":"py-24 border-b border-[var(--border)] bg-[var(--bg-subtle)]","children":["$","div",null,{"className":"section-container","children":["$","div",null,{"className":"mx-auto max-w-3xl","children":[["$","$L6",null,{"href":"/blog/","className":"text-sm font-medium text-[var(--primary)] hover:underline","children":"← Blog"}],["$","article",null,{"className":"mt-4","children":[["$","time",null,{"dateTime":"2026-03-04","className":"text-sm text-[var(--text-muted)]","children":"March 4, 2026"}],["$","h1",null,{"className":"mt-2 text-4xl font-semibold tracking-tight text-[var(--text)]","children":"How SaaS Startups Fail AWS Security Audits (and How to Pass Without Slowing Down)"}],["$","p",null,{"className":"mt-2 text-base text-[var(--text-muted)]","children":["Hien Nguyen"," · 8 min"]}],["$","div",null,{"className":"mt-3 flex flex-wrap gap-1.5","children":[["$","span","AWS",{"className":"rounded-full bg-[var(--primary)]/10 px-2.5 py-0.5 text-xs font-medium text-[var(--primary)]","children":"AWS"}],["$","span","Cloud Security",{"className":"rounded-full bg-[var(--primary)]/10 px-2.5 py-0.5 text-xs font-medium text-[var(--primary)]","children":"Cloud Security"}],["$","span","Compliance",{"className":"rounded-full bg-[var(--primary)]/10 px-2.5 py-0.5 text-xs font-medium text-[var(--primary)]","children":"Compliance"}],["$","span","DevSecOps",{"className":"rounded-full bg-[var(--primary)]/10 px-2.5 py-0.5 text-xs font-medium text-[var(--primary)]","children":"DevSecOps"}]]}]]}]]}]}]}],["$","section",null,{"className":"py-24 border-b border-[var(--border)] bg-[var(--bg)]","children":["$","div",null,{"className":"section-container","children":["$","div",null,{"className":"mx-auto max-w-3xl","children":[["$","div",null,{"className":"blog-prose leading-7 text-[var(--text)]","dangerouslySetInnerHTML":{"__html":"$1a"}}],"$L1b"]}]}]}]]
+1b:["$","div",null,{"className":"mt-12 border-t border-[var(--border)] pt-8","children":["$","$L6",null,{"href":"/blog/","className":"inline-flex items-center justify-center rounded-lg text-sm font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:ring-offset-2 border border-[var(--border)] bg-[var(--card-bg)] px-5 py-2.5 text-[var(--text)] hover:bg-[var(--bg-subtle)] hover:shadow-lg","children":"← All posts"}]}]
+17:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+15:null
+19:[["$","title","0",{"children":"How SaaS Startups Fail AWS Security Audits (and How to Pass Without Slowing Down) | Hien Nguyen Cybersecurity"}],["$","meta","1",{"name":"description","content":"The most common AWS audit failures in early-stage and growth-stage SaaS — plus a pragmatic fix plan."}],["$","meta","2",{"name":"author","content":"Hien Nguyen"}],["$","meta","3",{"name":"keywords","content":"security consultant,offensive security,cloud security,AWS security,pentest,security audit,Hien Nguyen"}],["$","meta","4",{"name":"robots","content":"index, follow"}],["$","link","5",{"rel":"canonical","href":"https://hienntt93.github.io/hien-cybersecurity/blog/how-saas-startups-fail-aws-security-audits/"}],["$","meta","6",{"property":"og:title","content":"How SaaS Startups Fail AWS Security Audits (and How to Pass Without Slowing Down)"}],["$","meta","7",{"property":"og:description","content":"The most common AWS audit failures in early-stage and growth-stage SaaS — plus a pragmatic fix plan."}],["$","meta","8",{"property":"og:url","content":"https://hienntt93.github.io/hien-cybersecurity/blog/how-saas-startups-fail-aws-security-audits/"}],["$","meta","9",{"property":"og:type","content":"article"}],["$","meta","10",{"property":"article:published_time","content":"2026-03-04"}],["$","meta","11",{"property":"article:author","content":"Hien Nguyen"}],["$","meta","12",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","13",{"name":"twitter:title","content":"How SaaS Startups Fail AWS Security Audits (and How to Pass Without Slowing Down)"}],["$","meta","14",{"name":"twitter:description","content":"The most common AWS audit failures in early-stage and growth-stage SaaS — plus a pragmatic fix plan."}]]
