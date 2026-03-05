@@ -1,0 +1,143 @@
+1:"$Sreact.fragment"
+2:I[22016,["/hien-cybersecurity/_next/static/chunks/9dea891e704504c4.js"],""]
+6:I[97367,["/hien-cybersecurity/_next/static/chunks/ff1a16fafef87110.js","/hien-cybersecurity/_next/static/chunks/d2be314c3ece3fbe.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+3:T19f4,<h1>Top 10 Kubernetes Security Mistakes (and How to Fix Them)</h1>
+<p>Kubernetes gives teams speed and scale, but most real-world breaches don’t start with “zero-days” — they start with misconfigurations.<br>Below are the top mistakes I repeatedly see in cloud security reviews, plus practical fixes you can apply immediately.</p>
+<blockquote>
+<p>If you want a fast “audit-style” check of your cluster posture, start with RBAC, network policies, and workload security context.</p>
+</blockquote>
+<hr>
+<h2>1) Over-permissive RBAC (cluster-admin everywhere)</h2>
+<p><strong>What happens:</strong> teams grant broad roles to “make things work”, and privilege spreads.<br><strong>Why it matters:</strong> one compromised pod/service account can become a cluster takeover.</p>
+<p><strong>Fix:</strong></p>
+<ul>
+<li>Avoid <code>cluster-admin</code> except for break-glass.</li>
+<li>Prefer namespace-scoped roles.</li>
+<li>Use “least privilege” RBAC with clear separation of duties.</li>
+</ul>
+<p>Checklist:</p>
+<ul>
+<li>No default service accounts bound to powerful roles</li>
+<li>Dedicated service accounts per workload</li>
+<li>Review <code>ClusterRoleBinding</code> regularly</li>
+</ul>
+<hr>
+<h2>2) No NetworkPolicies (flat network inside the cluster)</h2>
+<p><strong>What happens:</strong> any pod can talk to any pod.<br><strong>Why it matters:</strong> lateral movement becomes trivial after one foothold.</p>
+<p><strong>Fix:</strong></p>
+<ul>
+<li>Apply <strong>default deny</strong> policies per namespace, then allow only necessary flows.</li>
+<li>Restrict access to sensitive services (databases, internal admin APIs).</li>
+</ul>
+<p>Start pattern:</p>
+<ul>
+<li>Default deny ingress + egress</li>
+<li>Allow DNS</li>
+<li>Allow app-to-app only on required ports</li>
+</ul>
+<hr>
+<h2>3) Containers running as root / privileged workloads</h2>
+<p><strong>What happens:</strong> workloads run as root, sometimes with <code>privileged: true</code>.<br><strong>Why it matters:</strong> increases blast radius and container escape risk.</p>
+<p><strong>Fix:</strong></p>
+<ul>
+<li>Enforce a baseline <code>securityContext</code>:<ul>
+<li><code>runAsNonRoot: true</code></li>
+<li><code>allowPrivilegeEscalation: false</code></li>
+<li>drop Linux capabilities by default</li>
+<li>read-only root filesystem where possible</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2>4) Default / exposed Kubernetes API access patterns</h2>
+<p><strong>What happens:</strong> API server is reachable more broadly than needed.<br><strong>Why it matters:</strong> brute forcing, leaked kubeconfigs, and misissued tokens become critical.</p>
+<p><strong>Fix:</strong></p>
+<ul>
+<li>Restrict API endpoint exposure (private endpoint where possible).</li>
+<li>Enforce MFA/SSO on kubectl access.</li>
+<li>Use short-lived auth (OIDC) instead of long-lived static credentials.</li>
+<li>Audit <code>kubeconfig</code> distribution and rotate regularly.</li>
+</ul>
+<hr>
+<h2>5) Secrets mismanagement (plain text, git leaks, wide access)</h2>
+<p><strong>What happens:</strong> secrets land in Git, environment variables, or shared namespaces.<br><strong>Why it matters:</strong> secrets are often the fastest path to cloud compromise.</p>
+<p><strong>Fix:</strong></p>
+<ul>
+<li>Use a dedicated secret manager (cloud KMS + secret manager) or sealed secrets.</li>
+<li>Limit access by namespace + RBAC.</li>
+<li>Rotate secrets and remove stale credentials.</li>
+<li>Scan repos/CI logs for secret leakage (and fail builds when found).</li>
+</ul>
+<hr>
+<h2>6) Unpinned images / using <code>latest</code></h2>
+<p><strong>What happens:</strong> images are pulled by tag, not digest.<br><strong>Why it matters:</strong> supply chain risk + non-reproducible deployments.</p>
+<p><strong>Fix:</strong></p>
+<ul>
+<li>Pin images by <strong>digest</strong>.</li>
+<li>Maintain a hardened base image strategy.</li>
+<li>Add image signing/verification (Sigstore/cosign) when mature.</li>
+</ul>
+<hr>
+<h2>7) No runtime visibility (you don’t know what’s happening)</h2>
+<p><strong>What happens:</strong> clusters have logs/metrics, but not actionable security signals.<br><strong>Why it matters:</strong> detection and incident response become guesswork.</p>
+<p><strong>Fix:</strong></p>
+<ul>
+<li>Centralize audit logs + workload logs + cloud logs.</li>
+<li>Monitor:<ul>
+<li>exec into pods</li>
+<li>abnormal outbound connections</li>
+<li>unusual process starts</li>
+<li>Kubernetes audit events (create privileged pods, token requests, etc.)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2>8) Insecure ingress / weak TLS posture</h2>
+<p><strong>What happens:</strong> outdated TLS config, missing HSTS, wildcard exposure, unprotected admin endpoints.<br><strong>Why it matters:</strong> common entry point for web exploits and credential theft.</p>
+<p><strong>Fix:</strong></p>
+<ul>
+<li>Enforce TLS 1.2+; prefer modern ciphers.</li>
+<li>Use managed cert rotation (ACME).</li>
+<li>Protect admin endpoints with auth + IP allowlists.</li>
+<li>Rate-limit and WAF where appropriate.</li>
+</ul>
+<hr>
+<h2>9) Poor namespace boundaries (multi-tenant confusion)</h2>
+<p><strong>What happens:</strong> “namespaces are environments”, but sensitive workloads share the same cluster with weak controls.<br><strong>Why it matters:</strong> one weak team/app can impact others.</p>
+<p><strong>Fix:</strong></p>
+<ul>
+<li>Separate high-risk workloads and production data by cluster or strong boundaries.</li>
+<li>Apply:<ul>
+<li>ResourceQuotas</li>
+<li>LimitRanges</li>
+<li>NetworkPolicies</li>
+<li>strict RBAC per namespace</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2>10) Patch &amp; upgrade debt (cluster and node versions lagging)</h2>
+<p><strong>What happens:</strong> control plane, nodes, and container runtimes drift behind.<br><strong>Why it matters:</strong> known vulns + outdated configs accumulate.</p>
+<p><strong>Fix:</strong></p>
+<ul>
+<li>Set upgrade SLOs (e.g., patch monthly, minor versions quarterly).</li>
+<li>Bake AMIs/images with updates.</li>
+<li>Track CVEs impacting kubelet/container runtime.</li>
+</ul>
+<hr>
+<h2>A simple “minimum baseline” you can enforce this week</h2>
+<ol>
+<li>Default-deny NetworkPolicies per namespace  </li>
+<li>Workload <code>securityContext</code> baseline (non-root, no priv-esc, drop caps)  </li>
+<li>RBAC review + remove broad bindings  </li>
+<li>Centralize audit logs and alert on privileged pod creation  </li>
+<li>Pin images and scan in CI</li>
+</ol>
+<hr>
+<h2>Want a quick cluster posture review?</h2>
+<p>If you’re a SaaS startup running Kubernetes and want a fast, practical review (RBAC + networking + workload hardening + cloud IAM), check the services and case studies on the site.</p>
+0:{"buildId":"hA0KMLeQjElQgINc-h6Wo","rsc":["$","$1","c",{"children":[[["$","section",null,{"className":"py-24 border-b border-[var(--border)] bg-[var(--bg-subtle)]","children":["$","div",null,{"className":"section-container","children":["$","div",null,{"className":"mx-auto max-w-3xl","children":[["$","$L2",null,{"href":"/blog/","className":"text-sm font-medium text-[var(--primary)] hover:underline","children":"← Blog"}],["$","article",null,{"className":"mt-4","children":[["$","time",null,{"dateTime":"2026-03-04","className":"text-sm text-[var(--text-muted)]","children":"March 4, 2026"}],["$","h1",null,{"className":"mt-2 text-4xl font-semibold tracking-tight text-[var(--text)]","children":"Top 10 Kubernetes Security Mistakes (and How to Fix Them)"}],["$","p",null,{"className":"mt-2 text-base text-[var(--text-muted)]","children":["Hien Nguyen"," · 9 min"]}],["$","div",null,{"className":"mt-3 flex flex-wrap gap-1.5","children":[["$","span","Kubernetes",{"className":"rounded-full bg-[var(--primary)]/10 px-2.5 py-0.5 text-xs font-medium text-[var(--primary)]","children":"Kubernetes"}],["$","span","Cloud Security",{"className":"rounded-full bg-[var(--primary)]/10 px-2.5 py-0.5 text-xs font-medium text-[var(--primary)]","children":"Cloud Security"}],["$","span","DevSecOps",{"className":"rounded-full bg-[var(--primary)]/10 px-2.5 py-0.5 text-xs font-medium text-[var(--primary)]","children":"DevSecOps"}]]}]]}]]}]}]}],["$","section",null,{"className":"py-24 border-b border-[var(--border)] bg-[var(--bg)]","children":["$","div",null,{"className":"section-container","children":["$","div",null,{"className":"mx-auto max-w-3xl","children":[["$","div",null,{"className":"blog-prose leading-7 text-[var(--text)]","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}]}]}]],null,"$L5"]}],"loading":null,"isPartial":false}
+4:["$","div",null,{"className":"mt-12 border-t border-[var(--border)] pt-8","children":["$","$L2",null,{"href":"/blog/","className":"inline-flex items-center justify-center rounded-lg text-sm font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:ring-offset-2 border border-[var(--border)] bg-[var(--card-bg)] px-5 py-2.5 text-[var(--text)] hover:bg-[var(--bg-subtle)] hover:shadow-lg","children":"← All posts"}]}]
+5:["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]
+8:null
