@@ -3,6 +3,14 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script>
+    (function() {
+      var stored = localStorage.getItem('theme');
+      var prefersLight = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+      var theme = stored === 'light' || stored === 'dark' ? stored : (prefersLight ? 'light' : 'dark');
+      document.documentElement.dataset.theme = theme;
+    })();
+  </script>
   <title>Hien Nguyen Cybersecurity | Cloud & Offensive Security for SaaS & Fintech</title>
   <meta name="description" content="Remote security consulting for SaaS and fintech teams. Web/API testing, AWS audits, offensive security, GRC. 7+ years. EU-based. Book a consult." />
   <meta name="author" content="Hien Nguyen" />
@@ -52,7 +60,11 @@
         <a href="#research">Research &amp; Writing</a>
         <a href="#process">Process</a>
         <a href="#contact">Contact</a>
-        <a href="/hien-cybersecurity/" class="btn btn-primary btn-nav">Hien Cybersecurity →</a>
+        <button type="button" class="theme-toggle" id="theme-toggle-btn" aria-label="Switch to light theme" aria-pressed="false" title="Switch to light theme">
+          <span class="theme-toggle-icon theme-toggle-moon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span>
+          <span class="theme-toggle-icon theme-toggle-sun" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></span>
+        </button>
+        <a href="/hien-cybersecurity/" class="btn btn-primary btn-nav">Services &amp; Case Studies →</a>
       </nav>
       <button type="button" class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav" id="nav-toggle-btn"><span></span></button>
     </div>
@@ -65,6 +77,7 @@
         <p class="hero-byline" id="hero-byline">Hi, I'm Hien Nguyen.</p>
         <h1 id="hero-headline" class="hero-headline">I do security consulting for SaaS and fintech teams</h1>
         <p class="hero-subheadline">Through my consulting brand <strong>Hien Cybersecurity</strong>, I help startups reduce risk, pass audits, and ship with confidence — with practical testing, cloud hardening, and security architecture. Remote, EU-based, 7+ years.</p>
+        <p class="hero-bridge">Consulting brand: <a href="/hien-cybersecurity/">Hien Nguyen Cybersecurity</a> — services, case studies, reports, and blog.</p>
         <p class="hero-credibility">AWS/GCP • Kubernetes • Web &amp; API security • ISO 27001 / SOC 2 / PCI-ready</p>
         <div class="hero-cta">
           <a href="/hien-cybersecurity/" class="btn btn-primary">Go to Hien Cybersecurity</a>
@@ -119,6 +132,13 @@
           </article>
         </div>
         <p class="consulting-cta-wrap"><a href="/hien-cybersecurity/services/" class="btn btn-primary">Explore services</a></p>
+        <div class="explore-details" aria-label="Explore consulting site">
+          <span class="explore-details-label">Explore details:</span>
+          <a href="/hien-cybersecurity/services/">Services</a>
+          <a href="/hien-cybersecurity/case-studies/">Case studies</a>
+          <a href="/hien-cybersecurity/reports/">Reports</a>
+          <a href="/hien-cybersecurity/blog/">Blog</a>
+        </div>
       </div>
     </section>
 
@@ -236,45 +256,23 @@
         <h2 id="contact-title" class="section-title">Contact</h2>
         <p class="contact-availability"><strong>Available:</strong> Remote, Europe</p>
         <p class="contact-response"><strong>Response time:</strong> Within 24–48 hours</p>
-        <p class="contact-hint">Include scope, cloud provider, number of apps, and any deadlines so I can respond with a tailored proposal.</p>
-        <form class="contact-form" id="contact-form" aria-label="Contact form">
-          <label for="contact-name">Name</label>
-          <input type="text" id="contact-name" name="name" required autocomplete="name" />
-          <label for="contact-company">Company</label>
-          <input type="text" id="contact-company" name="company" autocomplete="organization" />
-          <label for="contact-email">Email</label>
-          <input type="email" id="contact-email" name="email" required autocomplete="email" />
-          <label for="contact-service">Service interested in</label>
-          <select id="contact-service" name="service">
-            <option value="">Select…</option>
-            <option value="Cloud Security Audit">Cloud Security Audit</option>
-            <option value="Web/API Security Testing">Web / API Security Testing</option>
-            <option value="Security Architecture Consulting">Security Architecture Consulting</option>
-            <option value="Other">Other</option>
-          </select>
-          <label for="contact-timeline">Timeline</label>
-          <select id="contact-timeline" name="timeline">
-            <option value="">Select…</option>
-            <option value="ASAP">ASAP</option>
-            <option value="Within 2 weeks">Within 2 weeks</option>
-            <option value="Within 1 month">Within 1 month</option>
-            <option value="Within 3 months">Within 3 months</option>
-            <option value="Exploring">Just exploring</option>
-          </select>
-          <label for="contact-description">Short description</label>
-          <textarea id="contact-description" name="description" rows="4" placeholder="Scope, cloud provider, number of apps, deadlines…"></textarea>
-          <button type="submit" class="btn btn-primary">Send</button>
-        </form>
-        <noscript>
-          <p class="contact-noscript">If the form doesn't work, email <a href="mailto:hienntt.kma@gmail.com">hienntt.kma@gmail.com</a> with:</p>
-          <blockquote class="contact-noscript-template">
-            Subject: Consulting inquiry<br><br>
-            Name, Company, Email<br>
-            Service interested in: [e.g. AWS Security Audit]<br>
-            Timeline: [e.g. Within 2 weeks]<br><br>
-            Short description: scope, cloud provider, number of apps, deadlines…
-          </blockquote>
-        </noscript>
+        <div class="contact-cards">
+          <article class="contact-card" aria-labelledby="contact-email-heading">
+            <h3 id="contact-email-heading" class="contact-card-title">Email</h3>
+            <p class="contact-card-desc">Reach out directly for consulting inquiries, quick advice sessions, or to discuss scope.</p>
+            <a href="mailto:hienntt.kma@gmail.com" class="btn btn-primary btn-block">Email me</a>
+            <a href="/hien-cybersecurity/contact/" class="btn btn-ghost btn-block contact-card-secondary">Full intake form →</a>
+          </article>
+          <article class="contact-card" aria-labelledby="contact-checklist-heading">
+            <h3 id="contact-checklist-heading" class="contact-card-title">What to include</h3>
+            <ul class="contact-checklist" role="list">
+              <li>Company / project</li>
+              <li>Engagement type (e.g. audit, testing, advisory)</li>
+              <li>Scope (apps, environments, compliance goals)</li>
+              <li>Timeline and deadlines</li>
+            </ul>
+          </article>
+        </div>
       </div>
     </section>
 
@@ -315,12 +313,10 @@
   <footer class="site-footer">
     <div class="container footer-inner">
       <div class="footer-col footer-col-consulting">
-        <h3 class="footer-col-title">Consulting</h3>
-        <p class="footer-brand-desc">Security consulting under <strong>Hien Cybersecurity</strong>.</p>
+        <h3 class="footer-col-title">Consulting (Hien Nguyen Cybersecurity)</h3>
         <nav class="footer-nav" aria-label="Consulting site">
-          <a href="/hien-cybersecurity/">Hien Cybersecurity</a>
           <a href="/hien-cybersecurity/services/">Services</a>
-          <a href="/hien-cybersecurity/case-studies/">Case Studies</a>
+          <a href="/hien-cybersecurity/case-studies/">Case studies</a>
           <a href="/hien-cybersecurity/reports/">Reports</a>
           <a href="/hien-cybersecurity/blog/">Blog</a>
         </nav>
@@ -330,6 +326,7 @@
         <nav class="footer-nav" aria-label="Connect">
           <a href="https://github.com/hienntt93" rel="noopener noreferrer" target="_blank">GitHub</a>
           <a href="https://linkedin.com/in/hienntt" rel="noopener noreferrer" target="_blank">LinkedIn</a>
+          <a href="mailto:hienntt.kma@gmail.com">Email</a>
           <a href="#contact">Contact</a>
         </nav>
       </div>
@@ -340,19 +337,22 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    document.getElementById('contact-form').addEventListener('submit', function(e) {
-      e.preventDefault();
-      var name = document.getElementById('contact-name').value.trim();
-      var company = document.getElementById('contact-company').value.trim();
-      var email = document.getElementById('contact-email').value.trim();
-      var service = document.getElementById('contact-service').value;
-      var timeline = document.getElementById('contact-timeline').value;
-      var description = document.getElementById('contact-description').value.trim();
-      var body = 'Name: ' + name + '\nCompany: ' + company + '\nEmail: ' + email + '\nService: ' + service + '\nTimeline: ' + timeline + '\n\nDescription:\n' + description;
-      var subject = 'Consulting inquiry – ' + (service || 'General');
-      var mailto = 'mailto:hienntt.kma@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
-      window.location.href = mailto;
-    });
+    (function() {
+      var root = document.documentElement;
+      var btn = document.getElementById('theme-toggle-btn');
+      if (!btn) return;
+      function getTheme() { return root.dataset.theme || 'dark'; }
+      function setTheme(theme) {
+        theme = theme === 'light' ? 'light' : 'dark';
+        root.dataset.theme = theme;
+        try { localStorage.setItem('theme', theme); } catch (e) {}
+        btn.setAttribute('aria-label', theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme');
+        btn.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false');
+        btn.setAttribute('title', theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme');
+      }
+      setTheme(getTheme());
+      btn.addEventListener('click', function() { setTheme(getTheme() === 'dark' ? 'light' : 'dark'); });
+    })();
 
     (function() {
       var nav = document.getElementById('site-nav');
