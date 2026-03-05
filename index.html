@@ -1,51 +1,377 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Hien Nguyen | Cloud Security & DevSecOps</title>
-  <meta name="description" content="Cloud Security, DevSecOps, Offensive Security, and Security Architecture — available for remote consulting across Europe." />
-  <style>
-    body { font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial; margin:0; background:#0b0f14; color:#e8eef6; }
-    .wrap { max-width: 920px; margin: 0 auto; padding: 64px 20px; }
-    .card { background:#111827; border:1px solid #1f2937; border-radius:16px; padding:28px; }
-    h1 { font-size: 40px; margin: 0 0 8px; }
-    p { line-height: 1.6; color:#cbd5e1; }
-    .btns { display:flex; flex-wrap:wrap; gap:12px; margin-top:18px; }
-    a.btn { text-decoration:none; padding:12px 14px; border-radius:12px; border:1px solid #334155; color:#e8eef6; background:#0f172a; }
-    a.btn.primary { background:#2563eb; border-color:#2563eb; }
-    .links { margin-top:18px; display:flex; gap:14px; flex-wrap:wrap; }
-    .links a { color:#93c5fd; text-decoration:none; }
-    .small { margin-top: 26px; font-size: 14px; color:#94a3b8; }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hien Nguyen Cybersecurity | Cloud & Offensive Security for SaaS & Fintech</title>
+  <meta name="description" content="Remote security consulting for SaaS and fintech teams. Web/API testing, AWS audits, offensive security, GRC. 7+ years. EU-based. Book a consult." />
+  <meta name="author" content="Hien Nguyen" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://hienntt93.github.io/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://hienntt93.github.io/" />
+  <meta property="og:title" content="Hien Nguyen Cybersecurity | Cloud & Offensive Security" />
+  <meta property="og:description" content="I help startups reduce security risk, pass audits, and ship faster. Remote consulting for EU. Web/API testing, AWS audits, offensive security, GRC." />
+  <meta property="og:image" content="https://hienntt93.github.io/assets/og.png" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Hien Nguyen Cybersecurity | Cloud & Offensive Security" />
+  <meta name="twitter:description" content="I help startups reduce security risk, pass audits, and ship faster. Remote consulting for EU. Web/API testing, AWS audits, offensive security, GRC." />
+  <meta name="twitter:image" content="https://hienntt93.github.io/assets/og.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Hien Nguyen Cybersecurity",
+    "url": "https://hienntt93.github.io/",
+    "description": "Remote security consulting for SaaS and fintech teams. Web/API testing, AWS audits, offensive security, GRC. 7+ years. EU-based. Book a consult.",
+    "email": "mailto:hienntt.kma@gmail.com",
+    "sameAs": [
+      "https://github.com/hienntt93",
+      "https://linkedin.com/in/hienntt"
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <div class="wrap">
-    <div class="card">
-      <h1>Hien Nguyen</h1>
-      <p><strong>Offensive Security • Cloud Security • Security Architecture</strong></p>
-      <p>
-        Senior Cloud & DevSecOps Security Engineer securing AWS/GCP, Kubernetes, CI/CD, and compliance automation.
-        Available for remote work across Europe.
-      </p>
-
-      <div class="btns">
-        <a class="btn primary" href="https://hienntt93.github.io/hien-cybersecurity/">View Consulting Site</a>
-        <a class="btn" href="https://hienntt93.github.io/hien-cybersecurity/services/">Services</a>
-        <a class="btn" href="https://hienntt93.github.io/hien-cybersecurity/case-studies/">Case Studies</a>
-        <a class="btn" href="https://hienntt93.github.io/hien-cybersecurity/reports/">Reports</a>
-        <a class="btn" href="https://hienntt93.github.io/hien-cybersecurity/contact/">Contact</a>
-      </div>
-
-      <div class="links">
-        <a href="https://linkedin.com/in/hienntt">LinkedIn</a>
-        <a href="https://github.com/hienntt93">GitHub</a>
-      </div>
-
-      <div class="small">
-        Prefer the clean URL? Use this page as your public profile, and the full site as your portfolio & services.
-      </div>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="./" class="logo">Hien Nguyen</a>
+      <nav class="nav" id="site-nav" aria-label="Main">
+        <a href="#consulting">Consulting</a>
+        <a href="#research">Research &amp; Writing</a>
+        <a href="#process">Process</a>
+        <a href="#contact">Contact</a>
+        <a href="/hien-cybersecurity/" class="btn btn-primary btn-nav">Hien Cybersecurity →</a>
+      </nav>
+      <button type="button" class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav" id="nav-toggle-btn"><span></span></button>
     </div>
-  </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero" aria-labelledby="hero-headline">
+      <div class="container hero-inner">
+        <p class="hero-byline" id="hero-byline">Hi, I'm Hien Nguyen.</p>
+        <h1 id="hero-headline" class="hero-headline">I do security consulting for SaaS and fintech teams</h1>
+        <p class="hero-subheadline">Through my consulting brand <strong>Hien Cybersecurity</strong>, I help startups reduce risk, pass audits, and ship with confidence — with practical testing, cloud hardening, and security architecture. Remote, EU-based, 7+ years.</p>
+        <p class="hero-credibility">AWS/GCP • Kubernetes • Web &amp; API security • ISO 27001 / SOC 2 / PCI-ready</p>
+        <div class="hero-cta">
+          <a href="/hien-cybersecurity/" class="btn btn-primary">Go to Hien Cybersecurity</a>
+          <a href="#consulting" class="btn btn-secondary">Consulting on this page</a>
+        </div>
+        <p class="hero-reassurance">Remote EU timezone • Response within 24–48 hours • Fixed quote after scope</p>
+      </div>
+    </section>
+
+    <!-- Trust strip -->
+    <section class="trust-strip" aria-label="Trust indicators">
+      <div class="container trust-inner">
+        <span class="trust-item"><span class="trust-icon" aria-hidden="true"></span> Fintech & retail production environments</span>
+        <span class="trust-item"><span class="trust-icon" aria-hidden="true"></span> 500K+ daily transactions secured</span>
+        <span class="trust-item"><span class="trust-icon" aria-hidden="true"></span> DevSecOps automation & compliance-as-code</span>
+        <span class="trust-item"><span class="trust-icon" aria-hidden="true"></span> Executive-ready reporting</span>
+      </div>
+    </section>
+
+    <!-- Who this is for -->
+    <section id="who" class="section who" aria-labelledby="who-title">
+      <div class="container">
+        <h2 id="who-title" class="section-title">Who this is for</h2>
+        <ul class="who-list" role="list">
+          <li>SaaS startups preparing for SOC 2 / ISO 27001</li>
+          <li>Fintech teams hardening AWS and APIs</li>
+          <li>Engineering teams wanting practical remediation + DevSecOps guardrails</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Security Consulting (Hien Cybersecurity) -->
+    <section id="consulting" class="section services" aria-labelledby="consulting-title">
+      <div class="container">
+        <h2 id="consulting-title" class="section-title">Security Consulting</h2>
+        <p class="consulting-intro">Consulting services are provided through my brand <strong>Hien Cybersecurity</strong>. I offer hands-on security assessments, audits, and architecture guidance for product and engineering teams.</p>
+        <div class="services-grid">
+          <article class="service-card">
+            <h3 class="service-name">Cloud Security Audit</h3>
+            <p class="service-outcome">IAM review, storage and network exposure, logging and monitoring aligned with CIS benchmarks.</p>
+            <a href="/hien-cybersecurity/services/" class="btn btn-secondary btn-block">Learn more</a>
+          </article>
+          <article class="service-card">
+            <h3 class="service-name">Web / API Security Testing</h3>
+            <p class="service-outcome">Auth and authorization review, OWASP-focused testing, and actionable remediation guidance.</p>
+            <a href="/hien-cybersecurity/services/" class="btn btn-secondary btn-block">Learn more</a>
+          </article>
+          <article class="service-card">
+            <h3 class="service-name">Security Architecture Consulting</h3>
+            <p class="service-outcome">Design and review of security controls, threat modeling, and compliance-ready architecture.</p>
+            <a href="/hien-cybersecurity/services/" class="btn btn-secondary btn-block">Learn more</a>
+          </article>
+        </div>
+        <p class="consulting-cta-wrap"><a href="/hien-cybersecurity/services/" class="btn btn-primary">Explore services</a></p>
+      </div>
+    </section>
+
+    <!-- Research & Writing -->
+    <section id="research" class="section research-writing" aria-labelledby="research-title">
+      <div class="container">
+        <h2 id="research-title" class="section-title">Research &amp; Writing</h2>
+        <p class="research-intro">Case studies, blog posts, and report samples from <strong>Hien Cybersecurity</strong> engagements — all on the consulting site.</p>
+        <ul class="research-links" role="list">
+          <li><a href="/hien-cybersecurity/case-studies/">Case Studies</a></li>
+          <li><a href="/hien-cybersecurity/blog/">Blog</a></li>
+          <li><a href="/hien-cybersecurity/reports/">Reports</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Tools strip -->
+    <section class="tools-strip" aria-label="Technologies and standards">
+      <div class="container">
+        <div class="tool-badges">
+          <span class="tool-badge">AWS</span>
+          <span class="tool-badge">GCP</span>
+          <span class="tool-badge">Kubernetes</span>
+          <span class="tool-badge">OWASP</span>
+          <span class="tool-badge">ISO 27001</span>
+          <span class="tool-badge">SOC 2</span>
+          <span class="tool-badge">PCI</span>
+          <span class="tool-badge">CI/CD</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process -->
+    <section id="process" class="section process" aria-labelledby="process-title">
+      <div class="container">
+        <h2 id="process-title" class="section-title">Process</h2>
+        <p class="process-intro">Engagements are delivered async/remote. I work in EU timezone and align with your team as needed.</p>
+        <ol class="process-timeline" role="list">
+          <li class="process-step"><span class="process-num">1</span> <strong>Scoping call</strong> (30 min) — Goals, scope, and deliverables.</li>
+          <li class="process-step"><span class="process-num">2</span> <strong>Access & setup</strong> — NDA, accounts, and environment access.</li>
+          <li class="process-step"><span class="process-num">3</span> <strong>Testing / audit execution</strong> — Hands-on assessment.</li>
+          <li class="process-step"><span class="process-num">4</span> <strong>Report + walkthrough</strong> — Findings, prioritization, and Q&A.</li>
+          <li class="process-step"><span class="process-num">5</span> <strong>Fix support + retest</strong> — Remediation guidance and optional re-test.</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="section pricing" aria-labelledby="pricing-title">
+      <div class="container">
+        <h2 id="pricing-title" class="section-title">Pricing</h2>
+        <p class="pricing-intro">Transparent ranges. Price depends on scope, number of environments, and timeframe. Typical engagement sizes:</p>
+        <div class="pricing-grid">
+          <div class="pricing-tier">
+            <h3 class="pricing-tier-name">Starter</h3>
+            <p class="pricing-tier-desc">Single app or environment, focused scope (e.g. one API, one AWS account).</p>
+            <p class="pricing-tier-range">Typically €3k–€6k</p>
+          </div>
+          <div class="pricing-tier pricing-tier-featured">
+            <h3 class="pricing-tier-name">Growth</h3>
+            <p class="pricing-tier-desc">Multiple apps, 2–3 environments, or combined testing + light cloud review.</p>
+            <p class="pricing-tier-range">Typically €6k–€12k</p>
+          </div>
+          <div class="pricing-tier">
+            <h3 class="pricing-tier-name">Scale</h3>
+            <p class="pricing-tier-desc">Full estate, multi-cloud, or GRC/readiness program work.</p>
+            <p class="pricing-tier-range">Custom quote</p>
+          </div>
+        </div>
+        <p class="pricing-disclaimer">Final price depends on scope. I provide a fixed quote after scoping.</p>
+        <p class="pricing-cta-wrap"><a href="#contact" class="btn btn-primary">Book consultation</a></p>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="section faq" aria-labelledby="faq-title">
+      <div class="container">
+        <h2 id="faq-title" class="section-title">FAQ</h2>
+        <dl class="faq-list">
+          <div class="faq-item">
+            <dt class="faq-q">Do you work fully remote?</dt>
+            <dd class="faq-a">Yes. All engagements are delivered remotely. I'm based in EU and work in EU timezone.</dd>
+          </div>
+          <div class="faq-item">
+            <dt class="faq-q">Can you sign an NDA?</dt>
+            <dd class="faq-a">Yes. I'm happy to sign NDAs and data processing terms before any access or data sharing.</dd>
+          </div>
+          <div class="faq-item">
+            <dt class="faq-q">What do you need from us to start?</dt>
+            <dd class="faq-a">Scoping call, signed NDA (if required), and access to the in-scope systems (e.g. staging API, AWS account with read-only where appropriate). I'll send a short checklist after the call.</dd>
+          </div>
+          <div class="faq-item">
+            <dt class="faq-q">How do you handle data access and confidentiality?</dt>
+            <dd class="faq-a">Access is limited to what's needed for the engagement. I don't retain your data beyond the report delivery. All work is confidential and covered by NDA where requested.</dd>
+          </div>
+          <div class="faq-item">
+            <dt class="faq-q">Do you provide remediation support?</dt>
+            <dd class="faq-a">Yes. Findings include step-by-step remediation guidance. Optional re-test after fixes is available to confirm closure.</dd>
+          </div>
+          <div class="faq-item">
+            <dt class="faq-q">Can you work with our engineers asynchronously?</dt>
+            <dd class="faq-a">Yes. I'm used to async collaboration (tickets, docs, Slack/email). We can schedule short sync calls when needed.</dd>
+          </div>
+          <div class="faq-item">
+            <dt class="faq-q">What does a good engagement look like for startups?</dt>
+            <dd class="faq-a">Clear scope (e.g. "API + auth" or "single AWS account"), staging/test environment, and a single point of contact. Typically 2–4 weeks from kickoff to report, with a walkthrough call included.</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section contact" aria-labelledby="contact-title">
+      <div class="container">
+        <h2 id="contact-title" class="section-title">Contact</h2>
+        <p class="contact-availability"><strong>Available:</strong> Remote, Europe</p>
+        <p class="contact-response"><strong>Response time:</strong> Within 24–48 hours</p>
+        <p class="contact-hint">Include scope, cloud provider, number of apps, and any deadlines so I can respond with a tailored proposal.</p>
+        <form class="contact-form" id="contact-form" aria-label="Contact form">
+          <label for="contact-name">Name</label>
+          <input type="text" id="contact-name" name="name" required autocomplete="name" />
+          <label for="contact-company">Company</label>
+          <input type="text" id="contact-company" name="company" autocomplete="organization" />
+          <label for="contact-email">Email</label>
+          <input type="email" id="contact-email" name="email" required autocomplete="email" />
+          <label for="contact-service">Service interested in</label>
+          <select id="contact-service" name="service">
+            <option value="">Select…</option>
+            <option value="Cloud Security Audit">Cloud Security Audit</option>
+            <option value="Web/API Security Testing">Web / API Security Testing</option>
+            <option value="Security Architecture Consulting">Security Architecture Consulting</option>
+            <option value="Other">Other</option>
+          </select>
+          <label for="contact-timeline">Timeline</label>
+          <select id="contact-timeline" name="timeline">
+            <option value="">Select…</option>
+            <option value="ASAP">ASAP</option>
+            <option value="Within 2 weeks">Within 2 weeks</option>
+            <option value="Within 1 month">Within 1 month</option>
+            <option value="Within 3 months">Within 3 months</option>
+            <option value="Exploring">Just exploring</option>
+          </select>
+          <label for="contact-description">Short description</label>
+          <textarea id="contact-description" name="description" rows="4" placeholder="Scope, cloud provider, number of apps, deadlines…"></textarea>
+          <button type="submit" class="btn btn-primary">Send</button>
+        </form>
+        <noscript>
+          <p class="contact-noscript">If the form doesn't work, email <a href="mailto:hienntt.kma@gmail.com">hienntt.kma@gmail.com</a> with:</p>
+          <blockquote class="contact-noscript-template">
+            Subject: Consulting inquiry<br><br>
+            Name, Company, Email<br>
+            Service interested in: [e.g. AWS Security Audit]<br>
+            Timeline: [e.g. Within 2 weeks]<br><br>
+            Short description: scope, cloud provider, number of apps, deadlines…
+          </blockquote>
+        </noscript>
+      </div>
+    </section>
+
+    <!-- Quick Security Advice -->
+    <section id="quick-advice" class="section quick-advice" aria-labelledby="quick-advice-title">
+      <div class="container">
+        <h2 id="quick-advice-title" class="section-title">Quick Security Advice</h2>
+        <p class="quick-advice-intro">Professional micro-consulting for focused outcomes. Calm, practical guidance without the overhead of a full engagement.</p>
+        <div class="quick-advice-grid">
+          <article class="offer-card" aria-labelledby="offer-1-title">
+            <h3 id="offer-1-title" class="offer-title">Cybersecurity Career Advice</h3>
+            <p class="offer-price">€20&nbsp;/&nbsp;hour</p>
+            <p class="offer-best-for">Best for: students and early professionals</p>
+            <ul class="offer-includes" role="list">
+              <li>What to learn next (roadmap)</li>
+              <li>CV / LinkedIn feedback</li>
+              <li>Interview preparation pointers</li>
+            </ul>
+            <a href="#contact" class="btn btn-secondary btn-block">Request a session</a>
+          </article>
+          <article class="offer-card" aria-labelledby="offer-2-title">
+            <h3 id="offer-2-title" class="offer-title">Security Consultation</h3>
+            <p class="offer-price">€60&nbsp;/&nbsp;hour</p>
+            <p class="offer-best-for">Best for: individuals and small teams</p>
+            <ul class="offer-includes" role="list">
+              <li>Cloud/App security Q&amp;A</li>
+              <li>Architecture second opinion</li>
+              <li>Next steps &amp; remediation plan</li>
+            </ul>
+            <a href="#contact" class="btn btn-secondary btn-block">Request a session</a>
+          </article>
+        </div>
+        <p class="quick-advice-reassurance">Remote, EU timezone • Response within 24–48 hours • Fixed quote for larger engagements</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-col footer-col-consulting">
+        <h3 class="footer-col-title">Consulting</h3>
+        <p class="footer-brand-desc">Security consulting under <strong>Hien Cybersecurity</strong>.</p>
+        <nav class="footer-nav" aria-label="Consulting site">
+          <a href="/hien-cybersecurity/">Hien Cybersecurity</a>
+          <a href="/hien-cybersecurity/services/">Services</a>
+          <a href="/hien-cybersecurity/case-studies/">Case Studies</a>
+          <a href="/hien-cybersecurity/reports/">Reports</a>
+          <a href="/hien-cybersecurity/blog/">Blog</a>
+        </nav>
+      </div>
+      <div class="footer-col footer-col-connect">
+        <h3 class="footer-col-title">Connect</h3>
+        <nav class="footer-nav" aria-label="Connect">
+          <a href="https://github.com/hienntt93" rel="noopener noreferrer" target="_blank">GitHub</a>
+          <a href="https://linkedin.com/in/hienntt" rel="noopener noreferrer" target="_blank">LinkedIn</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+      <p class="footer-copy">&copy; <span id="year"></span> Hien Nguyen. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      var name = document.getElementById('contact-name').value.trim();
+      var company = document.getElementById('contact-company').value.trim();
+      var email = document.getElementById('contact-email').value.trim();
+      var service = document.getElementById('contact-service').value;
+      var timeline = document.getElementById('contact-timeline').value;
+      var description = document.getElementById('contact-description').value.trim();
+      var body = 'Name: ' + name + '\nCompany: ' + company + '\nEmail: ' + email + '\nService: ' + service + '\nTimeline: ' + timeline + '\n\nDescription:\n' + description;
+      var subject = 'Consulting inquiry – ' + (service || 'General');
+      var mailto = 'mailto:hienntt.kma@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+      window.location.href = mailto;
+    });
+
+    (function() {
+      var nav = document.getElementById('site-nav');
+      var toggle = document.getElementById('nav-toggle-btn');
+      if (!toggle || !nav) return;
+      function setOpen(open) {
+        nav.classList.toggle('nav-open', open);
+        toggle.setAttribute('aria-expanded', open);
+        toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        document.body.style.overflow = open ? 'hidden' : '';
+      }
+      toggle.addEventListener('click', function() { setOpen(!nav.classList.contains('nav-open')); });
+      nav.querySelectorAll('a').forEach(function(a) {
+        a.addEventListener('click', function() { setOpen(false); });
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && nav.classList.contains('nav-open')) setOpen(false);
+      });
+    })();
+  </script>
 </body>
 </html>

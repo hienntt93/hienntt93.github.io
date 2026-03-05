@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0c10"/>
+      <stop offset="100%" style="stop-color:#111318"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect x="1" y="1" width="1198" height="628" fill="none" stroke="#252a35" stroke-width="1"/>
+  <text x="600" y="260" font-family="system-ui, -apple-system, sans-serif" font-size="48" font-weight="700" fill="#e6eaf0" text-anchor="middle">Hien Nguyen Cybersecurity</text>
+  <text x="600" y="330" font-family="system-ui, -apple-system, sans-serif" font-size="24" fill="#9ca3b4" text-anchor="middle">Cloud Security &amp; Offensive Security for SaaS &amp; Fintech</text>
+  <text x="600" y="400" font-family="monospace" font-size="16" fill="#6b7280" text-anchor="middle">Remote consulting " EU " 7+ years</text>
+  <circle cx="600" cy="500" r="4" fill="#3b82f6"/>
+</svg>
