@@ -56,9 +56,11 @@
     <div class="container header-inner">
       <a href="./" class="logo">Hien Nguyen</a>
       <nav class="nav" id="site-nav" aria-label="Main">
-        <a href="#consulting">Consulting</a>
-        <a href="#research">Research &amp; Writing</a>
-        <a href="#process">Process</a>
+        <a href="#specialization">Specialization</a>
+        <a href="#proof">Proof</a>
+        <a href="#impact">Impact</a>
+        <a href="#tools">Tools</a>
+        <a href="#philosophy">Philosophy</a>
         <a href="#contact">Contact</a>
         <button type="button" class="theme-toggle" id="theme-toggle-btn" aria-label="Switch to light theme" aria-pressed="false" title="Switch to light theme">
           <span class="theme-toggle-icon theme-toggle-moon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span>
@@ -75,13 +77,14 @@
     <section class="hero" aria-labelledby="hero-headline">
       <div class="container hero-inner">
         <p class="hero-byline" id="hero-byline">Hi, I'm Hien Nguyen.</p>
-        <h1 id="hero-headline" class="hero-headline">I do security consulting for SaaS and fintech teams</h1>
-        <p class="hero-subheadline">Through my consulting brand <strong>Hien Cybersecurity</strong>, I help startups reduce risk, pass audits, and ship with confidence — with practical testing, cloud hardening, and security architecture. Remote, EU-based, 7+ years.</p>
+        <h1 id="hero-headline" class="hero-headline">Security engineer helping SaaS and fintech teams reduce risk and ship safely</h1>
+        <p class="hero-subheadline">I work across offensive security, cloud security (AWS/GCP), and DevSecOps to find real attack paths, fix what matters, and leave teams with a remediation plan they can implement.</p>
         <p class="hero-bridge">Consulting brand: <a href="/hien-cybersecurity/">Hien Nguyen Cybersecurity</a> — services, case studies, reports, and blog.</p>
-        <p class="hero-credibility">AWS/GCP • Kubernetes • Web &amp; API security • ISO 27001 / SOC 2 / PCI-ready</p>
+        <p class="hero-credibility">7+ years • Web &amp; API security • AWS/GCP security • Kubernetes • CI/CD security • Compliance-aware (ISO 27001 / SOC 2 / PCI)</p>
         <div class="hero-cta">
-          <a href="/hien-cybersecurity/" class="btn btn-primary">Go to Hien Cybersecurity</a>
-          <a href="#consulting" class="btn btn-secondary">Consulting on this page</a>
+          <a href="#contact" class="btn btn-primary">Contact me</a>
+          <a href="/hien-cybersecurity/services/" class="btn btn-secondary">View services</a>
+          <a href="/hien-cybersecurity/case-studies/" class="hero-link-tertiary">Case studies</a>
         </div>
         <p class="hero-reassurance">Remote EU timezone • Response within 24–48 hours • Fixed quote after scope</p>
       </div>
@@ -90,48 +93,44 @@
     <!-- Trust strip -->
     <section class="trust-strip" aria-label="Trust indicators">
       <div class="container trust-inner">
-        <span class="trust-item"><span class="trust-icon" aria-hidden="true"></span> Fintech & retail production environments</span>
-        <span class="trust-item"><span class="trust-icon" aria-hidden="true"></span> 500K+ daily transactions secured</span>
-        <span class="trust-item"><span class="trust-icon" aria-hidden="true"></span> DevSecOps automation & compliance-as-code</span>
-        <span class="trust-item"><span class="trust-icon" aria-hidden="true"></span> Executive-ready reporting</span>
+        <span class="trust-item"><span class="trust-icon" aria-hidden="true"></span> SaaS &amp; fintech engineering environments</span>
+        <span class="trust-item"><span class="trust-icon" aria-hidden="true"></span> Web/API testing + cloud security reviews</span>
+        <span class="trust-item"><span class="trust-icon" aria-hidden="true"></span> DevSecOps guardrails teams can maintain</span>
+        <span class="trust-item"><span class="trust-icon" aria-hidden="true"></span> Executive-ready summaries + developer-ready fixes</span>
       </div>
     </section>
 
-    <!-- Who this is for -->
-    <section id="who" class="section who" aria-labelledby="who-title">
+    <!-- Specialization -->
+    <section id="specialization" class="section services" aria-labelledby="specialization-title">
       <div class="container">
-        <h2 id="who-title" class="section-title">Who this is for</h2>
-        <ul class="who-list" role="list">
-          <li>SaaS startups preparing for SOC 2 / ISO 27001</li>
-          <li>Fintech teams hardening AWS and APIs</li>
-          <li>Engineering teams wanting practical remediation + DevSecOps guardrails</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- Security Consulting (Hien Cybersecurity) -->
-    <section id="consulting" class="section services" aria-labelledby="consulting-title">
-      <div class="container">
-        <h2 id="consulting-title" class="section-title">Security Consulting</h2>
-        <p class="consulting-intro">Consulting services are provided through my brand <strong>Hien Cybersecurity</strong>. I offer hands-on security assessments, audits, and architecture guidance for product and engineering teams.</p>
+        <h2 id="specialization-title" class="section-title">Specialization</h2>
+        <p class="consulting-intro">My work spans application security, cloud security, and delivery pipelines — focused on practical outcomes for product and engineering teams.</p>
         <div class="services-grid">
           <article class="service-card">
-            <h3 class="service-name">Cloud Security Audit</h3>
-            <p class="service-outcome">IAM review, storage and network exposure, logging and monitoring aligned with CIS benchmarks.</p>
-            <a href="/hien-cybersecurity/services/" class="btn btn-secondary btn-block">Learn more</a>
+            <h3 class="service-name">Web &amp; API security</h3>
+            <p class="service-outcome">Auth/authz review, OWASP-focused testing, and developer-ready findings.</p>
           </article>
           <article class="service-card">
-            <h3 class="service-name">Web / API Security Testing</h3>
-            <p class="service-outcome">Auth and authorization review, OWASP-focused testing, and actionable remediation guidance.</p>
-            <a href="/hien-cybersecurity/services/" class="btn btn-secondary btn-block">Learn more</a>
+            <h3 class="service-name">Cloud security (AWS/GCP)</h3>
+            <p class="service-outcome">IAM design, exposure review, logging/monitoring readiness, and scalable guardrails.</p>
           </article>
           <article class="service-card">
-            <h3 class="service-name">Security Architecture Consulting</h3>
-            <p class="service-outcome">Design and review of security controls, threat modeling, and compliance-ready architecture.</p>
-            <a href="/hien-cybersecurity/services/" class="btn btn-secondary btn-block">Learn more</a>
+            <h3 class="service-name">Kubernetes &amp; container security</h3>
+            <p class="service-outcome">Cluster and workload hardening, isolation, secrets handling, and deployment risks.</p>
+          </article>
+          <article class="service-card">
+            <h3 class="service-name">DevSecOps / CI-CD security</h3>
+            <p class="service-outcome">Secure pipelines, dependency trust, secrets management, and release controls.</p>
+          </article>
+          <article class="service-card">
+            <h3 class="service-name">Security architecture for SaaS</h3>
+            <p class="service-outcome">Threat modeling, multi-tenant patterns, and compliance-aware control choices.</p>
           </article>
         </div>
-        <p class="consulting-cta-wrap"><a href="/hien-cybersecurity/services/" class="btn btn-primary">Explore services</a></p>
+        <p class="consulting-cta-wrap">
+          <a href="/hien-cybersecurity/services/" class="btn btn-primary">View consulting services</a>
+          <a href="/hien-cybersecurity/case-studies/" class="btn btn-secondary">Read case studies</a>
+        </p>
         <div class="explore-details" aria-label="Explore consulting site">
           <span class="explore-details-label">Explore details:</span>
           <a href="/hien-cybersecurity/services/">Services</a>
@@ -142,111 +141,139 @@
       </div>
     </section>
 
+    <!-- Proof of experience -->
+    <section id="proof" class="section who" aria-labelledby="proof-title">
+      <div class="container">
+        <h2 id="proof-title" class="section-title">Proof of experience</h2>
+        <ul class="who-list" role="list">
+          <li>Worked in production environments for SaaS, fintech, and high-throughput systems</li>
+          <li>Secured APIs and web apps handling sensitive customer data and business-critical workflows</li>
+          <li>Reviewed and hardened AWS/GCP accounts: IAM, storage, networking, logging, and monitoring</li>
+          <li>Collaborated with engineers through tickets and PRs to drive fixes to completion</li>
+          <li>Supported audit readiness by mapping controls to real engineering practices (not just documentation)</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Impact / results -->
+    <section id="impact" class="section proof" aria-labelledby="impact-title">
+      <div class="container">
+        <h2 id="impact-title" class="section-title">Impact / results</h2>
+        <div class="services-grid">
+          <article class="service-card">
+            <h3 class="service-name">Critical attack paths</h3>
+            <p class="service-outcome">Identified and validated exploitation paths with clear impact and practical fixes.</p>
+          </article>
+          <article class="service-card">
+            <h3 class="service-name">API authorization flaws</h3>
+            <p class="service-outcome">Found role boundary and access-control issues and helped teams close them with re-testable remediation.</p>
+          </article>
+          <article class="service-card">
+            <h3 class="service-name">Cloud misconfiguration risk</h3>
+            <p class="service-outcome">Reduced exposure from public access and over-permissive IAM; improved logging and alerting posture.</p>
+          </article>
+          <article class="service-card">
+            <h3 class="service-name">Audit readiness outcomes</h3>
+            <p class="service-outcome">Helped teams move toward SOC 2 / ISO 27001 readiness with engineering-friendly evidence and control choices.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tools & technologies -->
+    <section id="tools" class="section" aria-labelledby="tools-title">
+      <div class="container">
+        <h2 id="tools-title" class="section-title">Tools &amp; technologies</h2>
+        <div class="services-grid tool-stack">
+          <article class="service-card">
+            <h3 class="service-name">Cloud</h3>
+            <div class="tool-badges" aria-label="Cloud tools">
+              <span class="tool-badge">AWS</span>
+              <span class="tool-badge">GCP</span>
+              <span class="tool-badge">IAM</span>
+              <span class="tool-badge">Networking</span>
+              <span class="tool-badge">Logging</span>
+            </div>
+          </article>
+          <article class="service-card">
+            <h3 class="service-name">Application security</h3>
+            <div class="tool-badges" aria-label="Application security tools">
+              <span class="tool-badge">Web</span>
+              <span class="tool-badge">APIs</span>
+              <span class="tool-badge">OWASP</span>
+              <span class="tool-badge">Threat modeling</span>
+            </div>
+          </article>
+          <article class="service-card">
+            <h3 class="service-name">Detection &amp; monitoring</h3>
+            <div class="tool-badges" aria-label="Monitoring and detection">
+              <span class="tool-badge">Telemetry</span>
+              <span class="tool-badge">Alerting</span>
+              <span class="tool-badge">Signal quality</span>
+              <span class="tool-badge">Incident readiness</span>
+            </div>
+          </article>
+          <article class="service-card">
+            <h3 class="service-name">Automation</h3>
+            <div class="tool-badges" aria-label="Automation">
+              <span class="tool-badge">CI/CD</span>
+              <span class="tool-badge">Policy-as-code</span>
+              <span class="tool-badge">Secrets</span>
+              <span class="tool-badge">Release controls</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Security philosophy -->
+    <section id="philosophy" class="section" aria-labelledby="philosophy-title">
+      <div class="container">
+        <h2 id="philosophy-title" class="section-title">Security philosophy</h2>
+        <p class="consulting-intro">I focus on security that holds up in real engineering environments: fast shipping, multiple environments, legacy constraints, and limited time.</p>
+        <ul class="philosophy-list" role="list">
+          <li><strong>Risk-based, not checklist-based:</strong> prioritize what can realistically be exploited and what has business impact.</li>
+          <li><strong>Evidence over opinions:</strong> demonstrate attack paths and misconfigurations clearly, then map fixes to concrete actions.</li>
+          <li><strong>Fixes teams can maintain:</strong> guardrails and patterns that reduce repeated work, not one-off hardening.</li>
+          <li><strong>Security as an engineering partner:</strong> decisions that respect product timelines while improving baseline security over time.</li>
+        </ul>
+      </div>
+    </section>
+
     <!-- Research & Writing -->
     <section id="research" class="section research-writing" aria-labelledby="research-title">
       <div class="container">
-        <h2 id="research-title" class="section-title">Research &amp; Writing</h2>
-        <p class="research-intro">Case studies, blog posts, and report samples from <strong>Hien Cybersecurity</strong> engagements — all on the consulting site.</p>
+        <h2 id="research-title" class="section-title">Research &amp; writing</h2>
+        <p class="research-intro">Selected writeups and deliverable examples live on <a href="/hien-cybersecurity/">Hien Nguyen Cybersecurity</a>.</p>
         <ul class="research-links" role="list">
-          <li><a href="/hien-cybersecurity/case-studies/">Case Studies</a></li>
+          <li><a href="/hien-cybersecurity/case-studies/">Case studies</a></li>
           <li><a href="/hien-cybersecurity/blog/">Blog</a></li>
           <li><a href="/hien-cybersecurity/reports/">Reports</a></li>
         </ul>
       </div>
     </section>
 
-    <!-- Tools strip -->
-    <section class="tools-strip" aria-label="Technologies and standards">
+    <!-- Call to action -->
+    <section class="section cta" aria-labelledby="cta-title">
       <div class="container">
-        <div class="tool-badges">
-          <span class="tool-badge">AWS</span>
-          <span class="tool-badge">GCP</span>
-          <span class="tool-badge">Kubernetes</span>
-          <span class="tool-badge">OWASP</span>
-          <span class="tool-badge">ISO 27001</span>
-          <span class="tool-badge">SOC 2</span>
-          <span class="tool-badge">PCI</span>
-          <span class="tool-badge">CI/CD</span>
+        <h2 id="cta-title" class="section-title">Call to action</h2>
+        <div class="services-grid">
+          <article class="service-card">
+            <h3 class="service-name">Recruiters &amp; hiring managers</h3>
+            <p class="service-outcome">If you're hiring a senior security engineer who can work across app security, cloud security, and DevSecOps — and communicate clearly with engineering teams — reach out.</p>
+            <a href="#contact" class="btn btn-secondary btn-block">Contact me</a>
+          </article>
+          <article class="service-card">
+            <h3 class="service-name">Consulting for SaaS / fintech</h3>
+            <p class="service-outcome">For scoped testing, cloud audits, or architecture review, explore my consulting services and intake.</p>
+            <a href="/hien-cybersecurity/services/" class="btn btn-secondary btn-block">View services</a>
+          </article>
+          <article class="service-card">
+            <h3 class="service-name">Read real work</h3>
+            <p class="service-outcome">Case studies and report samples show how I document risk and help teams fix issues efficiently.</p>
+            <a href="/hien-cybersecurity/case-studies/" class="btn btn-secondary btn-block">Read case studies</a>
+          </article>
         </div>
-      </div>
-    </section>
-
-    <!-- Process -->
-    <section id="process" class="section process" aria-labelledby="process-title">
-      <div class="container">
-        <h2 id="process-title" class="section-title">Process</h2>
-        <p class="process-intro">Engagements are delivered async/remote. I work in EU timezone and align with your team as needed.</p>
-        <ol class="process-timeline" role="list">
-          <li class="process-step"><span class="process-num">1</span> <strong>Scoping call</strong> (30 min) — Goals, scope, and deliverables.</li>
-          <li class="process-step"><span class="process-num">2</span> <strong>Access & setup</strong> — NDA, accounts, and environment access.</li>
-          <li class="process-step"><span class="process-num">3</span> <strong>Testing / audit execution</strong> — Hands-on assessment.</li>
-          <li class="process-step"><span class="process-num">4</span> <strong>Report + walkthrough</strong> — Findings, prioritization, and Q&A.</li>
-          <li class="process-step"><span class="process-num">5</span> <strong>Fix support + retest</strong> — Remediation guidance and optional re-test.</li>
-        </ol>
-      </div>
-    </section>
-
-    <!-- Pricing -->
-    <section id="pricing" class="section pricing" aria-labelledby="pricing-title">
-      <div class="container">
-        <h2 id="pricing-title" class="section-title">Pricing</h2>
-        <p class="pricing-intro">Transparent ranges. Price depends on scope, number of environments, and timeframe. Typical engagement sizes:</p>
-        <div class="pricing-grid">
-          <div class="pricing-tier">
-            <h3 class="pricing-tier-name">Starter</h3>
-            <p class="pricing-tier-desc">Single app or environment, focused scope (e.g. one API, one AWS account).</p>
-            <p class="pricing-tier-range">Typically €3k–€6k</p>
-          </div>
-          <div class="pricing-tier pricing-tier-featured">
-            <h3 class="pricing-tier-name">Growth</h3>
-            <p class="pricing-tier-desc">Multiple apps, 2–3 environments, or combined testing + light cloud review.</p>
-            <p class="pricing-tier-range">Typically €6k–€12k</p>
-          </div>
-          <div class="pricing-tier">
-            <h3 class="pricing-tier-name">Scale</h3>
-            <p class="pricing-tier-desc">Full estate, multi-cloud, or GRC/readiness program work.</p>
-            <p class="pricing-tier-range">Custom quote</p>
-          </div>
-        </div>
-        <p class="pricing-disclaimer">Final price depends on scope. I provide a fixed quote after scoping.</p>
-        <p class="pricing-cta-wrap"><a href="#contact" class="btn btn-primary">Book consultation</a></p>
-      </div>
-    </section>
-
-    <!-- FAQ -->
-    <section id="faq" class="section faq" aria-labelledby="faq-title">
-      <div class="container">
-        <h2 id="faq-title" class="section-title">FAQ</h2>
-        <dl class="faq-list">
-          <div class="faq-item">
-            <dt class="faq-q">Do you work fully remote?</dt>
-            <dd class="faq-a">Yes. All engagements are delivered remotely. I'm based in EU and work in EU timezone.</dd>
-          </div>
-          <div class="faq-item">
-            <dt class="faq-q">Can you sign an NDA?</dt>
-            <dd class="faq-a">Yes. I'm happy to sign NDAs and data processing terms before any access or data sharing.</dd>
-          </div>
-          <div class="faq-item">
-            <dt class="faq-q">What do you need from us to start?</dt>
-            <dd class="faq-a">Scoping call, signed NDA (if required), and access to the in-scope systems (e.g. staging API, AWS account with read-only where appropriate). I'll send a short checklist after the call.</dd>
-          </div>
-          <div class="faq-item">
-            <dt class="faq-q">How do you handle data access and confidentiality?</dt>
-            <dd class="faq-a">Access is limited to what's needed for the engagement. I don't retain your data beyond the report delivery. All work is confidential and covered by NDA where requested.</dd>
-          </div>
-          <div class="faq-item">
-            <dt class="faq-q">Do you provide remediation support?</dt>
-            <dd class="faq-a">Yes. Findings include step-by-step remediation guidance. Optional re-test after fixes is available to confirm closure.</dd>
-          </div>
-          <div class="faq-item">
-            <dt class="faq-q">Can you work with our engineers asynchronously?</dt>
-            <dd class="faq-a">Yes. I'm used to async collaboration (tickets, docs, Slack/email). We can schedule short sync calls when needed.</dd>
-          </div>
-          <div class="faq-item">
-            <dt class="faq-q">What does a good engagement look like for startups?</dt>
-            <dd class="faq-a">Clear scope (e.g. "API + auth" or "single AWS account"), staging/test environment, and a single point of contact. Typically 2–4 weeks from kickoff to report, with a walkthrough call included.</dd>
-          </div>
-        </dl>
       </div>
     </section>
 

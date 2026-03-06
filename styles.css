@@ -817,6 +817,33 @@ textarea:focus-visible {
   white-space: nowrap;
 }
 
+/* Tools categories (inside cards) */
+.tool-stack .tool-badges {
+  justify-content: flex-start;
+}
+
+/* ----- Philosophy ----- */
+.philosophy-list {
+  margin: 0;
+  padding-left: 1.25rem;
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  max-width: 70ch;
+}
+
+.philosophy-list li {
+  margin-bottom: 0.6rem;
+}
+
+.philosophy-list li:last-child {
+  margin-bottom: 0;
+}
+
+.philosophy-list strong {
+  color: var(--text-primary);
+}
+
 /* ----- Explore details ----- */
 .explore-links {
   margin: 0;
