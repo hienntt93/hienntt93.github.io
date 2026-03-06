@@ -1,0 +1,80 @@
+1:"$Sreact.fragment"
+2:I[22016,["/hien-cybersecurity/_next/static/chunks/341c3af3291ce51c.js"],""]
+6:I[97367,["/hien-cybersecurity/_next/static/chunks/ff1a16fafef87110.js","/hien-cybersecurity/_next/static/chunks/d2be314c3ece3fbe.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+3:T220d,<h1>Top Web Application Vulnerabilities in SaaS Platforms: What to Test and Fix First</h1>
+<p>SaaS web applications tend to exhibit a recurring set of vulnerabilities: broken access control, injection, weak authentication, and misconfiguration. This article summarises what shows up most often in assessments and how to prioritise testing and remediation for engineering and security teams.</p>
+<hr>
+<h2>How this list was chosen</h2>
+<p>The items below align with OWASP Top 10 and common findings in SaaS: authentication and session handling, authorization and access control, input handling and injection, and configuration. The focus is on practical impact and fix order, not a full taxonomy.</p>
+<hr>
+<h2>1. Broken access control</h2>
+<h3>1.1 Insecure direct object references (IDOR)</h3>
+<p>Users can access or modify other users’ or tenants’ resources by changing IDs (e.g. in URLs or request bodies). In multi-tenant SaaS this can mean cross-tenant data exposure or privilege abuse.</p>
+<p><strong>What to test:</strong> For each object-type endpoint (e.g. document, order, account), try substituting another user’s or tenant’s ID. Test with different roles (e.g. normal user, admin) and verify the server enforces ownership or tenant scope.</p>
+<p><strong>What to fix:</strong> Enforce authorization on every request server-side; check resource ownership or tenant context before returning or updating data; avoid relying on client-supplied identifiers alone.</p>
+<h3>1.2 Missing or weak function-level authorization</h3>
+<p>Sensitive or admin-only actions are reachable without proper role or permission checks. Examples: user admin endpoints, internal APIs, or debug endpoints exposed to the internet.</p>
+<p><strong>What to test:</strong> Enumerate admin and internal endpoints (e.g. from docs, client code, or common paths); call them with a low-privilege or unauthenticated user and check responses.</p>
+<p><strong>What to fix:</strong> Authorise by role or permission at the application layer for every sensitive action; separate admin and internal routes; remove or protect debug endpoints in production.</p>
+<hr>
+<h2>2. Injection</h2>
+<h3>2.1 SQL and NoSQL injection</h3>
+<p>Unsanitised user input is used in database queries or in APIs that build queries. Attackers can read, modify, or delete data, or sometimes execute commands.</p>
+<p><strong>What to test:</strong> Inject common payloads (quotes, comment sequences, boolean conditions) into every parameter and body field that might reach the database. Test both normal and error paths.</p>
+<p><strong>What to fix:</strong> Use parameterised queries or prepared statements; avoid building queries from string concatenation; apply strict input validation and output encoding.</p>
+<h3>2.2 Cross-site scripting (XSS)</h3>
+<p>User-controlled input is reflected in responses without encoding, allowing script execution in the victim’s browser. Stored XSS persists in the app; reflected XSS is triggered via a link or request.</p>
+<p><strong>What to test:</strong> Submit script payloads in inputs that are reflected in HTML (including error messages, search results, and profile fields). Test both reflected and stored cases.</p>
+<p><strong>What to fix:</strong> Encode output according to context (HTML, attribute, JavaScript, URL); use a CSP (Content-Security-Policy); avoid <code>innerHTML</code> and similar with unsanitised data.</p>
+<h3>2.3 Command and template injection</h3>
+<p>User input is passed to shell commands, <code>eval</code>, or template engines. Can lead to remote code execution on the server or client.</p>
+<p><strong>What to test:</strong> Identify parameters that might be used in system calls or templates (e.g. file names, webhook URLs, template variables); try command or template escape sequences.</p>
+<p><strong>What to fix:</strong> Avoid passing user input to shell or <code>eval</code>; use safe APIs and allowlists; sandbox or restrict template data and operations.</p>
+<hr>
+<h2>3. Broken authentication and session management</h2>
+<h3>3.1 Weak credential and session handling</h3>
+<p>Weak password policies, no MFA for sensitive roles, predictable or long-lived session tokens, and sessions not invalidated on logout or password change increase account takeover risk.</p>
+<p><strong>What to test:</strong> Assess password policy and MFA coverage; test session fixation, token reuse after logout, and whether tokens are exposed in URLs or client-side storage.</p>
+<p><strong>What to fix:</strong> Enforce MFA for admin and sensitive accounts; use short-lived tokens and secure refresh; invalidate sessions on logout and password change; store tokens securely (e.g. httpOnly cookies).</p>
+<h3>3.2 Insecure password reset and account recovery</h3>
+<p>Reset links that are guessable, long-lived, or not single-use can allow account takeover. Same for recovery flows that rely on weak questions or email-only verification.</p>
+<p><strong>What to test:</strong> Request resets for test accounts; reuse tokens, change identifiers in the link, and check expiry and one-time use.</p>
+<p><strong>What to fix:</strong> Use single-use, short-lived tokens; tie tokens to the request (e.g. hash of email + secret); rate-limit reset requests.</p>
+<hr>
+<h2>4. Sensitive data exposure</h2>
+<h3>4.1 Data and errors in responses</h3>
+<p>APIs or pages return more data than needed (e.g. internal IDs, PII), or error messages expose stack traces, query fragments, or paths. This aids reconnaissance and sometimes enables further attacks.</p>
+<p><strong>What to test:</strong> Review API responses and error messages for unnecessary data; trigger error conditions and check what is returned.</p>
+<p><strong>What to fix:</strong> Shape responses per role and use case; use generic error messages in production; avoid leaking internal structure in errors or headers.</p>
+<h3>4.2 Weak transport and at-rest protection</h3>
+<p>Data in transit or at rest is not encrypted, or weak algorithms or keys are used. TLS misconfiguration (e.g. old protocols, weak ciphers) is common.</p>
+<p><strong>What to test:</strong> Check TLS configuration (protocols, ciphers, certificate); verify sensitive data is not sent over plain HTTP; confirm storage encryption for sensitive data.</p>
+<p><strong>What to fix:</strong> Enforce TLS 1.2+ and strong ciphers; use HSTS and secure cookies; encrypt sensitive data at rest and manage keys properly.</p>
+<hr>
+<h2>5. Security misconfiguration</h2>
+<h3>5.1 Defaults and unnecessary features</h3>
+<p>Default credentials, debug or admin interfaces exposed, verbose errors, and unnecessary features (e.g. sample apps, default accounts) increase attack surface.</p>
+<p><strong>What to test:</strong> Check for default logins, open debug endpoints, and unnecessary HTTP methods or headers.</p>
+<p><strong>What to fix:</strong> Change all defaults; disable debug and sample content in production; restrict admin and debug access by network and authentication.</p>
+<h3>5.2 Insecure headers and CORS</h3>
+<p>Missing or weak security headers (e.g. CSP, X-Frame-Options, X-Content-Type-Options) and permissive CORS allow clickjacking, MIME sniffing, or cross-origin abuse.</p>
+<p><strong>What to test:</strong> Inspect response headers and CORS policy; try cross-origin requests from a different domain.</p>
+<p><strong>What to fix:</strong> Set security headers consistently; configure CORS with an allowlist of origins and methods; avoid <code>*</code> in production.</p>
+<hr>
+<h2>How to prioritise remediation</h2>
+<p>A practical order for many SaaS teams:</p>
+<ol>
+<li><strong>Access control</strong> – Fix IDOR and missing function-level checks on sensitive and multi-tenant resources.</li>
+<li><strong>Authentication and sessions</strong> – Harden login, MFA, session lifecycle, and password reset.</li>
+<li><strong>Injection</strong> – Eliminate SQL/NoSQL and command injection; then address XSS and template injection.</li>
+<li><strong>Sensitive data</strong> – Reduce over-exposure and fix TLS and encryption gaps.</li>
+<li><strong>Misconfiguration</strong> – Remove defaults, lock down admin/debug, and tighten headers and CORS.</li>
+</ol>
+<hr>
+<h2>When to get a dedicated assessment</h2>
+<p>Internal testing and automated scanning are useful but often miss business-logic and authorization issues. A manual <a href="../../services/web-api-pentest/">Web Application Penetration Testing</a> engagement focuses on real attack paths and delivers findings with severity, steps to reproduce, and remediation guidance. For API-specific risks, see <a href="../../services/api-security-testing/">API Security Testing</a>. For report format and deliverables, see <a href="../../reports/">Reports</a>.</p>
+0:{"buildId":"BVFyGVP0AyqgfU6Mq6Wit","rsc":["$","$1","c",{"children":[[["$","section",null,{"className":"py-24 border-b border-[var(--border)] bg-[var(--bg-subtle)]","children":["$","div",null,{"className":"section-container","children":["$","div",null,{"className":"mx-auto max-w-3xl","children":[["$","$L2",null,{"href":"/blog/","className":"text-sm font-medium text-[var(--primary)] hover:underline","children":"← Blog"}],["$","article",null,{"className":"mt-4","children":[["$","time",null,{"dateTime":"2026-03-04","className":"text-sm text-[var(--text-muted)]","children":"March 4, 2026"}],["$","h1",null,{"className":"mt-2 text-4xl font-semibold tracking-tight text-[var(--text)]","children":"Top Web Application Vulnerabilities in SaaS Platforms: What to Test and Fix First"}],["$","p",null,{"className":"mt-2 text-base text-[var(--text-muted)]","children":["Hien Nguyen"," · 9 min"]}],["$","div",null,{"className":"mt-3 flex flex-wrap gap-1.5","children":[["$","span","Web Security",{"className":"rounded-full bg-[var(--primary)]/10 px-2.5 py-0.5 text-xs font-medium text-[var(--primary)]","children":"Web Security"}],["$","span","OWASP",{"className":"rounded-full bg-[var(--primary)]/10 px-2.5 py-0.5 text-xs font-medium text-[var(--primary)]","children":"OWASP"}],["$","span","SaaS",{"className":"rounded-full bg-[var(--primary)]/10 px-2.5 py-0.5 text-xs font-medium text-[var(--primary)]","children":"SaaS"}],["$","span","Penetration Testing",{"className":"rounded-full bg-[var(--primary)]/10 px-2.5 py-0.5 text-xs font-medium text-[var(--primary)]","children":"Penetration Testing"}]]}]]}]]}]}]}],["$","section",null,{"className":"py-24 border-b border-[var(--border)] bg-[var(--bg)]","children":["$","div",null,{"className":"section-container","children":["$","div",null,{"className":"mx-auto max-w-3xl","children":[["$","div",null,{"className":"blog-prose leading-7 text-[var(--text)]","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}]}]}]],null,"$L5"]}],"loading":null,"isPartial":false}
+4:["$","div",null,{"className":"mt-12 border-t border-[var(--border)] pt-8","children":["$","$L2",null,{"href":"/blog/","className":"inline-flex items-center justify-center rounded-lg text-sm font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:ring-offset-2 border border-[var(--border)] bg-[var(--card-bg)] px-5 py-2.5 text-[var(--text)] hover:bg-[var(--bg-subtle)] hover:shadow-lg","children":"← All posts"}]}]
+5:["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]
+8:null

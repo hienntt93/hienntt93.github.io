@@ -1,0 +1,101 @@
+1:"$Sreact.fragment"
+2:I[22016,["/hien-cybersecurity/_next/static/chunks/341c3af3291ce51c.js"],""]
+6:I[97367,["/hien-cybersecurity/_next/static/chunks/ff1a16fafef87110.js","/hien-cybersecurity/_next/static/chunks/d2be314c3ece3fbe.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+3:T1e26,<h1>How Startups Prepare for SOC 2 Security Reviews: A Practical Guide for Engineering Leads</h1>
+<p>SOC 2 is a common requirement for B2B SaaS selling to enterprises. Preparation is less about “security theatre” and more about documenting what you already do and closing real gaps. This guide is for CTOs and engineering leads who own or support a first SOC 2 review or renewal.</p>
+<hr>
+<h2>What SOC 2 is and why it matters for startups</h2>
+<p>SOC 2 (Service Organization Control 2) is a framework based on the AICPA Trust Services Criteria. Auditors assess whether your controls meet the criteria you’ve chosen (Security, and often Availability, Processing Integrity, Confidentiality, Privacy). Customers and prospects use the report to assess risk before signing.</p>
+<p>For startups, the main challenges are: defining scope, mapping controls to criteria, and producing consistent evidence without building a parallel “compliance only” process.</p>
+<hr>
+<h2>1. Define scope and system description</h2>
+<h3>1.1 In-scope systems and services</h3>
+<p>Scope defines what the auditor will evaluate. It should match what you sell and what customers depend on: core application, APIs, data storage, key infrastructure (e.g. AWS, Kubernetes), and critical third-party services (e.g. payment, auth).</p>
+<p><strong>Practical step:</strong> List the services and components that are in scope; document data flows and where customer data lives. Keep the first scope manageable so you can deliver evidence consistently.</p>
+<h3>1.2 System description (narrative)</h3>
+<p>The system description explains what the system does, who uses it, how it’s built and operated, and where data is processed and stored. Auditors and readers use it to understand the environment they’re assessing.</p>
+<p><strong>Practical step:</strong> Draft a short narrative (often 5–15 pages) covering architecture, access, change management, and incident response. Align it with what engineering actually does so evidence is easier to produce.</p>
+<hr>
+<h2>2. Map controls to Trust Services Criteria</h2>
+<h3>2.1 Control mapping</h3>
+<p>SOC 2 is criteria-based, not a fixed checklist. You map your controls (policies, procedures, technical measures) to the relevant criteria. Common areas:</p>
+<ul>
+<li><strong>Security:</strong> Access control, logical and physical security, system operations, change management, risk mitigation.</li>
+<li><strong>Availability:</strong> Uptime, capacity, incident response.</li>
+<li><strong>Confidentiality / Processing Integrity / Privacy:</strong> If you commit to these, you need controls and evidence for them too.</li>
+</ul>
+<p><strong>Practical step:</strong> Use a control matrix (e.g. spreadsheet or GRC tool) that lists each criterion, your control, evidence type, and owner. Assign owners in engineering, product, and ops so evidence collection is clear.</p>
+<h3>2.2 Policies and procedures</h3>
+<p>Auditors expect documented policies and procedures that are in use, not shelfware. At minimum, startups typically need:</p>
+<ul>
+<li>Information security policy</li>
+<li>Access control and access review</li>
+<li>Change management / SDLC</li>
+<li>Incident response</li>
+<li>Business continuity / disaster recovery (at least at a high level)</li>
+<li>Vendor / third-party risk (for key subprocessors)</li>
+</ul>
+<p><strong>Practical step:</strong> Write policies that reflect actual practice. If you use GitHub for code review and deploy via CI/CD, say so. Update policies when processes change.</p>
+<hr>
+<h2>3. Evidence and audit readiness</h2>
+<h3>3.1 What “evidence” looks like</h3>
+<p>Evidence is anything that shows a control is operating: screenshots, exports, logs, tickets, runbooks, and signed attestations. It should be consistent over the audit period (e.g. 6–12 months).</p>
+<p><strong>Examples:</strong></p>
+<ul>
+<li>Access reviews: who has access, when it was reviewed, who approved.</li>
+<li>Change management: how code and config changes are approved, tested, and deployed; sample of changes.</li>
+<li>Incident response: log of incidents, how they were handled, post-mortems if applicable.</li>
+<li>Monitoring and logging: what you log, retention, who can access logs.</li>
+</ul>
+<h3>3.2 Ownership and timelines</h3>
+<p>Assign one owner per control area (e.g. access, change, incidents). Define evidence type and frequency (e.g. quarterly access review, monthly change log). Start collecting and storing evidence before the audit period so you’re not retrofitting.</p>
+<p><strong>Practical step:</strong> Run a dry run: for each control, list the evidence you would hand to an auditor. If you can’t produce it, fix the process or the documentation first.</p>
+<hr>
+<h2>4. Common gaps for startups</h2>
+<h3>4.1 Access control and review</h3>
+<ul>
+<li>No formal access review (who has access to prod, cloud, secrets, support tools).</li>
+<li>No process to remove access when people change roles or leave.</li>
+<li>Shared or generic accounts in production.</li>
+</ul>
+<p><strong>Fix:</strong> Define access review cadence (e.g. quarterly); use SSO and least privilege; remove shared accounts or document and justify exceptions.</p>
+<h3>4.2 Change management</h3>
+<ul>
+<li>No documented process for code and config changes; no approval or testing requirement.</li>
+<li>No separation of duties (e.g. same person codes, approves, and deploys without review).</li>
+</ul>
+<p><strong>Fix:</strong> Document SDLC and deployment process; require review (e.g. PR) and approval for production changes; use audit trails (e.g. Git, CI logs).</p>
+<h3>4.3 Incident response</h3>
+<ul>
+<li>No defined process or owner for security incidents.</li>
+<li>No incident log or post-incident review.</li>
+</ul>
+<p><strong>Fix:</strong> Document incident response steps and roles; maintain an incident log; do a short post-mortem for significant events.</p>
+<h3>4.4 Vendor and third-party risk</h3>
+<ul>
+<li>No list of critical vendors or no review of their security posture.</li>
+<li>No contracts or DPAs where required.</li>
+</ul>
+<p><strong>Fix:</strong> Maintain a vendor list; assess critical vendors (questionnaires, SOC 2 reports); document contracts and DPAs.</p>
+<hr>
+<h2>5. Timeline and cost expectations</h2>
+<ul>
+<li><strong>First-time audit:</strong> Allow 3–6 months for scope, control mapping, policy writing, and evidence collection before the audit period. The audit period is often 6–12 months; the auditor then tests and issues the report.</li>
+<li><strong>Cost:</strong> Depends on scope and auditor; expect a range that can be significant for early-stage startups. Some use “readiness” work first (gap assessment, policy drafting) before engaging the auditor.</li>
+<li><strong>Renewal:</strong> Annual audits are typical; reuse and refine controls and evidence from the prior year.</li>
+</ul>
+<hr>
+<h2>When to get help</h2>
+<p>If you lack in-house experience with SOC 2, a gap assessment and control design can speed things up. External help can:</p>
+<ul>
+<li>Map your current state to Trust Services Criteria.</li>
+<li>Draft or refine policies and procedures.</li>
+<li>Set up control ownership and evidence expectations.</li>
+<li>Prepare you for auditor questions.</li>
+</ul>
+<p>For <a href="../../services/grc-compliance/">GRC and Security Program Setup</a> (including ISO 27001 and SOC 2 readiness, gap assessment, policies, and risk register), see the service page. For technical security before or alongside compliance, consider <a href="../../services/web-api-pentest/">Web Application Penetration Testing</a>, <a href="../../services/api-security-testing/">API Security Testing</a>, or <a href="../../services/aws-security-audit/">AWS Security Audit</a>.</p>
+0:{"buildId":"BVFyGVP0AyqgfU6Mq6Wit","rsc":["$","$1","c",{"children":[[["$","section",null,{"className":"py-24 border-b border-[var(--border)] bg-[var(--bg-subtle)]","children":["$","div",null,{"className":"section-container","children":["$","div",null,{"className":"mx-auto max-w-3xl","children":[["$","$L2",null,{"href":"/blog/","className":"text-sm font-medium text-[var(--primary)] hover:underline","children":"← Blog"}],["$","article",null,{"className":"mt-4","children":[["$","time",null,{"dateTime":"2026-03-04","className":"text-sm text-[var(--text-muted)]","children":"March 4, 2026"}],["$","h1",null,{"className":"mt-2 text-4xl font-semibold tracking-tight text-[var(--text)]","children":"How Startups Prepare for SOC 2 Security Reviews: A Practical Guide for Engineering Leads"}],["$","p",null,{"className":"mt-2 text-base text-[var(--text-muted)]","children":["Hien Nguyen"," · 9 min"]}],["$","div",null,{"className":"mt-3 flex flex-wrap gap-1.5","children":[["$","span","SOC 2",{"className":"rounded-full bg-[var(--primary)]/10 px-2.5 py-0.5 text-xs font-medium text-[var(--primary)]","children":"SOC 2"}],["$","span","Compliance",{"className":"rounded-full bg-[var(--primary)]/10 px-2.5 py-0.5 text-xs font-medium text-[var(--primary)]","children":"Compliance"}],["$","span","Startups",{"className":"rounded-full bg-[var(--primary)]/10 px-2.5 py-0.5 text-xs font-medium text-[var(--primary)]","children":"Startups"}],["$","span","Security Program",{"className":"rounded-full bg-[var(--primary)]/10 px-2.5 py-0.5 text-xs font-medium text-[var(--primary)]","children":"Security Program"}]]}]]}]]}]}]}],["$","section",null,{"className":"py-24 border-b border-[var(--border)] bg-[var(--bg)]","children":["$","div",null,{"className":"section-container","children":["$","div",null,{"className":"mx-auto max-w-3xl","children":[["$","div",null,{"className":"blog-prose leading-7 text-[var(--text)]","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}]}]}]],null,"$L5"]}],"loading":null,"isPartial":false}
+4:["$","div",null,{"className":"mt-12 border-t border-[var(--border)] pt-8","children":["$","$L2",null,{"href":"/blog/","className":"inline-flex items-center justify-center rounded-lg text-sm font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:ring-offset-2 border border-[var(--border)] bg-[var(--card-bg)] px-5 py-2.5 text-[var(--text)] hover:bg-[var(--bg-subtle)] hover:shadow-lg","children":"← All posts"}]}]
+5:["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]
+8:null

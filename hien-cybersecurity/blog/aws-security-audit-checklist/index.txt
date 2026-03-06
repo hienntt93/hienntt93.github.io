@@ -1,0 +1,158 @@
+1:"$Sreact.fragment"
+2:I[80492,["/hien-cybersecurity/_next/static/chunks/341c3af3291ce51c.js"],"default"]
+3:I[62319,["/hien-cybersecurity/_next/static/chunks/341c3af3291ce51c.js"],"default"]
+4:I[39756,["/hien-cybersecurity/_next/static/chunks/ff1a16fafef87110.js","/hien-cybersecurity/_next/static/chunks/d2be314c3ece3fbe.js"],"default"]
+5:I[37457,["/hien-cybersecurity/_next/static/chunks/ff1a16fafef87110.js","/hien-cybersecurity/_next/static/chunks/d2be314c3ece3fbe.js"],"default"]
+6:I[22016,["/hien-cybersecurity/_next/static/chunks/341c3af3291ce51c.js"],""]
+7:I[79929,["/hien-cybersecurity/_next/static/chunks/341c3af3291ce51c.js"],"default"]
+11:I[68027,["/hien-cybersecurity/_next/static/chunks/ff1a16fafef87110.js","/hien-cybersecurity/_next/static/chunks/d2be314c3ece3fbe.js"],"default"]
+:HL["/hien-cybersecurity/_next/static/chunks/abf3593c8786eccb.css","style"]
+:HL["/hien-cybersecurity/_next/static/media/83afe278b6a6bb3c-s.p.3a6ba036.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+0:{"P":null,"b":"BVFyGVP0AyqgfU6Mq6Wit","c":["","blog","aws-security-audit-checklist",""],"q":"","i":false,"f":[[["",{"children":["blog",{"children":[["slug","aws-security-audit-checklist","d"],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/hien-cybersecurity/_next/static/chunks/abf3593c8786eccb.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/hien-cybersecurity/_next/static/chunks/341c3af3291ce51c.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","className":"inter_f107cc5e-module__qDQ43a__variable","suppressHydrationWarning":true,"children":[["$","head",null,{"children":[["$","script",null,{"dangerouslySetInnerHTML":{"__html":"\n(function() {\n  var key = 'theme';\n  var stored = localStorage.getItem(key) || 'system';\n  var resolved = 'light';\n  if (stored === 'dark') resolved = 'dark';\n  else if (stored === 'system' && typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: dark)').matches) resolved = 'dark';\n  document.documentElement.classList.add(resolved);\n})();\n"}}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Person\",\"name\":\"Hien Nguyen\",\"url\":\"https://hienntt93.github.io/hien-cybersecurity/about/\",\"jobTitle\":\"Security Consultant\",\"description\":\"Security engineer and consultant specializing in application security, cloud security audits, and DevSecOps for SaaS and fintech.\",\"sameAs\":[\"https://github.com/hienntt93\",\"https://www.linkedin.com/in/hienntt/\"],\"worksFor\":{\"@type\":\"Organization\",\"name\":\"Hien Nguyen Cybersecurity\",\"url\":\"https://hienntt93.github.io/hien-cybersecurity/\"}}"}}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"WebSite\",\"name\":\"Hien Nguyen Cybersecurity\",\"url\":\"https://hienntt93.github.io/hien-cybersecurity/\",\"description\":\"Security consulting for SaaS startups and fintech: web application penetration testing, API security testing, AWS and cloud security audits, DevSecOps reviews.\",\"publisher\":{\"@type\":\"Person\",\"name\":\"Hien Nguyen\",\"url\":\"https://hienntt93.github.io/hien-cybersecurity/about/\"},\"potentialAction\":{\"@type\":\"ContactAction\",\"target\":\"https://hienntt93.github.io/hien-cybersecurity/contact/\",\"http://schema.org/url\":\"https://hienntt93.github.io/hien-cybersecurity/contact/\"}}"}}]]}],["$","body",null,{"className":"inter_f107cc5e-module__qDQ43a__className min-h-screen flex flex-col bg-white text-slate-900 antialiased dark:bg-slate-950 dark:text-slate-100","children":["$","$L2",null,{"children":[["$","$L3",null,{}],["$","main",null,{"className":"flex-1","children":["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","div",null,{"className":"section-container flex min-h-[60vh] flex-col items-center justify-center py-20","children":[["$","h1",null,{"className":"text-3xl font-semibold text-slate-900 dark:text-white","children":"404 — Page not found"}],["$","p",null,{"className":"mt-3 text-base text-slate-600 dark:text-slate-400","children":"The page you’re looking for doesn’t exist or has been moved."}],["$","$L6",null,{"href":"/","className":"mt-6 text-sm font-medium text-[var(--primary)] hover:underline focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:ring-offset-2","children":"← Back to home"}]]}],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","$L7",null,{}],["$","footer",null,{"className":"border-t border-[var(--border)] bg-[var(--bg-subtle)]","children":["$","div",null,{"className":"section-container py-16","children":[["$","div",null,{"className":"grid gap-10 sm:grid-cols-2 lg:grid-cols-4","children":["$L8","$L9","$La","$Lb"]}],"$Lc"]}]}]]}]}]]}]]}],{"children":["$Ld",{"children":["$Le",{"children":["$Lf",{},null,false,false]},null,false,false]},null,false,false]},null,false,false],"$L10",false]],"m":"$undefined","G":["$11",[]],"S":true}
+13:I[97367,["/hien-cybersecurity/_next/static/chunks/ff1a16fafef87110.js","/hien-cybersecurity/_next/static/chunks/d2be314c3ece3fbe.js"],"OutletBoundary"]
+14:"$Sreact.suspense"
+16:I[97367,["/hien-cybersecurity/_next/static/chunks/ff1a16fafef87110.js","/hien-cybersecurity/_next/static/chunks/d2be314c3ece3fbe.js"],"ViewportBoundary"]
+18:I[97367,["/hien-cybersecurity/_next/static/chunks/ff1a16fafef87110.js","/hien-cybersecurity/_next/static/chunks/d2be314c3ece3fbe.js"],"MetadataBoundary"]
+8:["$","div",null,{"className":"lg:col-span-1","children":[["$","p",null,{"className":"text-lg font-semibold text-[var(--text)]","children":"Hien Nguyen Cybersecurity"}],["$","p",null,{"className":"mt-3 text-sm leading-relaxed text-[var(--text-muted)]","children":"Cloud Security • Offensive Security • Security Architecture"}],["$","div",null,{"className":"mt-4 flex gap-4","children":[["$","a",null,{"href":"https://github.com/hienntt93","target":"_blank","rel":"noopener noreferrer","className":"text-sm font-medium text-[var(--text-muted)] hover:text-[var(--primary)]","children":"GitHub"}],["$","a",null,{"href":"https://www.linkedin.com/in/hienntt/","target":"_blank","rel":"noopener noreferrer","className":"text-sm font-medium text-[var(--text-muted)] hover:text-[var(--primary)]","children":"LinkedIn"}]]}]]}]
+9:["$","div",null,{"children":[["$","h3",null,{"className":"text-sm font-semibold uppercase tracking-wider text-[var(--text-muted)]","children":"Company"}],["$","ul",null,{"className":"mt-4 space-y-2.5","children":[["$","li","Main site",{"children":["$","a",null,{"href":"https://hienntt93.github.io/","target":"_blank","rel":"noopener noreferrer","className":"text-sm text-[var(--text-muted)] hover:text-[var(--text)]","children":"Main site"}]}],["$","li","About",{"children":["$","$L6",null,{"href":"/about/","className":"text-sm text-[var(--text-muted)] hover:text-[var(--text)]","children":"About"}]}],["$","li","Contact",{"children":["$","$L6",null,{"href":"/contact/","className":"text-sm text-[var(--text-muted)] hover:text-[var(--text)]","children":"Contact"}]}],["$","li","GitHub",{"children":["$","a",null,{"href":"https://github.com/hienntt93","target":"_blank","rel":"noopener noreferrer","className":"text-sm text-[var(--text-muted)] hover:text-[var(--text)]","children":"GitHub"}]}],["$","li","LinkedIn",{"children":["$","a",null,{"href":"https://www.linkedin.com/in/hienntt/","target":"_blank","rel":"noopener noreferrer","className":"text-sm text-[var(--text-muted)] hover:text-[var(--text)]","children":"LinkedIn"}]}]]}]]}]
+a:["$","div",null,{"children":[["$","h3",null,{"className":"text-sm font-semibold uppercase tracking-wider text-[var(--text-muted)]","children":"Services"}],["$","ul",null,{"className":"mt-4 space-y-2.5","children":[["$","li","Services",{"children":["$","$L6",null,{"href":"/services/","className":"text-sm text-[var(--text-muted)] hover:text-[var(--text)]","children":"Services"}]}],["$","li","Web Application Penetration Testing",{"children":["$","$L6",null,{"href":"/services/web-api-pentest/","className":"text-sm text-[var(--text-muted)] hover:text-[var(--text)]","children":"Web Application Penetration Testing"}]}],["$","li","API Security Testing",{"children":["$","$L6",null,{"href":"/services/api-security-testing/","className":"text-sm text-[var(--text-muted)] hover:text-[var(--text)]","children":"API Security Testing"}]}],["$","li","AWS Security Audit",{"children":["$","$L6",null,{"href":"/services/aws-security-audit/","className":"text-sm text-[var(--text-muted)] hover:text-[var(--text)]","children":"AWS Security Audit"}]}],["$","li","Kubernetes Security Review",{"children":["$","$L6",null,{"href":"/services/kubernetes-security-review/","className":"text-sm text-[var(--text-muted)] hover:text-[var(--text)]","children":"Kubernetes Security Review"}]}],["$","li","DevSecOps Security Assessment",{"children":["$","$L6",null,{"href":"/services/devsecops-security-assessment/","className":"text-sm text-[var(--text-muted)] hover:text-[var(--text)]","children":"DevSecOps Security Assessment"}]}],["$","li","GRC / Security Program Setup",{"children":["$","$L6",null,{"href":"/services/grc-compliance/","className":"text-sm text-[var(--text-muted)] hover:text-[var(--text)]","children":"GRC / Security Program Setup"}]}]]}]]}]
+b:["$","div",null,{"children":[["$","h3",null,{"className":"text-sm font-semibold uppercase tracking-wider text-[var(--text-muted)]","children":"Resources"}],["$","ul",null,{"className":"mt-4 space-y-2.5","children":[["$","li","Blog",{"children":["$","$L6",null,{"href":"/blog/","className":"text-sm text-[var(--text-muted)] hover:text-[var(--text)]","children":"Blog"}]}],["$","li","Case Studies",{"children":["$","$L6",null,{"href":"/case-studies/","className":"text-sm text-[var(--text-muted)] hover:text-[var(--text)]","children":"Case Studies"}]}],["$","li","Reports",{"children":["$","$L6",null,{"href":"/reports/","className":"text-sm text-[var(--text-muted)] hover:text-[var(--text)]","children":"Reports"}]}]]}]]}]
+c:["$","div",null,{"className":"mt-12 border-t border-[var(--border)] pt-8","children":["$","p",null,{"className":"text-center text-sm text-[var(--text-muted)]","children":["© ",2026," Hien Nguyen. All rights reserved."]}]}]
+d:["$","$1","c",{"children":[null,["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+e:["$","$1","c",{"children":[null,["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+f:["$","$1","c",{"children":["$L12",null,["$","$L13",null,{"children":["$","$14",null,{"name":"Next.MetadataOutlet","children":"$@15"}]}]]}]
+10:["$","$1","h",{"children":[null,["$","$L16",null,{"children":"$L17"}],["$","div",null,{"hidden":true,"children":["$","$L18",null,{"children":["$","$14",null,{"name":"Next.Metadata","children":"$L19"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}]
+1a:T17f5,<h1>AWS Security Audit Checklist: What Auditors Check and How to Prepare</h1>
+<p>Most AWS audit failures are predictable: public data exposure, weak identity boundaries, missing logging, and untracked infrastructure drift. This checklist is for CTOs and platform leads who need to prepare for an external AWS security audit or SOC 2 without turning engineering into a compliance bottleneck.</p>
+<hr>
+<h2>What an AWS security audit usually covers</h2>
+<p>An effective audit aligns with a known framework (e.g. CIS AWS Foundations Benchmark) and focuses on identity, data, network, and evidence. The sections below map to what auditors typically check and what you can fix in advance.</p>
+<hr>
+<h2>1. IAM and identity</h2>
+<h3>1.1 Root and MFA</h3>
+<ul>
+<li>Root account has MFA and is not used for day-to-day operations.</li>
+<li>No long-lived access keys for human users; use SSO or IAM Identity Center with short-lived credentials.</li>
+<li>Privileged roles (admin, power user) require MFA.</li>
+</ul>
+<h3>1.2 Least privilege and escalation paths</h3>
+<ul>
+<li>No wildcard (<code>*</code>) permissions except where strictly required and documented.</li>
+<li>Roles are scoped to environment (dev/stage/prod) and purpose.</li>
+<li>There are no privilege-escalation paths (e.g. a role that can attach a new policy granting itself admin).</li>
+<li>Unused users, roles, and access keys are removed or disabled.</li>
+</ul>
+<h3>1.3 Cross-account and assume-role</h3>
+<ul>
+<li>Cross-account access is documented and uses least-privilege role assumption.</li>
+<li>No hardcoded long-lived keys for cross-account access where assume-role is possible.</li>
+</ul>
+<p><strong>Internal link:</strong> For a structured <a href="../../services/aws-security-audit/">AWS Security Audit</a> (CIS-aligned review of IAM, S3, network, and logging), see the service page.</p>
+<hr>
+<h2>2. S3 and storage</h2>
+<h3>2.1 Public access</h3>
+<ul>
+<li>Block Public Access is enabled at account and bucket level.</li>
+<li>No bucket policies or ACLs grant public read/write/list unless there is a justified, documented exception.</li>
+</ul>
+<h3>2.2 Encryption and transport</h3>
+<ul>
+<li>Default encryption is enabled (SSE-S3 or SSE-KMS).</li>
+<li>Bucket policies deny non-TLS requests where applicable.</li>
+<li>Sensitive data is not stored in buckets that allow public or overly broad access.</li>
+</ul>
+<h3>2.3 Lifecycle and classification</h3>
+<ul>
+<li>Retention and lifecycle rules exist where required for compliance.</li>
+<li>There is a simple data classification approach so teams know what can live in which buckets.</li>
+</ul>
+<hr>
+<h2>3. Network and security groups</h2>
+<h3>3.1 Inbound exposure</h3>
+<ul>
+<li>No security groups allow <code>0.0.0.0/0</code> on SSH (22) or RDP (3389); use SSM Session Manager, bastions, or VPN with strict access.</li>
+<li>Production databases and internal APIs are not open to the internet.</li>
+<li>Any rule allowing 0.0.0.0/0 is documented and reviewed.</li>
+</ul>
+<h3>3.2 Segmentation and flow logs</h3>
+<ul>
+<li>VPC and subnet design support segmentation (e.g. web / app / data tiers).</li>
+<li>Flow logs are enabled for critical VPCs or subnets.</li>
+<li>Network ACLs are used where they add defence-in-depth.</li>
+</ul>
+<hr>
+<h2>4. Logging and monitoring</h2>
+<h3>4.1 CloudTrail</h3>
+<ul>
+<li>CloudTrail is enabled in all regions you use (or organisation-wide).</li>
+<li>Logs are centralised in a dedicated account or bucket with restricted access.</li>
+<li>Log integrity (e.g. log file validation) is enabled.</li>
+<li>Retention meets compliance requirements.</li>
+</ul>
+<h3>4.2 Config and GuardDuty</h3>
+<ul>
+<li>AWS Config is enabled where required for compliance and drift detection.</li>
+<li>GuardDuty (or equivalent) is enabled and findings are reviewed.</li>
+<li>There is a process to respond to critical findings.</li>
+</ul>
+<h3>4.3 Alerting</h3>
+<ul>
+<li>Alerts exist for sensitive actions: IAM policy changes, new access keys, disabling of logging, public S3 policy changes, and similar.</li>
+<li>Ownership and response procedures for alerts are defined.</li>
+</ul>
+<hr>
+<h2>5. Secrets and configuration</h2>
+<ul>
+<li>No long-lived secrets in plaintext in user data, environment variables, or public parameter stores.</li>
+<li>Secrets are stored in Secrets Manager or Parameter Store (encrypted) and access is restricted by IAM.</li>
+<li>CI/CD and automation do not log secrets; secret scanning is in place and blocks merges when leaks are found.</li>
+</ul>
+<hr>
+<h2>6. Infrastructure as code and drift</h2>
+<ul>
+<li>Critical resources are managed as code (e.g. Terraform, CloudFormation).</li>
+<li>There is a security or policy check in the pipeline (e.g. policy-as-code, IaC scanning).</li>
+<li>Drift between code and live resources is detected and reviewed (e.g. weekly).</li>
+</ul>
+<hr>
+<h2>A practical 2-week audit readiness plan</h2>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Focus</th>
+<th>Actions</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Days 1–2</strong></td>
+<td>Identity + logging</td>
+<td>MFA everywhere; remove unused IAM; enable CloudTrail in all regions; centralise logs and set retention.</td>
+</tr>
+<tr>
+<td><strong>Days 3–5</strong></td>
+<td>Data + network</td>
+<td>Block public S3; default encryption; tighten security groups; remove 0.0.0.0/0 on SSH/RDP.</td>
+</tr>
+<tr>
+<td><strong>Week 2</strong></td>
+<td>Guardrails</td>
+<td>IaC security checks in CI; drift detection; define vulnerability/patch SLA and tracking.</td>
+</tr>
+</tbody></table>
+<p>This gets most teams from “audit panic” to a defensible baseline without heavy process.</p>
+<hr>
+<h2>What you should get from an AWS audit</h2>
+<p>A useful engagement should deliver:</p>
+<ul>
+<li>A prioritised list of findings with risk ratings and affected resources.</li>
+<li>Clear, implementable fixes that engineers can execute.</li>
+<li>Recommendations for guardrails so the same issues do not reappear.</li>
+<li>Reporting suitable for leadership and auditors.</li>
+</ul>
+<p>For a structured <a href="../../services/aws-security-audit/">AWS Security Audit</a> aligned with CIS and best practices, see the service page.</p>
+12:[["$","section",null,{"className":"py-24 border-b border-[var(--border)] bg-[var(--bg-subtle)]","children":["$","div",null,{"className":"section-container","children":["$","div",null,{"className":"mx-auto max-w-3xl","children":[["$","$L6",null,{"href":"/blog/","className":"text-sm font-medium text-[var(--primary)] hover:underline","children":"← Blog"}],["$","article",null,{"className":"mt-4","children":[["$","time",null,{"dateTime":"2026-03-04","className":"text-sm text-[var(--text-muted)]","children":"March 4, 2026"}],["$","h1",null,{"className":"mt-2 text-4xl font-semibold tracking-tight text-[var(--text)]","children":"AWS Security Audit Checklist: What Auditors Check and How to Prepare"}],["$","p",null,{"className":"mt-2 text-base text-[var(--text-muted)]","children":["Hien Nguyen"," · 9 min"]}],["$","div",null,{"className":"mt-3 flex flex-wrap gap-1.5","children":[["$","span","AWS",{"className":"rounded-full bg-[var(--primary)]/10 px-2.5 py-0.5 text-xs font-medium text-[var(--primary)]","children":"AWS"}],["$","span","Cloud Security",{"className":"rounded-full bg-[var(--primary)]/10 px-2.5 py-0.5 text-xs font-medium text-[var(--primary)]","children":"Cloud Security"}],["$","span","Compliance",{"className":"rounded-full bg-[var(--primary)]/10 px-2.5 py-0.5 text-xs font-medium text-[var(--primary)]","children":"Compliance"}],["$","span","Security Audit",{"className":"rounded-full bg-[var(--primary)]/10 px-2.5 py-0.5 text-xs font-medium text-[var(--primary)]","children":"Security Audit"}]]}]]}]]}]}]}],["$","section",null,{"className":"py-24 border-b border-[var(--border)] bg-[var(--bg)]","children":["$","div",null,{"className":"section-container","children":["$","div",null,{"className":"mx-auto max-w-3xl","children":[["$","div",null,{"className":"blog-prose leading-7 text-[var(--text)]","dangerouslySetInnerHTML":{"__html":"$1a"}}],"$L1b"]}]}]}]]
+1b:["$","div",null,{"className":"mt-12 border-t border-[var(--border)] pt-8","children":["$","$L6",null,{"href":"/blog/","className":"inline-flex items-center justify-center rounded-lg text-sm font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:ring-offset-2 border border-[var(--border)] bg-[var(--card-bg)] px-5 py-2.5 text-[var(--text)] hover:bg-[var(--bg-subtle)] hover:shadow-lg","children":"← All posts"}]}]
+17:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+15:null
+19:[["$","title","0",{"children":"AWS Security Audit Checklist: What Auditors Check and How to Prepare | Hien Nguyen Cybersecurity"}],["$","meta","1",{"name":"description","content":"Practical AWS security audit checklist for SaaS and fintech: IAM, S3, networking, logging, and compliance. Prepare for SOC 2 or external audits without slowing engineering."}],["$","meta","2",{"name":"author","content":"Hien Nguyen"}],["$","meta","3",{"name":"keywords","content":"security consulting SaaS,fintech security consulting,web application penetration testing,API security testing,AWS security audit,Kubernetes security audit,cloud security assessment,DevSecOps security review,application security consulting,security consultant,Hien Nguyen"}],["$","meta","4",{"name":"robots","content":"index, follow"}],["$","link","5",{"rel":"canonical","href":"https://hienntt93.github.io/hien-cybersecurity/blog/aws-security-audit-checklist/"}],["$","meta","6",{"property":"og:title","content":"AWS Security Audit Checklist: What Auditors Check and How to Prepare"}],["$","meta","7",{"property":"og:description","content":"Practical AWS security audit checklist for SaaS and fintech: IAM, S3, networking, logging, and compliance. Prepare for SOC 2 or external audits without slowing engineering."}],["$","meta","8",{"property":"og:url","content":"https://hienntt93.github.io/hien-cybersecurity/blog/aws-security-audit-checklist/"}],["$","meta","9",{"property":"og:type","content":"article"}],["$","meta","10",{"property":"article:published_time","content":"2026-03-04"}],["$","meta","11",{"property":"article:author","content":"Hien Nguyen"}],["$","meta","12",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","13",{"name":"twitter:title","content":"AWS Security Audit Checklist: What Auditors Check and How to Prepare"}],["$","meta","14",{"name":"twitter:description","content":"Practical AWS security audit checklist for SaaS and fintech: IAM, S3, networking, logging, and compliance. Prepare for SOC 2 or external audits without slowing engineering."}]]
