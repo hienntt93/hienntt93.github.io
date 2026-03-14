@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script>
+    (function() {
+      var stored = localStorage.getItem('theme');
+      var prefersLight = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+      var theme = stored === 'light' || stored === 'dark' ? stored : (prefersLight ? 'light' : 'dark');
+      document.documentElement.dataset.theme = theme;
+    })();
+  </script>
+  <meta name="color-scheme" content="dark light" />
+  <meta name="theme-color" content="#0a0c10" media="(prefers-color-scheme: dark)" />
+  <title>Research Index | Hien Nguyen — Security Research Portfolio</title>
+  <meta name="description" content="Security research portfolio organized by domain: API security, cloud security, Kubernetes, threat research, detection engineering, and case studies. Technical depth across AppSec, cloud, and offensive security." />
+  <link rel="canonical" href="https://hienntt93.github.io/hien-cybersecurity/research/" />
+  <link rel="stylesheet" href="/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    /* Research Index Domain Sections */
+    .research-domain-section {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .research-domain-header {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .research-domain-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .research-domain-badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      padding: 0.35rem 0.75rem;
+      background: var(--accent-muted);
+      color: var(--accent);
+      border-radius: 4px;
+      font-weight: 600;
+      font-family: var(--font-mono);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      width: fit-content;
+    }
+
+    .research-domain-intro {
+      font-size: 0.9375rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      max-width: 55ch;
+    }
+
+    /* Research Post Card Grid */
+    .research-posts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .research-post-card {
+      padding: 1.5rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+      position: relative;
+    }
+
+    .research-post-card:hover {
+      border-color: var(--border-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px var(--shadow-card);
+    }
+
+    .research-post-card-header {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .research-post-card-title {
+      margin: 0;
+      font-size: 1.0625rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: 1.35;
+    }
+
+    .research-post-card-title a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .research-post-card-title a:hover {
+      color: var(--accent);
+    }
+
+    .research-post-card-excerpt {
+      margin: 0;
+      font-size: 0.9375rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .research-meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      margin-top: auto;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .difficulty-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.25rem 0.65rem;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      font-family: var(--font-mono);
+      color: var(--text-secondary);
+    }
+
+    .difficulty-beginner {
+      background: rgba(34, 197, 94, 0.1);
+      border-color: rgba(34, 197, 94, 0.3);
+      color: #22c55e;
+    }
+
+    .difficulty-intermediate {
+      background: rgba(249, 115, 22, 0.1);
+      border-color: rgba(249, 115, 22, 0.3);
+      color: #f97316;
+    }
+
+    .difficulty-advanced {
+      background: rgba(239, 68, 68, 0.1);
+      border-color: rgba(239, 68, 68, 0.3);
+      color: #ef4444;
+    }
+
+    .reading-time {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .research-post-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem 0.5rem;
+    }
+
+    .research-post-tag {
+      display: inline-block;
+      padding: 0.2rem 0.5rem;
+      font-size: 0.75rem;
+      font-family: var(--font-mono);
+      color: var(--text-secondary);
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+    }
+
+    .related-service-link {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .related-service-link:hover {
+      color: var(--accent);
+    }
+
+    .service-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.25rem 0.6rem;
+      background: var(--accent-muted);
+      border: 1px solid var(--accent);
+      border-radius: 4px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--accent);
+      font-family: var(--font-mono);
+    }
+
+    @media (max-width: 640px) {
+      .research-posts-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .research-domain-title {
+        flex-wrap: wrap;
+      }
+
+      .research-meta-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/" class="logo">Hien Nguyen</a>
+      <nav class="nav" id="site-nav" aria-label="Main">
+        <a href="/hien-cybersecurity/">Consulting home</a>
+        <a href="/hien-cybersecurity/research/">Research</a>
+        <a href="/hien-cybersecurity/research/threat-research-series/">Threat series</a>
+        <a href="/hien-cybersecurity/research/write-ups/">Write-ups</a>
+        <a href="/hien-cybersecurity/blog/">Blog</a>
+        <a href="/hien-cybersecurity/case-studies/">Case studies</a>
+        <a href="/hien-cybersecurity/services/">Services</a>
+        <a href="/hien-cybersecurity/contact/">Contact</a>
+        <button type="button" class="theme-toggle" id="theme-toggle-btn" aria-label="Switch to light theme" aria-pressed="false" title="Switch to light theme">
+          <span class="theme-toggle-icon theme-toggle-moon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span>
+          <span class="theme-toggle-icon theme-toggle-sun" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></span>
+        </button>
+        <a href="/hien-cybersecurity/contact/" class="btn btn-primary btn-nav">Book consultation</a>
+      </nav>
+      <button type="button" class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav" id="nav-toggle-btn"><span></span></button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="research-headline">
+      <div class="container hero-inner">
+        <p class="hero-byline">Security research by domain</p>
+        <h1 id="research-headline" class="hero-headline">Research Index</h1>
+        <p class="hero-subheadline">Technical research organized by security domain: application security, cloud infrastructure, container orchestration, threat analysis, and detection engineering. For recruiters: evidence of depth and expertise. For teams: practical security insights.</p>
+      </div>
+    </section>
+
+    <!-- API & Application Security -->
+    <section class="section" id="api-appsec">
+      <div class="container">
+        <div class="research-domain-section">
+          <div class="research-domain-header">
+            <h2 class="research-domain-title">
+              <span class="research-domain-badge">AppSec</span>
+              API & Application Security
+            </h2>
+            <p class="research-domain-intro">OWASP testing methodologies, broken access control, authentication flaws, injection vulnerabilities, and API-specific security patterns for SaaS and fintech platforms.</p>
+          </div>
+
+          <div class="research-posts-grid">
+            <!-- Post 1 -->
+            <article class="research-post-card">
+              <div class="research-post-card-header">
+                <h3 class="research-post-card-title">
+                  <a href="/hien-cybersecurity/blog/owasp-api-security-top-10-explained-for-saas/">OWASP API Top 10: Testing & Remediation</a>
+                </h3>
+                <p class="research-post-card-excerpt">Practical API security testing guide: BOLA, auth flaws, injection, excessive data exposure. What to test, how to find issues, and remediation patterns.</p>
+              </div>
+              <div class="research-meta-row">
+                <span class="meta-item reading-time">⏱ 10 min read</span>
+                <span class="difficulty-badge difficulty-intermediate">Intermediate</span>
+                <div class="research-post-tags">
+                  <span class="research-post-tag">API</span>
+                  <span class="research-post-tag">OWASP</span>
+                  <span class="research-post-tag">Testing</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Post 2 -->
+            <article class="research-post-card">
+              <div class="research-post-card-header">
+                <h3 class="research-post-card-title">
+                  <a href="/hien-cybersecurity/blog/top-web-application-vulnerabilities-saas/">Top Web App Vulnerabilities in SaaS</a>
+                </h3>
+                <p class="research-post-card-excerpt">Most common vulnerabilities found in SaaS web applications: broken access control, injection, auth flaws, misconfiguration. Prioritization for testing and remediation.</p>
+              </div>
+              <div class="research-meta-row">
+                <span class="meta-item reading-time">⏱ 9 min read</span>
+                <span class="difficulty-badge difficulty-intermediate">Intermediate</span>
+                <div class="research-post-tags">
+                  <span class="research-post-tag">Web</span>
+                  <span class="research-post-tag">OWASP</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Post 3 -->
+            <article class="research-post-card">
+              <div class="research-post-card-header">
+                <h3 class="research-post-card-title">
+                  <a href="/hien-cybersecurity/research/write-ups/#tenant-isolation">Multi-Tenant Isolation Flaws</a>
+                </h3>
+                <p class="research-post-card-excerpt">Deep dive into tenant isolation failures in B2B SaaS. Data leakage scenarios, testing patterns, and architectural defenses.</p>
+              </div>
+              <div class="research-meta-row">
+                <span class="meta-item reading-time">⏱ 12 min read</span>
+                <span class="difficulty-badge difficulty-advanced">Advanced</span>
+                <div class="research-post-tags">
+                  <span class="research-post-tag">SaaS</span>
+                  <span class="research-post-tag">Architecture</span>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <p class="explore-details">
+            <span class="explore-details-label">Related service:</span>
+            <a href="/hien-cybersecurity/services/web-api-pentest/" class="service-badge">Web/API Pentest</a>
+            <a href="/hien-cybersecurity/services/api-security-testing/" class="service-badge">API Security Testing</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cloud & AWS Security -->
+    <section class="section" id="cloud-aws">
+      <div class="container">
+        <div class="research-domain-section">
+          <div class="research-domain-header">
+            <h2 class="research-domain-title">
+              <span class="research-domain-badge">Cloud</span>
+              Cloud & AWS Security
+            </h2>
+            <p class="research-domain-intro">IAM policy analysis, S3 bucket misconfiguration, CloudTrail logging, privilege escalation chains, and compliance audit preparation for SaaS and fintech on AWS.</p>
+          </div>
+
+          <div class="research-posts-grid">
+            <!-- Post 1 -->
+            <article class="research-post-card">
+              <div class="research-post-card-header">
+                <h3 class="research-post-card-title">
+                  <a href="/hien-cybersecurity/blog/aws-security-audit-checklist/">AWS Security Audit Checklist</a>
+                </h3>
+                <p class="research-post-card-excerpt">CIS-aligned audit checklist: IAM, S3, networking, logging, compliance. What auditors look for and how to prepare without slowing engineering.</p>
+              </div>
+              <div class="research-meta-row">
+                <span class="meta-item reading-time">⏱ 9 min read</span>
+                <span class="difficulty-badge difficulty-beginner">Beginner</span>
+                <div class="research-post-tags">
+                  <span class="research-post-tag">AWS</span>
+                  <span class="research-post-tag">CIS</span>
+                  <span class="research-post-tag">Compliance</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Post 2 -->
+            <article class="research-post-card">
+              <div class="research-post-card-header">
+                <h3 class="research-post-card-title">
+                  <a href="/hien-cybersecurity/blog/how-saas-startups-fail-aws-security-audits/">Why SaaS Startups Fail AWS Audits</a>
+                </h3>
+                <p class="research-post-card-excerpt">Common AWS security audit failures: IAM sprawl, S3 exposure, missing CloudTrail, weak networking. Practical remediation roadmap for CTOs.</p>
+              </div>
+              <div class="research-meta-row">
+                <span class="meta-item reading-time">⏱ 8 min read</span>
+                <span class="difficulty-badge difficulty-intermediate">Intermediate</span>
+                <div class="research-post-tags">
+                  <span class="research-post-tag">AWS</span>
+                  <span class="research-post-tag">IAM</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Post 3 -->
+            <article class="research-post-card">
+              <div class="research-post-card-header">
+                <h3 class="research-post-card-title">
+                  <a href="/hien-cybersecurity/research/write-ups/#iam-privesc">IAM Privilege Escalation Paths</a>
+                </h3>
+                <p class="research-post-card-excerpt">Finding and exploiting IAM privilege escalation chains: permission boundaries, trust policies, resource-based policies. Defensive hardening.</p>
+              </div>
+              <div class="research-meta-row">
+                <span class="meta-item reading-time">⏱ 14 min read</span>
+                <span class="difficulty-badge difficulty-advanced">Advanced</span>
+                <div class="research-post-tags">
+                  <span class="research-post-tag">AWS</span>
+                  <span class="research-post-tag">Offensive</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Post 4 -->
+            <article class="research-post-card">
+              <div class="research-post-card-header">
+                <h3 class="research-post-card-title">
+                  <a href="/hien-cybersecurity/case-studies/#public-s3-data-exposure">S3 Bucket Data Exposure Case Study</a>
+                </h3>
+                <p class="research-post-card-excerpt">Real case: publicly accessible S3 buckets exposing customer data and backups. Discovery methodology and remediation.</p>
+              </div>
+              <div class="research-meta-row">
+                <span class="meta-item reading-time">⏱ 7 min read</span>
+                <span class="difficulty-badge difficulty-beginner">Beginner</span>
+                <div class="research-post-tags">
+                  <span class="research-post-tag">S3</span>
+                  <span class="research-post-tag">Case Study</span>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <p class="explore-details">
+            <span class="explore-details-label">Related service:</span>
+            <a href="/hien-cybersecurity/services/aws-security-audit/" class="service-badge">AWS Audit</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Kubernetes & Container Security -->
+    <section class="section" id="k8s-container">
+      <div class="container">
+        <div class="research-domain-section">
+          <div class="research-domain-header">
+            <h2 class="research-domain-title">
+              <span class="research-domain-badge">K8s</span>
+              Kubernetes & Container Security
+            </h2>
+            <p class="research-domain-intro">RBAC configuration, NetworkPolicies, secrets management, workload security, cluster hardening, and supply chain attacks in containerized environments.</p>
+          </div>
+
+          <div class="research-posts-grid">
+            <!-- Post 1 -->
+            <article class="research-post-card">
+              <div class="research-post-card-header">
+                <h3 class="research-post-card-title">
+                  <a href="/hien-cybersecurity/blog/top-10-kubernetes-security-mistakes/">Kubernetes Security: Top 10 Mistakes</a>
+                </h3>
+                <p class="research-post-card-excerpt">Most common Kubernetes security misconfigurations: RBAC, NetworkPolicies, secrets, workload hardening. Practical checklist for production clusters.</p>
+              </div>
+              <div class="research-meta-row">
+                <span class="meta-item reading-time">⏱ 9 min read</span>
+                <span class="difficulty-badge difficulty-intermediate">Intermediate</span>
+                <div class="research-post-tags">
+                  <span class="research-post-tag">Kubernetes</span>
+                  <span class="research-post-tag">RBAC</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Post 2 -->
+            <article class="research-post-card">
+              <div class="research-post-card-header">
+                <h3 class="research-post-card-title">
+                  <a href="/hien-cybersecurity/research/write-ups/#k8s-rbac-bypass">Kubernetes RBAC Escape Techniques</a>
+                </h3>
+                <p class="research-post-card-excerpt">Advanced RBAC bypass techniques: service account token misuse, aggregated ClusterRoles, webhook abuse. Defensive patterns and detection.</p>
+              </div>
+              <div class="research-meta-row">
+                <span class="meta-item reading-time">⏱ 11 min read</span>
+                <span class="difficulty-badge difficulty-advanced">Advanced</span>
+                <div class="research-post-tags">
+                  <span class="research-post-tag">Kubernetes</span>
+                  <span class="research-post-tag">Offensive</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Post 3 -->
+            <article class="research-post-card">
+              <div class="research-post-card-header">
+                <h3 class="research-post-card-title">
+                  <a href="/hien-cybersecurity/research/write-ups/#supply-chain-k8s">Supply Chain Security in K8s</a>
+                </h3>
+                <p class="research-post-card-excerpt">Image scanning, policy enforcement, container registry security, and admission controller hardening for supply chain protection.</p>
+              </div>
+              <div class="research-meta-row">
+                <span class="meta-item reading-time">⏱ 10 min read</span>
+                <span class="difficulty-badge difficulty-intermediate">Intermediate</span>
+                <div class="research-post-tags">
+                  <span class="research-post-tag">Supply Chain</span>
+                  <span class="research-post-tag">DevSecOps</span>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <p class="explore-details">
+            <span class="explore-details-label">Related service:</span>
+            <a href="/hien-cybersecurity/services/kubernetes-security-review/" class="service-badge">K8s Review</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Threat Research -->
+    <section class="section" id="threat-research">
+      <div class="container">
+        <div class="research-domain-section">
+          <div class="research-domain-header">
+            <h2 class="research-domain-title">
+              <span class="research-domain-badge">Threat</span>
+              Threat Research & Analysis
+            </h2>
+            <p class="research-domain-intro">Attack chains, threat modeling for SaaS, privilege escalation scenarios, post-exploitation techniques, and risk assessment for modern cloud environments.</p>
+          </div>
+
+          <div class="research-posts-grid">
+            <!-- Post 1 -->
+            <article class="research-post-card">
+              <div class="research-post-card-header">
+                <h3 class="research-post-card-title">
+                  <a href="/hien-cybersecurity/research/threat-research-series/#saas-threats">SaaS Threat Model: Data Exposure Chains</a>
+                </h3>
+                <p class="research-post-card-excerpt">End-to-end threat chains in B2B SaaS: API IDOR → data export → leakage. Attack tree analysis and comprehensive controls.</p>
+              </div>
+              <div class="research-meta-row">
+                <span class="meta-item reading-time">⏱ 13 min read</span>
+                <span class="difficulty-badge difficulty-advanced">Advanced</span>
+                <div class="research-post-tags">
+                  <span class="research-post-tag">Threat Model</span>
+                  <span class="research-post-tag">SaaS</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Post 2 -->
+            <article class="research-post-card">
+              <div class="research-post-card-header">
+                <h3 class="research-post-card-title">
+                  <a href="/hien-cybersecurity/research/threat-research-series/#cloud-threats">Cloud Account Compromise: ATT&CK Mapping</a>
+                </h3>
+                <p class="research-post-card-excerpt">Realistic compromise scenarios using MITRE ATT&CK matrix. From credential exposure to data exfiltration in AWS environments.</p>
+              </div>
+              <div class="research-meta-row">
+                <span class="meta-item reading-time">⏱ 11 min read</span>
+                <span class="difficulty-badge difficulty-advanced">Advanced</span>
+                <div class="research-post-tags">
+                  <span class="research-post-tag">ATT&CK</span>
+                  <span class="research-post-tag">Cloud</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Post 3 -->
+            <article class="research-post-card">
+              <div class="research-post-card-header">
+                <h3 class="research-post-card-title">
+                  <a href="/hien-cybersecurity/research/write-ups/#insider-threat-saas">Insider Threat Scenarios in SaaS</a>
+                </h3>
+                <p class="research-post-card-excerpt">Realistic insider threat modeling: overprivileged accounts, lateral movement, data theft patterns. Controls and detection strategies.</p>
+              </div>
+              <div class="research-meta-row">
+                <span class="meta-item reading-time">⏱ 9 min read</span>
+                <span class="difficulty-badge difficulty-intermediate">Intermediate</span>
+                <div class="research-post-tags">
+                  <span class="research-post-tag">Insider Threat</span>
+                  <span class="research-post-tag">Monitoring</span>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <p class="explore-details">
+            <span class="explore-details-label">Related:</span>
+            <a href="/hien-cybersecurity/research/threat-research-series/" class="service-badge">Threat Series</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Detection Engineering -->
+    <section class="section" id="detection-engineering">
+      <div class="container">
+        <div class="research-domain-section">
+          <div class="research-domain-header">
+            <h2 class="research-domain-title">
+              <span class="research-domain-badge">Detection</span>
+              Detection Engineering & Monitoring
+            </h2>
+            <p class="research-domain-intro">Security event detection, log analysis, anomaly detection, SIEM tuning, and security automation for cloud and container environments.</p>
+          </div>
+
+          <div class="research-posts-grid">
+            <!-- Post 1 -->
+            <article class="research-post-card">
+              <div class="research-post-card-header">
+                <h3 class="research-post-card-title">
+                  <a href="/hien-cybersecurity/research/write-ups/#cloudtrail-detection">CloudTrail Detection Rules & Evasion</a>
+                </h3>
+                <p class="research-post-card-excerpt">Building effective CloudTrail detection rules. Common evasion techniques and how to detect them with log analysis patterns.</p>
+              </div>
+              <div class="research-meta-row">
+                <span class="meta-item reading-time">⏱ 10 min read</span>
+                <span class="difficulty-badge difficulty-intermediate">Intermediate</span>
+                <div class="research-post-tags">
+                  <span class="research-post-tag">AWS</span>
+                  <span class="research-post-tag">Detection</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Post 2 -->
+            <article class="research-post-card">
+              <div class="research-post-card-header">
+                <h3 class="research-post-card-title">
+                  <a href="/hien-cybersecurity/research/write-ups/#k8s-audit-logs">Kubernetes Audit Log Analysis</a>
+                </h3>
+                <p class="research-post-card-excerpt">Extracting security signals from Kubernetes audit logs. Detection patterns for reconnaissance, privilege escalation, and persistence.</p>
+              </div>
+              <div class="research-meta-row">
+                <span class="meta-item reading-time">⏱ 11 min read</span>
+                <span class="difficulty-badge difficulty-advanced">Advanced</span>
+                <div class="research-post-tags">
+                  <span class="research-post-tag">Kubernetes</span>
+                  <span class="research-post-tag">Monitoring</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Post 3 -->
+            <article class="research-post-card">
+              <div class="research-post-card-header">
+                <h3 class="research-post-card-title">
+                  <a href="/hien-cybersecurity/research/write-ups/#api-anomaly-detection">API Traffic Anomaly Detection</a>
+                </h3>
+                <p class="research-post-card-excerpt">Behavioral analysis for API security: detecting unusual patterns, brute force, data exfiltration. Rule-based and ML approaches.</p>
+              </div>
+              <div class="research-meta-row">
+                <span class="meta-item reading-time">⏱ 9 min read</span>
+                <span class="difficulty-badge difficulty-intermediate">Intermediate</span>
+                <div class="research-post-tags">
+                  <span class="research-post-tag">API</span>
+                  <span class="research-post-tag">Detection</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Case Studies / Practical Write-ups -->
+    <section class="section" id="case-studies">
+      <div class="container">
+        <div class="research-domain-section">
+          <div class="research-domain-header">
+            <h2 class="research-domain-title">
+              <span class="research-domain-badge">Case</span>
+              Case Studies & Practical Write-ups
+            </h2>
+            <p class="research-domain-intro">Anonymized real-world security assessments: discovery methodology, findings, impact analysis, and remediation guidance from actual consulting work.</p>
+          </div>
+
+          <div class="research-posts-grid">
+            <!-- Post 1 -->
+            <article class="research-post-card">
+              <div class="research-post-card-header">
+                <h3 class="research-post-card-title">
+                  <a href="/hien-cybersecurity/case-studies/#saas-api-access-control">SaaS API Access Control Vulnerability (IDOR)</a>
+                </h3>
+                <p class="research-post-card-excerpt">Critical: Cross-tenant data access via predictable object IDs. Discovery method, risk assessment, and architectural fix.</p>
+              </div>
+              <div class="research-meta-row">
+                <span class="meta-item reading-time">⏱ 8 min read</span>
+                <span class="difficulty-badge difficulty-advanced">Advanced</span>
+                <div class="research-post-tags">
+                  <span class="research-post-tag">IDOR</span>
+                  <span class="research-post-tag">Case Study</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Post 2 -->
+            <article class="research-post-card">
+              <div class="research-post-card-header">
+                <h3 class="research-post-card-title">
+                  <a href="/hien-cybersecurity/case-studies/#privilege-escalation-cloud-iam">Privilege Escalation via IAM Misconfig</a>
+                </h3>
+                <p class="research-post-card-excerpt">High: Developer role with implicit admin permissions. Exploitation chain, re-architecture, and permission boundary implementation.</p>
+              </div>
+              <div class="research-meta-row">
+                <span class="meta-item reading-time">⏱ 10 min read</span>
+                <span class="difficulty-badge difficulty-advanced">Advanced</span>
+                <div class="research-post-tags">
+                  <span class="research-post-tag">IAM</span>
+                  <span class="research-post-tag">Case Study</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Post 3 -->
+            <article class="research-post-card">
+              <div class="research-post-card-header">
+                <h3 class="research-post-card-title">
+                  <a href="/hien-cybersecurity/case-studies/#public-s3-data-exposure">Public S3 Bucket Data Exposure</a>
+                </h3>
+                <p class="research-post-card-excerpt">Medium: Customer uploads and backups exposed. Discovery, data classification, remediation, and monitoring setup.</p>
+              </div>
+              <div class="research-meta-row">
+                <span class="meta-item reading-time">⏱ 7 min read</span>
+                <span class="difficulty-badge difficulty-beginner">Beginner</span>
+                <div class="research-post-tags">
+                  <span class="research-post-tag">S3</span>
+                  <span class="research-post-tag">Case Study</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Post 4 -->
+            <article class="research-post-card">
+              <div class="research-post-card-header">
+                <h3 class="research-post-card-title">
+                  <a href="/hien-cybersecurity/research/write-ups/#k8s-escape">Kubernetes Container Escape to Node Compromise</a>
+                </h3>
+                <p class="research-post-card-excerpt">High: Vulnerable container → node access → cluster control plane. Attack path and container hardening controls.</p>
+              </div>
+              <div class="research-meta-row">
+                <span class="meta-item reading-time">⏱ 12 min read</span>
+                <span class="difficulty-badge difficulty-advanced">Advanced</span>
+                <div class="research-post-tags">
+                  <span class="research-post-tag">Kubernetes</span>
+                  <span class="research-post-tag">Case Study</span>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <p class="explore-details">
+            <span class="explore-details-label">Full case studies:</span>
+            <a href="/hien-cybersecurity/case-studies/" class="service-badge">All Cases</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Navigation Section -->
+    <section class="section" aria-labelledby="nav-title">
+      <div class="container">
+        <h2 id="nav-title" class="section-title">Explore more</h2>
+        <div class="explore-details">
+          <span class="explore-details-label">On this site:</span>
+          <a href="/hien-cybersecurity/research/threat-research-series/">Threat Research Series</a>
+          <a href="/hien-cybersecurity/research/write-ups/">All Write-ups</a>
+          <a href="/hien-cybersecurity/blog/">Blog</a>
+          <a href="/hien-cybersecurity/case-studies/">Case Studies</a>
+          <a href="/hien-cybersecurity/services/">Services</a>
+          <a href="/hien-cybersecurity/about/">About</a>
+          <a href="/hien-cybersecurity/contact/">Contact</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-col footer-col-consulting">
+        <h3 class="footer-col-title">Research &amp; consulting</h3>
+        <nav class="footer-nav" aria-label="Research and consulting">
+          <a href="/hien-cybersecurity/research/">Research Index</a>
+          <a href="/hien-cybersecurity/research/threat-research-series/">Threat Research Series</a>
+          <a href="/hien-cybersecurity/research/write-ups/">Write-ups</a>
+          <a href="/hien-cybersecurity/blog/">Blog</a>
+          <a href="/hien-cybersecurity/case-studies/">Case studies</a>
+          <a href="/hien-cybersecurity/services/">Services</a>
+        </nav>
+      </div>
+      <div class="footer-col footer-col-connect">
+        <h3 class="footer-col-title">Connect</h3>
+        <nav class="footer-nav" aria-label="Connect">
+          <a href="https://github.com/hienntt93" rel="noopener noreferrer" target="_blank">GitHub</a>
+          <a href="https://linkedin.com/in/hienntt" rel="noopener noreferrer" target="_blank">LinkedIn</a>
+          <a href="mailto:hienntt.kma@gmail.com">Email</a>
+          <a href="/hien-cybersecurity/contact/">Contact</a>
+        </nav>
+      </div>
+      <p class="footer-copy">&copy; <span id="year"></span> Hien Nguyen. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    (function() {
+      var root = document.documentElement;
+      var btn = document.getElementById('theme-toggle-btn');
+      if (!btn) return;
+      function getTheme() { return root.dataset.theme || 'dark'; }
+      function setTheme(theme) {
+        theme = theme === 'light' ? 'light' : 'dark';
+        root.dataset.theme = theme;
+        try { localStorage.setItem('theme', theme); } catch (e) {}
+        btn.setAttribute('aria-label', theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme');
+        btn.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false');
+      }
+      setTheme(getTheme());
+      btn.addEventListener('click', function() { setTheme(getTheme() === 'light' ? 'dark' : 'light'); });
+    })();
+    (function() {
+      var nav = document.getElementById('site-nav');
+      var toggle = document.getElementById('nav-toggle-btn');
+      if (!toggle || !nav) return;
+      function setOpen(open) {
+        nav.classList.toggle('nav-open', open);
+        toggle.setAttribute('aria-expanded', open);
+        toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        document.body.style.overflow = open ? 'hidden' : '';
+      }
+      toggle.addEventListener('click', function() { setOpen(!nav.classList.contains('nav-open')); });
+      nav.querySelectorAll('a').forEach(function(a) { a.addEventListener('click', function() { setOpen(false); }); });
+    })();
+  </script>
+</body>
+</html>

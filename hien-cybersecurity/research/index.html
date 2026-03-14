@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script>
+    (function() {
+      var stored = localStorage.getItem('theme');
+      var prefersLight = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+      var theme = stored === 'light' || stored === 'dark' ? stored : (prefersLight ? 'light' : 'dark');
+      document.documentElement.dataset.theme = theme;
+    })();
+  </script>
+  <meta name="color-scheme" content="dark light" />
+  <meta name="theme-color" content="#0a0c10" media="(prefers-color-scheme: dark)" />
+  <title>Research Index | Hien Nguyen — Security Research Portfolio</title>
+  <meta name="description" content="Security research by domain: API &amp; AppSec, Cloud &amp; AWS, Kubernetes, threat research, detection engineering, case studies. For recruiters and clients." />
+  <link rel="canonical" href="https://hienntt93.github.io/hien-cybersecurity/research/" />
+  <link rel="stylesheet" href="/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/" class="logo">Hien Nguyen</a>
+      <nav class="nav" id="site-nav" aria-label="Main">
+        <a href="/hien-cybersecurity/">Consulting home</a>
+        <a href="/hien-cybersecurity/research/">Research</a>
+        <a href="/hien-cybersecurity/research/threat-research-series/">Threat series</a>
+        <a href="/hien-cybersecurity/research/write-ups/">Write-ups</a>
+        <a href="/hien-cybersecurity/blog/">Blog</a>
+        <a href="/hien-cybersecurity/case-studies/">Case studies</a>
+        <a href="/hien-cybersecurity/services/">Services</a>
+        <a href="/hien-cybersecurity/contact/">Contact</a>
+        <button type="button" class="theme-toggle" id="theme-toggle-btn" aria-label="Switch to light theme" aria-pressed="false" title="Switch to light theme">
+          <span class="theme-toggle-icon theme-toggle-moon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span>
+          <span class="theme-toggle-icon theme-toggle-sun" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></span>
+        </button>
+        <a href="/hien-cybersecurity/contact/" class="btn btn-primary btn-nav">Book consultation</a>
+      </nav>
+      <button type="button" class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav" id="nav-toggle-btn"><span></span></button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="research-headline">
+      <div class="container hero-inner">
+        <p class="hero-byline">Security Research Portfolio</p>
+        <h1 id="research-headline" class="hero-headline">Research index</h1>
+        <p class="hero-subheadline">Technical articles and case studies grouped by domain. For recruiters: a clear map of expertise (AppSec, cloud, Kubernetes, threat research, detection). For clients: proof of depth and how it connects to consulting services.</p>
+        <div class="hero-cta">
+          <a href="#api-appsec" class="btn btn-secondary">API &amp; AppSec</a>
+          <a href="#cloud-aws" class="btn btn-secondary">Cloud &amp; AWS</a>
+          <a href="#case-studies" class="btn btn-secondary">Case studies</a>
+          <a href="/hien-cybersecurity/blog/" class="hero-link-tertiary">Blog</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="container" style="padding-bottom: 3rem;">
+      <!-- 1. API & Application Security -->
+      <section id="api-appsec" class="research-domain" aria-labelledby="domain-api-title">
+        <h2 id="domain-api-title" class="research-domain-title">API &amp; Application Security</h2>
+        <p class="research-domain-intro">Web and API security for SaaS and fintech: OWASP-focused testing, access control, injection, and multi-tenant risks. Tied to penetration testing and API security engagements.</p>
+        <div class="research-card-grid">
+          <article class="research-post-card">
+            <a href="/hien-cybersecurity/blog/owasp-api-security-top-10-explained-for-saas/">
+              <h3 class="research-post-card-title">API Security Testing Guide: OWASP API Top 10 for SaaS and Fintech</h3>
+            </a>
+            <p class="research-post-card-excerpt">What to test and how to fix BOLA, auth flaws, and injection. Practical guide for engineering and security teams.</p>
+            <div class="research-post-card-meta">
+              <span class="post-card-difficulty" data-level="intermediate">Intermediate</span>
+              <span class="post-card-read-time">10 min read</span>
+            </div>
+            <div class="research-post-card-tags">
+              <span class="research-post-card-tag">API Security</span>
+              <span class="research-post-card-tag">OWASP</span>
+              <span class="research-post-card-tag">SaaS</span>
+            </div>
+            <p class="research-post-card-related">Related: <a href="/hien-cybersecurity/services/api-security-testing/">API Security Testing</a></p>
+          </article>
+          <article class="research-post-card">
+            <a href="/hien-cybersecurity/blog/top-web-application-vulnerabilities-saas/">
+              <h3 class="research-post-card-title">Top Web Application Vulnerabilities in SaaS Platforms</h3>
+            </a>
+            <p class="research-post-card-excerpt">Broken access control, injection, auth flaws, misconfiguration. What to test and fix first.</p>
+            <div class="research-post-card-meta">
+              <span class="post-card-difficulty" data-level="intermediate">Intermediate</span>
+              <span class="post-card-read-time">9 min read</span>
+            </div>
+            <div class="research-post-card-tags">
+              <span class="research-post-card-tag">Web Security</span>
+              <span class="research-post-card-tag">OWASP</span>
+              <span class="research-post-card-tag">Pentesting</span>
+            </div>
+            <p class="research-post-card-related">Related: <a href="/hien-cybersecurity/services/web-api-pentest/">Web Application Penetration Testing</a></p>
+          </article>
+          <article class="research-post-card">
+            <a href="/hien-cybersecurity/blog/common-saas-security-risks/">
+              <h3 class="research-post-card-title">Common SaaS Security Risks: What to Address First</h3>
+            </a>
+            <p class="research-post-card-excerpt">Authentication, multi-tenancy, APIs, secrets, and supply chain. For CTOs and engineering leads building or scaling SaaS.</p>
+            <div class="research-post-card-meta">
+              <span class="post-card-difficulty" data-level="beginner">Beginner</span>
+              <span class="post-card-read-time">8 min read</span>
+            </div>
+            <div class="research-post-card-tags">
+              <span class="research-post-card-tag">SaaS</span>
+              <span class="research-post-card-tag">AppSec</span>
+              <span class="research-post-card-tag">Risk</span>
+            </div>
+            <p class="research-post-card-related">Related: <a href="/hien-cybersecurity/case-studies/#saas-api-access-control">Case study: SaaS API Access Control</a></p>
+          </article>
+        </div>
+      </section>
+
+      <!-- 2. Cloud & AWS Security -->
+      <section id="cloud-aws" class="research-domain" aria-labelledby="domain-cloud-title">
+        <h2 id="domain-cloud-title" class="research-domain-title">Cloud &amp; AWS Security</h2>
+        <p class="research-domain-intro">AWS (and cloud) security audits: IAM, S3, networking, logging, and compliance. How to prepare for SOC 2 or external audits and fix common misconfigurations.</p>
+        <div class="research-card-grid">
+          <article class="research-post-card">
+            <a href="/hien-cybersecurity/blog/aws-security-audit-checklist/">
+              <h3 class="research-post-card-title">AWS Security Audit Checklist: What Auditors Check and How to Prepare</h3>
+            </a>
+            <p class="research-post-card-excerpt">IAM, S3, networking, logging, and compliance. Prepare for SOC 2 or external audits without slowing engineering.</p>
+            <div class="research-post-card-meta">
+              <span class="post-card-difficulty" data-level="intermediate">Intermediate</span>
+              <span class="post-card-read-time">9 min read</span>
+            </div>
+            <div class="research-post-card-tags">
+              <span class="research-post-card-tag">AWS</span>
+              <span class="research-post-card-tag">Cloud Security</span>
+              <span class="research-post-card-tag">Compliance</span>
+            </div>
+            <p class="research-post-card-related">Related: <a href="/hien-cybersecurity/services/aws-security-audit/">AWS Security Audit</a></p>
+          </article>
+          <article class="research-post-card">
+            <a href="/hien-cybersecurity/blog/how-saas-startups-fail-aws-security-audits/">
+              <h3 class="research-post-card-title">How SaaS Startups Fail AWS Security Audits (and How to Pass)</h3>
+            </a>
+            <p class="research-post-card-excerpt">IAM sprawl, S3 exposure, missing CloudTrail, weak networking. Practical fix plan for CTOs and platform teams.</p>
+            <div class="research-post-card-meta">
+              <span class="post-card-difficulty" data-level="intermediate">Intermediate</span>
+              <span class="post-card-read-time">8 min read</span>
+            </div>
+            <div class="research-post-card-tags">
+              <span class="research-post-card-tag">AWS</span>
+              <span class="research-post-card-tag">DevSecOps</span>
+              <span class="research-post-card-tag">Compliance</span>
+            </div>
+            <p class="research-post-card-related">Related: <a href="/hien-cybersecurity/case-studies/#public-s3-data-exposure">Case study: S3 Data Exposure</a></p>
+          </article>
+          <article class="research-post-card">
+            <a href="/hien-cybersecurity/blog/how-startups-prepare-soc2-security-reviews/">
+              <h3 class="research-post-card-title">How Startups Prepare for SOC 2 Security Reviews</h3>
+            </a>
+            <p class="research-post-card-excerpt">Scope, controls, evidence, and timelines. For CTOs and engineering leads preparing for a first or renewal audit.</p>
+            <div class="research-post-card-meta">
+              <span class="post-card-difficulty" data-level="beginner">Beginner</span>
+              <span class="post-card-read-time">9 min read</span>
+            </div>
+            <div class="research-post-card-tags">
+              <span class="research-post-card-tag">SOC 2</span>
+              <span class="research-post-card-tag">Compliance</span>
+              <span class="research-post-card-tag">Startups</span>
+            </div>
+            <p class="research-post-card-related">Related: <a href="/hien-cybersecurity/services/grc-compliance/">GRC / Security Program Setup</a></p>
+          </article>
+        </div>
+      </section>
+
+      <!-- 3. Kubernetes & Container Security -->
+      <section id="kubernetes" class="research-domain" aria-labelledby="domain-k8s-title">
+        <h2 id="domain-k8s-title" class="research-domain-title">Kubernetes &amp; Container Security</h2>
+        <p class="research-domain-intro">Cluster and workload security: RBAC, NetworkPolicies, secrets, and image hygiene. Practical checklists for platform and engineering teams running production Kubernetes.</p>
+        <div class="research-card-grid">
+          <article class="research-post-card">
+            <a href="/hien-cybersecurity/blog/top-10-kubernetes-security-mistakes/">
+              <h3 class="research-post-card-title">Kubernetes Security Best Practices: Top 10 Mistakes and How to Fix Them</h3>
+            </a>
+            <p class="research-post-card-excerpt">RBAC, NetworkPolicies, secrets, workload hardening. Practical checklist for platform and engineering teams.</p>
+            <div class="research-post-card-meta">
+              <span class="post-card-difficulty" data-level="intermediate">Intermediate</span>
+              <span class="post-card-read-time">9 min read</span>
+            </div>
+            <div class="research-post-card-tags">
+              <span class="research-post-card-tag">Kubernetes</span>
+              <span class="research-post-card-tag">Cloud Security</span>
+              <span class="research-post-card-tag">DevSecOps</span>
+            </div>
+            <p class="research-post-card-related">Related: <a href="/hien-cybersecurity/services/kubernetes-security-review/">Kubernetes Security Review</a></p>
+          </article>
+        </div>
+      </section>
+
+      <!-- 4. Threat Research -->
+      <section id="threat-research" class="research-domain" aria-labelledby="domain-threat-title">
+        <h2 id="domain-threat-title" class="research-domain-title">Threat Research</h2>
+        <p class="research-domain-intro">Threat-focused analysis and attack paths: tenant isolation, API abuse, cloud IAM escalation. Connects offensive testing experience to defensive guidance.</p>
+        <div class="research-card-grid">
+          <article class="research-post-card">
+            <a href="/hien-cybersecurity/research/threat-research-series/#saas-threat-briefs">
+              <h3 class="research-post-card-title">SaaS &amp; Multi-Tenant Security: Threat Briefs</h3>
+            </a>
+            <p class="research-post-card-excerpt">Tenant isolation, API access control, IDOR/BOLA. Threat briefs and remediation for B2B SaaS.</p>
+            <div class="research-post-card-meta">
+              <span class="post-card-difficulty" data-level="intermediate">Intermediate</span>
+              <span class="post-card-read-time">Series · 3 posts</span>
+            </div>
+            <div class="research-post-card-tags">
+              <span class="research-post-card-tag">AppSec</span>
+              <span class="research-post-card-tag">API</span>
+              <span class="research-post-card-tag">SaaS</span>
+            </div>
+            <p class="research-post-card-related">Related: <a href="/hien-cybersecurity/research/threat-research-series/">Threat Research Series</a></p>
+          </article>
+          <article class="research-post-card">
+            <a href="/hien-cybersecurity/research/threat-research-series/#api-abuse">
+              <h3 class="research-post-card-title">API Abuse &amp; OWASP API Top 10</h3>
+            </a>
+            <p class="research-post-card-excerpt">BOLA, auth flaws, injection, rate limiting. Testing and hardening APIs for SaaS and fintech.</p>
+            <div class="research-post-card-meta">
+              <span class="post-card-difficulty" data-level="intermediate">Intermediate</span>
+              <span class="post-card-read-time">Series · 2 posts</span>
+            </div>
+            <div class="research-post-card-tags">
+              <span class="research-post-card-tag">API Security</span>
+              <span class="research-post-card-tag">OWASP</span>
+            </div>
+            <p class="research-post-card-related">Related: <a href="/hien-cybersecurity/services/api-security-testing/">API Security Testing</a></p>
+          </article>
+          <article class="research-post-card">
+            <a href="/hien-cybersecurity/research/threat-research-series/#cloud-iam">
+              <h3 class="research-post-card-title">Cloud IAM &amp; Privilege Escalation Paths</h3>
+            </a>
+            <p class="research-post-card-excerpt">AWS/GCP IAM misuse, permission boundaries. How to find and fix privilege escalation.</p>
+            <div class="research-post-card-meta">
+              <span class="post-card-difficulty" data-level="advanced">Advanced</span>
+              <span class="post-card-read-time">Series · 2 posts</span>
+            </div>
+            <div class="research-post-card-tags">
+              <span class="research-post-card-tag">Cloud</span>
+              <span class="research-post-card-tag">AWS</span>
+              <span class="research-post-card-tag">Offensive</span>
+            </div>
+            <p class="research-post-card-related">Related: <a href="/hien-cybersecurity/case-studies/#privilege-escalation-cloud-iam">Case study: IAM Privilege Escalation</a></p>
+          </article>
+        </div>
+      </section>
+
+      <!-- 5. Detection Engineering -->
+      <section id="detection" class="research-domain" aria-labelledby="domain-detection-title">
+        <h2 id="domain-detection-title" class="research-domain-title">Detection Engineering</h2>
+        <p class="research-domain-intro">Logging, alerting, and detection for cloud and applications. CloudTrail and guardrails, API abuse detection, and evidence for compliance and incident response.</p>
+        <div class="research-card-grid">
+          <article class="research-post-card">
+            <a href="/hien-cybersecurity/blog/aws-security-audit-checklist/">
+              <h3 class="research-post-card-title">AWS Security Audit Checklist: Logging &amp; Monitoring</h3>
+            </a>
+            <p class="research-post-card-excerpt">CloudTrail, guardrails, and what auditors expect for logging and alerting in AWS environments.</p>
+            <div class="research-post-card-meta">
+              <span class="post-card-difficulty" data-level="intermediate">Intermediate</span>
+              <span class="post-card-read-time">See full post · 9 min</span>
+            </div>
+            <div class="research-post-card-tags">
+              <span class="research-post-card-tag">AWS</span>
+              <span class="research-post-card-tag">Logging</span>
+              <span class="research-post-card-tag">Compliance</span>
+            </div>
+            <p class="research-post-card-related">Related: <a href="/hien-cybersecurity/services/aws-security-audit/">AWS Security Audit</a></p>
+          </article>
+          <article class="research-post-card">
+            <a href="/hien-cybersecurity/blog/how-startups-prepare-soc2-security-reviews/">
+              <h3 class="research-post-card-title">SOC 2: Logging and Incident Response Evidence</h3>
+            </a>
+            <p class="research-post-card-excerpt">What evidence auditors look for around logging, monitoring, and incident response readiness.</p>
+            <div class="research-post-card-meta">
+              <span class="post-card-difficulty" data-level="beginner">Beginner</span>
+              <span class="post-card-read-time">See full post · 9 min</span>
+            </div>
+            <div class="research-post-card-tags">
+              <span class="research-post-card-tag">SOC 2</span>
+              <span class="research-post-card-tag">Compliance</span>
+              <span class="research-post-card-tag">Evidence</span>
+            </div>
+            <p class="research-post-card-related">Related: <a href="/hien-cybersecurity/services/grc-compliance/">GRC / Security Program Setup</a></p>
+          </article>
+        </div>
+      </section>
+
+      <!-- 6. Case Studies / Practical Write-ups -->
+      <section id="case-studies" class="research-domain" aria-labelledby="domain-cases-title">
+        <h2 id="domain-cases-title" class="research-domain-title">Case Studies / Practical Write-ups</h2>
+        <p class="research-domain-intro">Anonymized engagements: problem, approach, and outcome. Shows how findings are documented and how remediation is delivered to engineering teams.</p>
+        <div class="research-card-grid">
+          <article class="research-post-card">
+            <a href="/hien-cybersecurity/case-studies/#saas-api-access-control">
+              <h3 class="research-post-card-title">SaaS API Access Control Vulnerability</h3>
+            </a>
+            <p class="research-post-card-excerpt">IDOR across tenants; authorization at the data layer and UUIDs. Problem, approach, outcome.</p>
+            <div class="research-post-card-meta">
+              <span class="post-card-difficulty" data-level="intermediate">Intermediate</span>
+              <span class="post-card-read-time">Case study</span>
+            </div>
+            <div class="research-post-card-tags">
+              <span class="research-post-card-tag">AppSec</span>
+              <span class="research-post-card-tag">API</span>
+              <span class="research-post-card-tag">BOLA</span>
+            </div>
+            <p class="research-post-card-related">Related: <a href="/hien-cybersecurity/services/api-security-testing/">API Security Testing</a>, <a href="/hien-cybersecurity/services/web-api-pentest/">Web/API Pentest</a></p>
+          </article>
+          <article class="research-post-card">
+            <a href="/hien-cybersecurity/case-studies/#public-s3-data-exposure">
+              <h3 class="research-post-card-title">Public S3 Bucket Data Exposure</h3>
+            </a>
+            <p class="research-post-card-excerpt">Bucket policy and public access; Block Public Access and least-privilege IAM. Problem, approach, outcome.</p>
+            <div class="research-post-card-meta">
+              <span class="post-card-difficulty" data-level="intermediate">Intermediate</span>
+              <span class="post-card-read-time">Case study</span>
+            </div>
+            <div class="research-post-card-tags">
+              <span class="research-post-card-tag">AWS</span>
+              <span class="research-post-card-tag">S3</span>
+              <span class="research-post-card-tag">Cloud Security</span>
+            </div>
+            <p class="research-post-card-related">Related: <a href="/hien-cybersecurity/services/aws-security-audit/">AWS Security Audit</a></p>
+          </article>
+          <article class="research-post-card">
+            <a href="/hien-cybersecurity/case-studies/#privilege-escalation-cloud-iam">
+              <h3 class="research-post-card-title">Privilege Escalation in Cloud IAM</h3>
+            </a>
+            <p class="research-post-card-excerpt">Developer role with iam:PassRole/CreatePolicyVersion; permission boundaries and least privilege. Problem, approach, outcome.</p>
+            <div class="research-post-card-meta">
+              <span class="post-card-difficulty" data-level="advanced">Advanced</span>
+              <span class="post-card-read-time">Case study</span>
+            </div>
+            <div class="research-post-card-tags">
+              <span class="research-post-card-tag">AWS</span>
+              <span class="research-post-card-tag">IAM</span>
+              <span class="research-post-card-tag">Offensive</span>
+            </div>
+            <p class="research-post-card-related">Related: <a href="/hien-cybersecurity/services/aws-security-audit/">AWS Security Audit</a></p>
+          </article>
+          <article class="research-post-card">
+            <a href="/hien-cybersecurity/reports/">
+              <h3 class="research-post-card-title">Report Deliverables: What You Get</h3>
+            </a>
+            <p class="research-post-card-excerpt">Executive summary, technical findings with CVSS, proof of concept, remediation guidance. Structure of every engagement.</p>
+            <div class="research-post-card-meta">
+              <span class="post-card-difficulty" data-level="beginner">Beginner</span>
+              <span class="post-card-read-time">Overview</span>
+            </div>
+            <div class="research-post-card-tags">
+              <span class="research-post-card-tag">Reports</span>
+              <span class="research-post-card-tag">Deliverables</span>
+            </div>
+            <p class="research-post-card-related">Related: <a href="/hien-cybersecurity/services/">All services</a></p>
+          </article>
+        </div>
+      </section>
+
+      <!-- Footer links -->
+      <section class="section" aria-label="Research and consulting links">
+        <div class="container">
+          <h2 class="section-title">Also on this site</h2>
+          <div class="explore-details">
+            <span class="explore-details-label">Consulting &amp; proof:</span>
+            <a href="/hien-cybersecurity/research/threat-research-series/">Threat Research Series</a>
+            <a href="/hien-cybersecurity/research/write-ups/">Write-ups</a>
+            <a href="/hien-cybersecurity/services/">Services</a>
+            <a href="/hien-cybersecurity/case-studies/">Case studies</a>
+            <a href="/hien-cybersecurity/reports/">Reports</a>
+            <a href="/hien-cybersecurity/blog/">Blog</a>
+            <a href="/hien-cybersecurity/about/">About</a>
+            <a href="/hien-cybersecurity/contact/">Contact</a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-col footer-col-consulting">
+        <h3 class="footer-col-title">Research &amp; consulting</h3>
+        <nav class="footer-nav" aria-label="Research and consulting">
+          <a href="/hien-cybersecurity/research/">Research Index</a>
+          <a href="/hien-cybersecurity/research/threat-research-series/">Threat Research Series</a>
+          <a href="/hien-cybersecurity/research/write-ups/">Write-ups</a>
+          <a href="/hien-cybersecurity/blog/">Blog</a>
+          <a href="/hien-cybersecurity/case-studies/">Case studies</a>
+          <a href="/hien-cybersecurity/services/">Services</a>
+        </nav>
+      </div>
+      <div class="footer-col footer-col-connect">
+        <h3 class="footer-col-title">Connect</h3>
+        <nav class="footer-nav" aria-label="Connect">
+          <a href="https://github.com/hienntt93" rel="noopener noreferrer" target="_blank">GitHub</a>
+          <a href="https://linkedin.com/in/hienntt" rel="noopener noreferrer" target="_blank">LinkedIn</a>
+          <a href="mailto:hienntt.kma@gmail.com">Email</a>
+          <a href="/hien-cybersecurity/contact/">Contact</a>
+        </nav>
+      </div>
+      <p class="footer-copy">&copy; <span id="year"></span> Hien Nguyen. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    (function() {
+      var root = document.documentElement;
+      var btn = document.getElementById('theme-toggle-btn');
+      if (!btn) return;
+      function getTheme() { return root.dataset.theme || 'dark'; }
+      function setTheme(theme) {
+        theme = theme === 'light' ? 'light' : 'dark';
+        root.dataset.theme = theme;
+        try { localStorage.setItem('theme', theme); } catch (e) {}
+        btn.setAttribute('aria-label', theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme');
+        btn.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false');
+      }
+      setTheme(getTheme());
+      btn.addEventListener('click', function() { setTheme(getTheme() === 'dark' ? 'light' : 'dark'); });
+    })();
+    (function() {
+      var nav = document.getElementById('site-nav');
+      var toggle = document.getElementById('nav-toggle-btn');
+      if (!toggle || !nav) return;
+      function setOpen(open) {
+        nav.classList.toggle('nav-open', open);
+        toggle.setAttribute('aria-expanded', open);
+        toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        document.body.style.overflow = open ? 'hidden' : '';
+      }
+      toggle.addEventListener('click', function() { setOpen(!nav.classList.contains('nav-open')); });
+      nav.querySelectorAll('a').forEach(function(a) { a.addEventListener('click', function() { setOpen(false); }); });
+    })();
+  </script>
+</body>
+</html>

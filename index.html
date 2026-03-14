@@ -85,6 +85,7 @@
         <a href="#impact">Impact</a>
         <a href="#tools">Tools</a>
         <a href="#philosophy">Philosophy</a>
+        <a href="#featured-research">Research</a>
         <a href="#contact">Contact</a>
         <button type="button" class="theme-toggle" id="theme-toggle-btn" aria-label="Switch to light theme" aria-pressed="false" title="Switch to light theme">
           <span class="theme-toggle-icon theme-toggle-moon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span>
@@ -278,6 +279,7 @@
         <h2 id="research-title" class="section-title">Research &amp; writing</h2>
         <p class="research-intro">Selected writeups and deliverable examples live on <a href="/hien-cybersecurity/">Hien Nguyen Cybersecurity</a>.</p>
         <ul class="research-links" role="list">
+          <li><a href="/hien-cybersecurity/research/">Research Index</a></li>
           <li><a href="/hien-cybersecurity/case-studies/">Case studies</a></li>
           <li><a href="/hien-cybersecurity/blog/">Blog</a></li>
           <li><a href="/hien-cybersecurity/reports/">Reports</a></li>
@@ -285,25 +287,46 @@
       </div>
     </section>
 
-    <!-- Call to action -->
-    <section class="section cta" aria-labelledby="cta-title">
+    <!-- Featured Research -->
+    <section id="featured-research" class="section" aria-labelledby="featured-research-title">
       <div class="container">
-        <h2 id="cta-title" class="section-title">Call to action</h2>
-        <div class="services-grid">
-          <article class="service-card">
-            <h3 class="service-name">Recruiters &amp; hiring managers</h3>
-            <p class="service-outcome">If you're hiring a senior security engineer who can work across app security, cloud security, and DevSecOps — and communicate clearly with engineering teams — reach out.</p>
-            <a href="#contact" class="btn btn-secondary btn-block">Contact me</a>
+        <h2 id="featured-research-title" class="section-title">Featured research</h2>
+        <p class="consulting-intro">Threat research series and write-ups for recruiters and clients. One place to see depth in AppSec, cloud security, and offensive security.</p>
+        <div class="featured-research-grid">
+          <article class="series-card">
+            <h3 class="series-card-title"><a href="/hien-cybersecurity/research/">Research Index</a></h3>
+            <p class="series-card-desc">Hub for threat research series, technical write-ups, blog, and case studies. Start here to scan the full portfolio.</p>
+            <a href="/hien-cybersecurity/research/" class="btn btn-secondary" style="margin-top: 0.5rem;">View Research Index</a>
           </article>
-          <article class="service-card">
-            <h3 class="service-name">Consulting for SaaS / fintech</h3>
-            <p class="service-outcome">For scoped testing, cloud audits, or architecture review, explore my consulting services and intake.</p>
-            <a href="/hien-cybersecurity/services/" class="btn btn-secondary btn-block">View services</a>
+          <article class="series-card">
+            <h3 class="series-card-title"><a href="/hien-cybersecurity/research/threat-research-series/">Threat Research Series</a></h3>
+            <p class="series-card-desc">Curated multi-post series: SaaS security, cloud IAM, API abuse. Structured for quick scanning and deep reading.</p>
+            <a href="/hien-cybersecurity/research/threat-research-series/" class="btn btn-ghost" style="margin-top: 0.5rem;">View series</a>
           </article>
-          <article class="service-card">
-            <h3 class="service-name">Read real work</h3>
-            <p class="service-outcome">Case studies and report samples show how I document risk and help teams fix issues efficiently.</p>
-            <a href="/hien-cybersecurity/case-studies/" class="btn btn-secondary btn-block">Read case studies</a>
+          <article class="series-card">
+            <h3 class="series-card-title"><a href="/hien-cybersecurity/research/write-ups/">Write-ups</a></h3>
+            <p class="series-card-desc">Technical write-ups with methodology, findings, and remediation. Tied to blog and case studies.</p>
+            <a href="/hien-cybersecurity/research/write-ups/" class="btn btn-ghost" style="margin-top: 0.5rem;">View write-ups</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- For Recruiters / For Clients -->
+    <section id="for-recruiters-clients" class="section cta" aria-labelledby="audience-title">
+      <div class="container">
+        <h2 id="audience-title" class="section-title">For recruiters &amp; clients</h2>
+        <div class="services-grid" style="grid-template-columns: 1fr;">
+          <article class="audience-mini-section" id="for-recruiters">
+            <h3 class="service-name">For recruiters &amp; hiring managers</h3>
+            <p>Hiring for <strong>Security Engineer</strong>, <strong>Security Researcher</strong>, <strong>AppSec</strong>, <strong>Cloud Security</strong>, or <strong>DevSecOps</strong>? I have 7+ years across offensive security, cloud (AWS/GCP), and application security. Evidence: <a href="/hien-cybersecurity/research/">Research Index</a>, <a href="/hien-cybersecurity/case-studies/">case studies</a>, and <a href="/hien-cybersecurity/blog/">blog</a>. Remote, EU timezone. Happy to discuss fit and share a CV.</p>
+            <a href="#contact" class="btn btn-primary">Contact me</a>
+          </article>
+          <article class="audience-mini-section" id="for-clients">
+            <h3 class="service-name">For consulting clients (SaaS / fintech)</h3>
+            <p>Scoped security testing, cloud audits, or architecture review. See <a href="/hien-cybersecurity/services/">services</a>, <a href="/hien-cybersecurity/case-studies/">case studies</a>, and <a href="/hien-cybersecurity/reports/">report deliverables</a>. Fixed quote after scope; response within 24–48 hours.</p>
+            <a href="/hien-cybersecurity/services/" class="btn btn-primary">View services</a>
+            <a href="/hien-cybersecurity/contact/" class="btn btn-secondary">Book consultation</a>
           </article>
         </div>
       </div>
@@ -374,6 +397,9 @@
       <div class="footer-col footer-col-consulting">
         <h3 class="footer-col-title">Consulting (Hien Nguyen Cybersecurity)</h3>
         <nav class="footer-nav" aria-label="Consulting site">
+          <a href="/hien-cybersecurity/research/">Research Index</a>
+          <a href="/hien-cybersecurity/research/threat-research-series/">Threat Research Series</a>
+          <a href="/hien-cybersecurity/research/write-ups/">Write-ups</a>
           <a href="/hien-cybersecurity/services/">Services</a>
           <a href="/hien-cybersecurity/case-studies/">Case studies</a>
           <a href="/hien-cybersecurity/reports/">Reports</a>

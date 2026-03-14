@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script>
+    (function() {
+      var stored = localStorage.getItem('theme');
+      var prefersLight = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+      var theme = stored === 'light' || stored === 'dark' ? stored : (prefersLight ? 'light' : 'dark');
+      document.documentElement.dataset.theme = theme;
+    })();
+  </script>
+  <meta name="color-scheme" content="dark light" />
+  <title>Threat Research Series | Hien Nguyen — Security Research</title>
+  <meta name="description" content="Curated threat research series: SaaS security, cloud IAM, API abuse. Multi-post series for recruiters and clients." />
+  <link rel="canonical" href="https://hienntt93.github.io/hien-cybersecurity/research/threat-research-series/" />
+  <link rel="stylesheet" href="/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/" class="logo">Hien Nguyen</a>
+      <nav class="nav" id="site-nav" aria-label="Main">
+        <a href="/hien-cybersecurity/">Consulting home</a>
+        <a href="/hien-cybersecurity/research/">Research</a>
+        <a href="/hien-cybersecurity/research/threat-research-series/">Threat series</a>
+        <a href="/hien-cybersecurity/research/write-ups/">Write-ups</a>
+        <a href="/hien-cybersecurity/blog/">Blog</a>
+        <a href="/hien-cybersecurity/case-studies/">Case studies</a>
+        <a href="/hien-cybersecurity/contact/">Contact</a>
+        <button type="button" class="theme-toggle" id="theme-toggle-btn" aria-label="Switch to light theme" aria-pressed="false">
+          <span class="theme-toggle-icon theme-toggle-moon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span>
+          <span class="theme-toggle-icon theme-toggle-sun" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></span>
+        </button>
+        <a href="/hien-cybersecurity/contact/" class="btn btn-primary btn-nav">Book consultation</a>
+      </nav>
+      <button type="button" class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav" id="nav-toggle-btn"><span></span></button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="series-headline">
+      <div class="container hero-inner">
+        <p class="hero-byline">Security Research</p>
+        <h1 id="series-headline" class="hero-headline">Threat Research Series</h1>
+        <p class="hero-subheadline">Curated multi-post series on threat areas and defensive guidance. Each series groups blog posts and case-study themes for faster scanning and deeper reading.</p>
+        <div class="hero-cta">
+          <a href="/hien-cybersecurity/research/" class="btn btn-secondary">← Research Index</a>
+          <a href="/hien-cybersecurity/blog/" class="hero-link-tertiary">Blog</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="series-list-title">
+      <div class="container">
+        <h2 id="series-list-title" class="section-title">Series</h2>
+
+        <!-- Series Card: SaaS & multi-tenant -->
+        <article id="saas-threat-briefs" class="series-card" style="margin-bottom: 1.25rem;">
+          <h3 class="series-card-title">SaaS &amp; multi-tenant security</h3>
+          <p class="series-card-desc">Threat briefs and remediation for B2B SaaS: tenant isolation, API access control, IDOR/BOLA, and data exposure risks. Tied to real engagements and OWASP guidance.</p>
+          <p class="series-card-meta">3 posts · Updated 2026</p>
+          <div class="series-card-tags">
+            <span class="series-card-tag">AppSec</span>
+            <span class="series-card-tag">API</span>
+            <span class="series-card-tag">SaaS</span>
+          </div>
+          <ul class="blog-preview-list" style="margin-top: 0.75rem;">
+            <li><a href="/hien-cybersecurity/blog/common-saas-security-risks/">Common SaaS Security Risks: What to Address First</a></li>
+            <li><a href="/hien-cybersecurity/blog/top-web-application-vulnerabilities-saas/">Top Web Application Vulnerabilities in SaaS Platforms</a></li>
+            <li><a href="/hien-cybersecurity/blog/owasp-api-security-top-10-explained-for-saas/">OWASP API Top 10 for SaaS and Fintech</a></li>
+          </ul>
+        </article>
+
+        <!-- Series Card: Cloud IAM -->
+        <article id="cloud-iam" class="series-card" style="margin-bottom: 1.25rem;">
+          <h3 class="series-card-title">Cloud IAM &amp; privilege escalation</h3>
+          <p class="series-card-desc">AWS/GCP IAM misuse, permission boundaries, and how to find and fix privilege escalation paths. Aligned with case studies on IAM and S3 exposure.</p>
+          <p class="series-card-meta">2 posts · 2026</p>
+          <div class="series-card-tags">
+            <span class="series-card-tag">Cloud</span>
+            <span class="series-card-tag">AWS</span>
+            <span class="series-card-tag">Offensive</span>
+          </div>
+          <ul class="blog-preview-list" style="margin-top: 0.75rem;">
+            <li><a href="/hien-cybersecurity/blog/how-saas-startups-fail-aws-security-audits/">How SaaS Startups Fail AWS Security Audits</a></li>
+            <li><a href="/hien-cybersecurity/blog/aws-security-audit-checklist/">AWS Security Audit Checklist: What Auditors Check</a></li>
+          </ul>
+          <p style="margin-top: 0.75rem; font-size: 0.9375rem;"><a href="/hien-cybersecurity/case-studies/#privilege-escalation-cloud-iam">Related case study: Privilege Escalation in Cloud IAM</a></p>
+        </article>
+
+        <!-- Series Card: API abuse -->
+        <article id="api-abuse" class="series-card" style="margin-bottom: 1.25rem;">
+          <h3 class="series-card-title">API abuse &amp; OWASP API Top 10</h3>
+          <p class="series-card-desc">Testing and hardening APIs: BOLA, auth flaws, injection, and rate limiting for SaaS and fintech. Links to API security testing service and case studies.</p>
+          <p class="series-card-meta">2 posts · 2026</p>
+          <div class="series-card-tags">
+            <span class="series-card-tag">API Security</span>
+            <span class="series-card-tag">OWASP</span>
+          </div>
+          <ul class="blog-preview-list" style="margin-top: 0.75rem;">
+            <li><a href="/hien-cybersecurity/blog/owasp-api-security-top-10-explained-for-saas/">API Security Testing Guide: OWASP API Top 10</a></li>
+            <li><a href="/hien-cybersecurity/case-studies/#saas-api-access-control">Case study: SaaS API Access Control Vulnerability</a></li>
+          </ul>
+        </article>
+
+        <p class="consulting-cta-wrap">
+          <a href="/hien-cybersecurity/research/" class="btn btn-primary">Research Index</a>
+          <a href="/hien-cybersecurity/blog/" class="btn btn-secondary">All blog posts</a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-col footer-col-consulting">
+        <h3 class="footer-col-title">Research &amp; consulting</h3>
+        <nav class="footer-nav">
+          <a href="/hien-cybersecurity/research/">Research Index</a>
+          <a href="/hien-cybersecurity/research/threat-research-series/">Threat Research Series</a>
+          <a href="/hien-cybersecurity/research/write-ups/">Write-ups</a>
+          <a href="/hien-cybersecurity/blog/">Blog</a>
+          <a href="/hien-cybersecurity/case-studies/">Case studies</a>
+          <a href="/hien-cybersecurity/services/">Services</a>
+        </nav>
+      </div>
+      <div class="footer-col footer-col-connect">
+        <h3 class="footer-col-title">Connect</h3>
+        <nav class="footer-nav">
+          <a href="https://github.com/hienntt93" rel="noopener noreferrer" target="_blank">GitHub</a>
+          <a href="https://linkedin.com/in/hienntt" rel="noopener noreferrer" target="_blank">LinkedIn</a>
+          <a href="mailto:hienntt.kma@gmail.com">Email</a>
+        </nav>
+      </div>
+      <p class="footer-copy">&copy; <span id="year"></span> Hien Nguyen. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    (function() {
+      var root = document.documentElement, btn = document.getElementById('theme-toggle-btn');
+      if (!btn) return;
+      function getTheme() { return root.dataset.theme || 'dark'; }
+      function setTheme(theme) {
+        theme = theme === 'light' ? 'light' : 'dark';
+        root.dataset.theme = theme;
+        try { localStorage.setItem('theme', theme); } catch (e) {}
+        btn.setAttribute('aria-label', theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme');
+        btn.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false');
+      }
+      setTheme(getTheme());
+      btn.addEventListener('click', function() { setTheme(getTheme() === 'dark' ? 'light' : 'dark'); });
+    })();
+    (function() {
+      var nav = document.getElementById('site-nav'), toggle = document.getElementById('nav-toggle-btn');
+      if (!toggle || !nav) return;
+      function setOpen(open) {
+        nav.classList.toggle('nav-open', open);
+        toggle.setAttribute('aria-expanded', open);
+        toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        document.body.style.overflow = open ? 'hidden' : '';
+      }
+      toggle.addEventListener('click', function() { setOpen(!nav.classList.contains('nav-open')); });
+      nav.querySelectorAll('a').forEach(function(a) { a.addEventListener('click', function() { setOpen(false); }); });
+    })();
+  </script>
+</body>
+</html>
