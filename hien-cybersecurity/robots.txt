@@ -2,4 +2,3 @@ User-Agent: *
 Allow: /
 
 Sitemap: https://hienntt93.github.io/hien-cybersecurity/sitemap.xml
-Sitemap: https://hienntt93.github.io/sitemap.xml
