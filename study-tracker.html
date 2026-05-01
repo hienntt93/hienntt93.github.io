@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Study Tracker — EN + IT</title>
+<style>
+:root{--bg:#ffffff;--bg2:#f5f5f0;--bg3:#eeede8;--text:#1a1a1a;--text2:#666660;--text3:#999990;--border:rgba(0,0,0,0.12);--border2:rgba(0,0,0,0.22);--radius:8px;--radius-lg:12px;--en:#185FA5;--en-bg:#E6F1FB;--it:#BA7517;--it-bg:#FAEEDA;--green:#1D9E75;--green-bg:#E1F5EE;}
+@media(prefers-color-scheme:dark){:root{--bg:#1c1c1c;--bg2:#252525;--bg3:#2a2a2a;--text:#efefef;--text2:#aaaaaa;--text3:#666666;--border:rgba(255,255,255,0.10);--border2:rgba(255,255,255,0.20);--en-bg:#0c3260;--it-bg:#3d2000;--green-bg:#0a3325;}}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg3);color:var(--text);min-height:100vh;font-size:15px;}
+
+/* SETUP / LOGIN */
+#setup-screen,#login-screen{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:1rem;}
+.login-card{background:var(--bg);border:0.5px solid var(--border2);border-radius:var(--radius-lg);padding:2rem;width:100%;max-width:360px;}
+.login-icon{font-size:32px;margin-bottom:14px;}
+.login-title{font-size:20px;font-weight:500;margin-bottom:4px;}
+.login-sub{font-size:13px;color:var(--text2);margin-bottom:1.5rem;line-height:1.5;}
+.login-label{font-size:12px;color:var(--text2);display:block;margin-bottom:6px;}
+.login-input{width:100%;padding:10px 12px;border:0.5px solid var(--border2);border-radius:var(--radius);background:var(--bg);color:var(--text);font-size:15px;outline:none;transition:border-color 0.2s;}
+.login-input:focus{border-color:var(--en);box-shadow:0 0 0 3px rgba(24,95,165,0.12);}
+.login-btn{width:100%;margin-top:12px;padding:11px;border:none;border-radius:var(--radius);background:var(--text);color:var(--bg);font-size:15px;font-weight:500;cursor:pointer;transition:opacity 0.2s;}
+.login-btn:hover{opacity:0.82;}
+.login-err{font-size:12px;color:#c0392b;margin-top:8px;display:none;}
+.setup-link{font-size:12px;color:var(--text3);text-align:center;margin-top:16px;}
+.setup-link a{color:var(--en);text-decoration:none;}
+.setup-link a:hover{text-decoration:underline;}
+
+/* APP */
+#app{display:none;max-width:960px;margin:0 auto;padding:1rem;}
+
+/* HEADER */
+.app-header{background:var(--bg);border:0.5px solid var(--border);border-radius:var(--radius-lg);padding:11px 16px;margin-bottom:12px;display:flex;align-items:center;justify-content:space-between;gap:8px;}
+.app-title{font-size:15px;font-weight:500;white-space:nowrap;}
+.header-right{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.save-indicator{font-size:11px;color:var(--green);opacity:0;transition:opacity 0.3s;}
+.save-indicator.show{opacity:1;}
+.streak-chip{font-size:12px;padding:3px 10px;border-radius:10px;background:var(--bg2);border:0.5px solid var(--border);color:var(--text2);}
+.streak-chip strong{color:var(--text);}
+.tab-nav-btn{padding:5px 14px;border:0.5px solid var(--border);border-radius:var(--radius);background:var(--bg);color:var(--text2);cursor:pointer;font-size:13px;transition:all 0.15s;}
+.tab-nav-btn:hover{background:var(--bg2);}
+.tab-nav-btn.active{background:var(--text);color:var(--bg);border-color:transparent;}
+.logout-btn{font-size:11px;color:var(--text3);cursor:pointer;background:none;border:0.5px solid var(--border2);border-radius:6px;padding:4px 10px;}
+.logout-btn:hover{background:var(--bg2);}
+
+/* PROGRESS CARD */
+.prog-card{background:var(--bg);border:0.5px solid var(--border);border-radius:var(--radius-lg);padding:14px 16px;margin-bottom:12px;}
+.prog-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:12px;}
+.prog-label{font-size:12px;color:var(--text2);display:flex;justify-content:space-between;margin-bottom:4px;}
+.prog-bar-bg{height:5px;background:var(--bg3);border-radius:3px;overflow:hidden;}
+.prog-bar-fill{height:5px;border-radius:3px;transition:width 0.4s;}
+.prog-sub{font-size:11px;color:var(--text3);margin-top:3px;}
+.stats-row{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;}
+.stat-chip{font-size:12px;padding:4px 12px;border-radius:12px;border:0.5px solid var(--border);background:var(--bg2);color:var(--text2);}
+.stat-chip strong{color:var(--text);}
+
+/* NAV CARD */
+.nav-card{background:var(--bg);border:0.5px solid var(--border);border-radius:var(--radius-lg);padding:14px 16px;margin-bottom:12px;}
+.nav-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
+.nav-btn{padding:7px 18px;border:0.5px solid var(--border2);border-radius:var(--radius);background:var(--bg);color:var(--text);cursor:pointer;font-size:13px;}
+.nav-btn:hover{background:var(--bg2);}
+.day-info{text-align:center;}
+.day-num{font-size:20px;font-weight:500;}
+.day-sub{font-size:12px;color:var(--text2);margin-top:2px;}
+
+/* WEEK STRIP */
+.week-strip{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;}
+.week-day{text-align:center;padding:7px 4px;border-radius:var(--radius);cursor:pointer;border:0.5px solid var(--border);background:var(--bg);transition:background 0.15s;}
+.week-day:hover{background:var(--bg2);}
+.week-day.active{background:var(--text);color:var(--bg);border-color:transparent;}
+.week-day.completed{background:var(--green-bg);border-color:transparent;}
+.week-day-label{font-size:10px;color:var(--text3);}
+.week-day.active .week-day-label{color:rgba(255,255,255,0.55);}
+.week-day.completed .week-day-label{color:#0a5a38;}
+.week-day-num{font-size:14px;font-weight:500;}
+
+/* TASKS GRID */
+.tasks-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+@media(max-width:600px){.tasks-grid{grid-template-columns:1fr;}.prog-grid{grid-template-columns:1fr;}}
+.tasks-col{background:var(--bg);border:0.5px solid var(--border);border-radius:var(--radius-lg);padding:14px 16px;}
+.col-header{display:flex;align-items:center;gap:8px;padding-bottom:10px;margin-bottom:8px;border-bottom:0.5px solid var(--border);}
+.lang-badge{font-size:11px;font-weight:500;padding:2px 9px;border-radius:12px;}
+.lang-badge.en{background:var(--en-bg);color:var(--en);}
+.lang-badge.it{background:var(--it-bg);color:var(--it);}
+.col-title{font-size:14px;font-weight:500;}
+.phase-label{font-size:11px;color:var(--text3);margin-bottom:10px;}
+
+/* TASK CARD */
+.task-card{display:flex;gap:10px;padding:11px 13px;border:0.5px solid var(--border);border-radius:var(--radius);margin-bottom:8px;align-items:flex-start;transition:opacity 0.2s;}
+.task-card.done{opacity:0.48;}
+.task-check{width:17px;height:17px;flex-shrink:0;margin-top:2px;cursor:pointer;accent-color:var(--text);}
+.task-body{flex:1;min-width:0;}
+.task-top{display:flex;align-items:center;gap:7px;margin-bottom:4px;flex-wrap:wrap;}
+.task-lbl{font-size:12px;font-weight:500;color:var(--text);}
+.time-pill{font-size:11px;padding:1px 7px;border-radius:10px;background:var(--bg3);color:var(--text2);}
+.task-desc{font-size:13px;color:var(--text);line-height:1.55;}
+.task-res{font-size:11px;color:var(--text3);margin-top:5px;}
+
+/* JUMP */
+.jump-row{text-align:center;margin-top:1rem;font-size:12px;color:var(--text3);}
+.jump-input{width:62px;font-size:13px;padding:4px 8px;border:0.5px solid var(--border2);border-radius:var(--radius);background:var(--bg);color:var(--text);text-align:center;}
+.jump-btn{padding:4px 12px;border:0.5px solid var(--border);border-radius:var(--radius);background:var(--bg);color:var(--text);cursor:pointer;font-size:12px;margin-left:6px;}
+.jump-btn:hover{background:var(--bg2);}
+
+/* ── REVIEW TAB ──────────────────────────────────────────────── */
+.review-section{background:var(--bg);border:0.5px solid var(--border);border-radius:var(--radius-lg);padding:16px;margin-bottom:12px;}
+.review-section-title{font-size:13px;font-weight:500;margin-bottom:12px;color:var(--text);}
+
+/* Big stats */
+.big-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:0;}
+@media(max-width:600px){.big-stats{grid-template-columns:repeat(2,1fr);}}
+.big-stat{text-align:center;padding:14px 8px;border:0.5px solid var(--border);border-radius:var(--radius);background:var(--bg2);}
+.big-stat-val{font-size:24px;font-weight:600;line-height:1;}
+.big-stat-lbl{font-size:11px;color:var(--text2);margin-top:4px;}
+
+/* Heatmap */
+.heatmap-grid{display:grid;grid-template-columns:repeat(20,1fr);gap:3px;}
+@media(max-width:600px){.heatmap-grid{grid-template-columns:repeat(12,1fr);}}
+.hm-cell{aspect-ratio:1;border-radius:3px;cursor:pointer;transition:transform 0.1s;border:0.5px solid var(--border);}
+.hm-cell:hover{transform:scale(1.3);z-index:2;position:relative;}
+.hm-cell.hm-empty{background:var(--bg3);}
+.hm-cell.hm-partial{background:#f5d76e;}
+.hm-cell.hm-done{background:var(--green);}
+.hm-cell.hm-current{outline:2px solid var(--text);outline-offset:1px;}
+.hm-legend{display:flex;align-items:center;gap:8px;margin-top:8px;font-size:11px;color:var(--text3);}
+.hm-swatch{width:12px;height:12px;border-radius:2px;display:inline-block;}
+
+/* Notes */
+.notes-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;}
+.notes-day-label{font-size:13px;font-weight:500;}
+.notes-save-hint{font-size:11px;color:var(--text3);}
+.notes-textarea{width:100%;min-height:100px;padding:10px 12px;border:0.5px solid var(--border2);border-radius:var(--radius);background:var(--bg2);color:var(--text);font-size:13px;line-height:1.6;resize:vertical;font-family:inherit;outline:none;}
+.notes-textarea:focus{border-color:var(--en);background:var(--bg);}
+.notes-saved-badge{font-size:11px;color:var(--green);opacity:0;transition:opacity 0.3s;margin-left:8px;}
+.notes-saved-badge.show{opacity:1;}
+
+/* Italian scripts */
+.script-item{border:0.5px solid var(--border);border-radius:var(--radius);margin-bottom:8px;overflow:hidden;}
+.script-header{padding:10px 13px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;background:var(--bg2);font-size:13px;font-weight:500;user-select:none;}
+.script-header:hover{background:var(--bg3);}
+.script-arrow{font-size:11px;color:var(--text3);transition:transform 0.2s;}
+.script-body{padding:13px;display:none;font-size:13px;line-height:1.65;background:var(--bg);}
+.script-body.open{display:block;}
+.script-line{margin-bottom:4px;}
+.script-speaker{font-weight:500;color:var(--it);}
+.script-phrase{font-style:italic;color:var(--text2);font-size:12px;margin-left:12px;margin-bottom:8px;}
+
+/* Phase roadmap */
+.roadmap-row{display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap;}
+.roadmap-phase{flex:1;min-width:140px;padding:10px 12px;border:0.5px solid var(--border);border-radius:var(--radius);background:var(--bg2);}
+.roadmap-phase.active-phase{background:var(--en-bg);border-color:var(--en);}
+.roadmap-phase-title{font-size:12px;font-weight:500;margin-bottom:3px;}
+.roadmap-phase-range{font-size:11px;color:var(--text3);}
+.roadmap-phase.active-phase .roadmap-phase-range{color:var(--en);}
+</style>
+</head>
+<body>
+
+<!-- SETUP (shown via ?setup URL) -->
+<div id="setup-screen" style="display:none;">
+  <div class="login-card">
+    <div class="login-icon">&#128273;</div>
+    <div class="login-title">Set password</div>
+    <div class="login-sub">Configure the password for this study tracker.<br>This is stored locally in your browser.</div>
+    <label class="login-label">New password</label>
+    <input type="password" class="login-input" id="setup-pw1" placeholder="Enter new password" autocomplete="new-password">
+    <label class="login-label" style="margin-top:12px;">Confirm password</label>
+    <input type="password" class="login-input" id="setup-pw2" placeholder="Confirm password" autocomplete="new-password" onkeydown="if(event.key==='Enter')setupPassword()">
+    <button class="login-btn" onclick="setupPassword()">Save Password</button>
+    <div class="login-err" id="setup-err"></div>
+    <div class="setup-link"><a href="study-tracker.html">&#8592; Back to login</a></div>
+  </div>
+</div>
+
+<!-- LOGIN -->
+<div id="login-screen" style="display:none;">
+  <div class="login-card">
+    <div class="login-icon">&#128218;</div>
+    <div class="login-title">Study tracker</div>
+    <div class="login-sub">English (IELTS 6&#8594;8) + Italian (0&#8594;A2)<br>120-day curriculum</div>
+    <label class="login-label">Password</label>
+    <input type="password" class="login-input" id="pw-input" placeholder="Enter password" onkeydown="if(event.key==='Enter')login()">
+    <button class="login-btn" onclick="login()">Enter</button>
+    <div class="login-err" id="login-err">Wrong password. Try again.</div>
+    <div class="setup-link"><a href="?setup">Change password</a></div>
+  </div>
+</div>
+
+<!-- APP -->
+<div id="app">
+  <div class="app-header">
+    <div class="app-title">Study tracker &#8212; EN + IT</div>
+    <div class="header-right">
+      <span class="save-indicator" id="save-indicator">Saved &#10003;</span>
+      <span id="streak-display"></span>
+      <button class="tab-nav-btn active" id="nav-study" onclick="showTab('study')">Study</button>
+      <button class="tab-nav-btn" id="nav-review" onclick="showTab('review')">Review</button>
+      <button class="logout-btn" onclick="logout()">Log out</button>
+    </div>
+  </div>
+
+  <!-- ── STUDY TAB ── -->
+  <div id="tab-study">
+    <div class="prog-card">
+      <div class="prog-grid">
+        <div>
+          <div class="prog-label"><span style="color:var(--en);font-weight:500;">English</span><span id="en-phase-name"></span></div>
+          <div class="prog-bar-bg"><div class="prog-bar-fill" id="en-bar"></div></div>
+          <div class="prog-sub" id="en-pct"></div>
+        </div>
+        <div>
+          <div class="prog-label"><span style="color:var(--it);font-weight:500;">Italian</span><span id="it-phase-name"></span></div>
+          <div class="prog-bar-bg"><div class="prog-bar-fill" id="it-bar"></div></div>
+          <div class="prog-sub" id="it-pct"></div>
+        </div>
+      </div>
+      <div class="prog-label" style="margin-bottom:4px;"><span>Overall &#8212; <span id="overall-days"></span></span><span id="overall-pct-text"></span></div>
+      <div class="prog-bar-bg"><div class="prog-bar-fill" id="overall-bar" style="background:var(--text2);"></div></div>
+      <div class="stats-row" id="stats-row"></div>
+    </div>
+
+    <div class="nav-card">
+      <div class="nav-row">
+        <button class="nav-btn" onclick="changeDay(-1)">&#8592; Prev</button>
+        <div class="day-info">
+          <div class="day-num" id="day-num-display"></div>
+          <div class="day-sub" id="day-progress-text"></div>
+        </div>
+        <button class="nav-btn" onclick="changeDay(1)">Next &#8594;</button>
+      </div>
+      <div class="week-strip" id="week-strip"></div>
+    </div>
+
+    <div class="tasks-grid">
+      <div class="tasks-col">
+        <div class="col-header">
+          <span class="lang-badge en">EN</span>
+          <span class="col-title">English &#8212; IELTS 6&#8594;8</span>
+        </div>
+        <div class="phase-label" id="en-phase-label"></div>
+        <div id="en-tasks-container"></div>
+      </div>
+      <div class="tasks-col">
+        <div class="col-header">
+          <span class="lang-badge it">IT</span>
+          <span class="col-title">Italiano &#8212; 0&#8594;A2</span>
+        </div>
+        <div class="phase-label" id="it-phase-label"></div>
+        <div id="it-tasks-container"></div>
+      </div>
+    </div>
+
+    <div class="jump-row">
+      Jump to day:
+      <input type="number" class="jump-input" id="jump-in" min="1" max="120">
+      <button class="jump-btn" onclick="jumpTo()">Go</button>
+      <button class="jump-btn" onclick="setDay(1)" style="margin-left:8px;">Day 1</button>
+    </div>
+    <div style="height:2rem;"></div>
+  </div>
+
+  <!-- ── REVIEW TAB ── -->
+  <div id="tab-review" style="display:none;">
+
+    <div class="review-section">
+      <div class="review-section-title">Progress overview</div>
+      <div class="big-stats" id="big-stats"></div>
+    </div>
+
+    <div class="review-section">
+      <div class="review-section-title">120-day completion map &mdash; click a day to navigate</div>
+      <div class="heatmap-grid" id="heatmap-grid"></div>
+      <div class="hm-legend">
+        <div class="hm-swatch" style="background:var(--bg3);border:0.5px solid var(--border);"></div> Not started
+        <div class="hm-swatch" style="background:#f5d76e;"></div> Partial
+        <div class="hm-swatch" style="background:var(--green);"></div> Complete
+      </div>
+    </div>
+
+    <div class="review-section">
+      <div class="notes-header">
+        <span class="notes-day-label">Day notes <span id="notes-day-lbl" style="color:var(--text2);font-weight:400;"></span></span>
+        <span class="notes-save-hint">Auto-saved <span class="notes-saved-badge" id="notes-saved-badge">&#10003;</span></span>
+      </div>
+      <textarea class="notes-textarea" id="notes-textarea" placeholder="Reflections, errors to fix, words to review, anything worth remembering for this day…" oninput="saveNote()"></textarea>
+    </div>
+
+    <div class="review-section">
+      <div class="review-section-title">Learning roadmap</div>
+      <div style="font-size:12px;color:var(--text2);margin-bottom:8px;">English phases</div>
+      <div class="roadmap-row" id="en-roadmap"></div>
+      <div style="font-size:12px;color:var(--text2);margin-bottom:8px;margin-top:4px;">Italian phases</div>
+      <div class="roadmap-row" id="it-roadmap"></div>
+    </div>
+
+    <div class="review-section">
+      <div class="review-section-title">Italian quick scripts</div>
+      <div id="it-scripts-list"></div>
+    </div>
+
+    <div style="height:2rem;"></div>
+  </div>
+</div>
+
+<script>
+// ── PASSWORD ──────────────────────────────────────────────────
+// Change this default via: node set-password.js <newpassword>
+const PASSWORD_DEFAULT = "mynewpassword";
+const S_AUTH = "lst_auth_v1";
+const S_TASKS = "lst_tasks_v1";
+const S_DAY = "lst_day_v1";
+const S_NOTES = "lst_notes_v1";
+const S_PW = "lst_pw_custom";
+
+function getPassword() {
+  return localStorage.getItem(S_PW) || PASSWORD_DEFAULT;
+}
+
+// ── SETUP ────────────────────────────────────────────────────
+function setupPassword() {
+  const p1 = document.getElementById('setup-pw1').value.trim();
+  const p2 = document.getElementById('setup-pw2').value.trim();
+  const err = document.getElementById('setup-err');
+  if (p1.length < 4) { err.textContent='Password must be at least 4 characters.'; err.style.display='block'; return; }
+  if (p1 !== p2) { err.textContent='Passwords do not match.'; err.style.display='block'; return; }
+  localStorage.setItem(S_PW, p1);
+  window.location.href = window.location.pathname;
+}
+
+function login() {
+  const v = document.getElementById('pw-input').value;
+  if (v === getPassword()) {
+    localStorage.setItem(S_AUTH, "1");
+    document.getElementById('login-err').style.display = 'none';
+    showApp();
+  } else {
+    document.getElementById('login-err').style.display = 'block';
+    document.getElementById('pw-input').value = '';
+  }
+}
+function logout() { localStorage.removeItem(S_AUTH); location.reload(); }
+function showApp() {
+  document.getElementById('login-screen').style.display = 'none';
+  document.getElementById('app').style.display = 'block';
+  render();
+  renderReview();
+}
+
+// ── STATE ─────────────────────────────────────────────────────
+const TOTAL = 120;
+let currentDay = parseInt(localStorage.getItem(S_DAY) || '1');
+let done = JSON.parse(localStorage.getItem(S_TASKS) || '{}');
+let notes = JSON.parse(localStorage.getItem(S_NOTES) || '{}');
+let activeTab = 'study';
+
+function save() {
+  localStorage.setItem(S_TASKS, JSON.stringify(done));
+  localStorage.setItem(S_DAY, String(currentDay));
+  flashSave();
+}
+function flashSave() {
+  const el = document.getElementById('save-indicator');
+  if (!el) return;
+  el.classList.add('show');
+  clearTimeout(el._t);
+  el._t = setTimeout(() => el.classList.remove('show'), 1200);
+}
+function saveNote() {
+  const v = document.getElementById('notes-textarea').value;
+  if (v.trim()) notes[currentDay] = v;
+  else delete notes[currentDay];
+  localStorage.setItem(S_NOTES, JSON.stringify(notes));
+  const badge = document.getElementById('notes-saved-badge');
+  badge.classList.add('show');
+  clearTimeout(badge._t);
+  badge._t = setTimeout(() => badge.classList.remove('show'), 1200);
+}
+
+// ── CURRICULUM DATA ────────────────────────────────────────────
+const EN_GRAMMAR = [
+  ["Present simple & continuous","Units 1–2"],["Past simple & continuous","Units 3–4"],
+  ["Present perfect","Units 5–7"],["Future forms","Units 8–9"],
+  ["Modal verbs (can/could/may/must)","Units 10–12"],["Passive voice","Units 13–14"],
+  ["Week 1 review + self-test","Review Units 1–14"],
+  ["Conditionals (0/1st/2nd/3rd)","Units 15–16"],["Articles (a/an/the/zero)","Units 17–18"],
+  ["Relative clauses","Units 19–20"],["Reported speech","Units 21–22"],
+  ["Gerunds & infinitives","Units 23–24"],["Prepositions & phrasal verbs","Units 25–26"],
+  ["Phase 1 review — all grammar","Full review + error list"],
+];
+const EN_VOCAB = ["Technology","Environment","Health","Education","Society",
+  "Business","Week 1 review","Culture","Science","Travel",
+  "Media & communication","Economy","Academic wordlist (AWL)","Phase 1 vocab test"];
+const EN_SHADOW = [
+  "BBC Learning English — 1 news clip (3–5 min). Imitate accent, rhythm, and stress patterns.",
+  "TED-Ed (5 min) — shadow 2–3 sentences per paragraph. Focus on pausing and connected speech.",
+  "Simon IELTS YouTube — watch 1 Speaking video, record yourself on same topic, compare.",
+  "BBC documentary clip — focus on connected speech, elision, and contractions.",
+  "IELTS Liz Speaking Part 1 — shadow model answers. Record and compare.",
+  "TED talk — shadow the intro paragraph. Record yourself, listen back for fluency.",
+  "Fluency review: record 2 min on any topic. Listen back and mark every hesitation point.",
+  "News in Levels Level 3 — shadowing drill + pronunciation focus.",
+  "Simon IELTS Speaking Part 2 — practise 1–2 min monologue. Record 3 attempts.",
+  "BBC Learning English 6 Minute English — shadow full episode.",
+  "IELTS podcast — Speaking Part 3 sample. Shadow and record your version.",
+  "Record yourself explaining your Task 2 essay argument aloud (no notes).",
+  "Full Speaking mock: Parts 1+2+3, approximately 15 min total. Record the whole session.",
+  "Phase 1 speaking review — compare Day 1 vs Day 14 recordings. Note improvements.",
+];
+const ESSAY_TOPICS = [
+  "Technology in education","Environmental pollution solutions","Remote work vs office work",
+  "Social media impact on society","Health and modern lifestyle choices","Effects of urbanisation",
+  "Immigration: benefits and challenges","Gender equality in the workplace",
+  "Globalisation: pros and cons","Crime prevention strategies",
+  "Government's role in public healthcare","Individual vs collective responsibility",
+  "Consumerism and sustainability","Artificial intelligence in society",
+  "Government funding of the arts","Space exploration investment",
+  "Capital punishment debate","Veganism and food ethics",
+  "Public vs private education systems","Free trade agreements",
+];
+const SPEAKING_TOPICS = [
+  "Hometown & living environment","Work & future career plans",
+  "Hobbies & free time activities","Technology & gadgets",
+  "Travel & transport","Food, cooking & restaurants",
+  "Environment & nature","Education & learning styles",
+  "Health, sport & fitness","Media & entertainment",
+];
+const PH3_FOCUS = [
+  ["Paraphrasing drill","Rewrite 5 sentences from a model Task 2 essay using synonyms and structural changes. Avoid any word from the original.","Collins IELTS Writing"],
+  ["Complex sentence practice","Write 10 complex sentences: mix relative clauses, conditionals, and concession phrases (although, despite, whereas).","English Grammar in Use — advanced units"],
+  ["Academic collocations","Study 10 collocations: 'raise awareness', 'address an issue', 'tackle a problem', 'pose a threat', 'draw a conclusion'.","Academic Collocation List (free PDF)"],
+  ["Idea development (CEE)","Task 2 body paragraph: Claim + Evidence + Explain. Write 2 full body paragraphs, 80+ words each.","Simon IELTS — body paragraph guide (free)"],
+  ["Linking & cohesion","Practise discourse markers: Furthermore / Nevertheless / In contrast / As a result / Consequently. Write 2 paragraphs using all 5.","Collins IELTS Writing"],
+  ["Speaking Band 8 — DEOE","DEOE template: Describe + Explain + Opinion + Example. Record 3 min on 1 topic. Target: no filler words, no repetition.","IELTS Liz Speaking Band 8 guide"],
+  ["Advanced reading strategies","Matching headings + True/False/NG passage (20 min timed). After: analyse every wrong answer — what was the trap?","Cambridge IELTS 13–14"],
+];
+const IT_APP_TOPICS = [
+  "Greetings & numbers 1–20","Colours & basic adjectives","Days & months",
+  "Family members","Food & drink","Places in a city","Week 1 vocab review",
+  "Numbers 20–100","Time expressions (oggi/domani/ieri)","Transport words",
+  "Emotions & feelings","Shopping vocabulary","Clothing & appearance",
+  "Self-quiz: 100 words from memory","Body parts & health","Nature & weather",
+  "Hobbies & activities","University vocabulary","Review + Anki deck check",
+  "Technology in Italian","Week 3 full review",
+];
+const IT_PRONUN = [
+  "Italian vowels A E I O U — pure sounds. Practise: ciao, bene, pizza, uno, buono.",
+  "Double consonants: notte vs note, anno vs ano. Record and compare both.",
+  "Gli & gn sounds: figlio, bagno. Shadow Italiano Automatico (YouTube).",
+  "Shadow Nuovo Espresso A1 audio Track 1–2 (greetings dialogue).",
+  "Shadow 'Al ristorante' dialogue — ordering at a restaurant.",
+  "Shadow Italian TV clip (slow speed) — imitate rhythm & intonation.",
+  "Record yourself reading Italian text aloud — listen for pronunciation errors.",
+  "Shadow Coffee Break Italian Ep 1 — focus on natural linking.",
+  "Shadow 'Al supermercato' dialogue — shopping scenario.",
+  "Shadow Easy Italian (RAI) — 3-min clip, focus on key words.",
+  "Pronunciation drill: rolling-r, double consonants review.",
+  "Shadow Coffee Break Italian Ep 2 — watch for linking words.",
+  "Record full self-introduction — compare to native model speaker.",
+  "Shadow Nuovo Espresso A1 Unit 2 dialogue.",
+  "Shadow Easy Italian YouTube street interview (slow version).",
+  "Record 5 sentences with gli/gn/sc sounds.",
+  "Shadow Coffee Break Italian Ep 3 — verb-heavy section.",
+  "Shadow Italian weather forecast (RAI) — numbers + vocabulary.",
+  "Shadow ordering food dialogue at slow speed, then normal speed.",
+  "Record: describe your daily routine in 3–4 Italian sentences.",
+  "Phase 1 pronunciation review — listen back to all your recordings.",
+];
+const IT_SPEAKING1 = [
+  "Introduce yourself: 'Ciao, mi chiamo [nome]. Sono vietnamita. Vivo a Padova. Studio sicurezza informatica.'",
+  "Practice: 'Come ti chiami? Di dove sei? Quanti anni hai?' — answer aloud 5 times.",
+  "Memorise & say aloud: numbers 1–20, days of week, months of year.",
+  "Roleplay: meeting someone new at university. Practise the dialogue 3 times.",
+  "Roleplay: ordering at a bar — 'Un caffe, per favore. Quanto costa? Grazie mille!'",
+  "Say aloud: describe 3 objects in your room in Italian.",
+  "Week 1 review — say 10 key phrases completely from memory.",
+  "Describe a photo: 3–5 sentences in Italian.",
+  "Practice: asking for directions — 'Dove la stazione? E lontano?'",
+  "Roleplay: buying a train ticket — 'Un biglietto per Venezia, per favore.'",
+  "Tell someone your daily schedule in Italian (morning to evening).",
+  "Roleplay: at the supermarket — ask for items, understand prices.",
+  "Record: 1-min self-introduction + describe your day in Italian.",
+  "Practice 10 common phrases completely from memory (no notes).",
+  "Speak about hobbies: 'Mi piace... / Non mi piace... / Mi piacciono...'",
+  "Roleplay: basic phone call to a friend — short conversation in Italian.",
+  "Describe the weather: 'Oggi fa freddo. Piove. C'e vento.'",
+  "Roleplay: enquiring at a university office — ask for information.",
+  "Record: describe your apartment or room in Italian.",
+  "Practice: full Phase 1 dialogue medley — all scenarios back to back.",
+  "Phase 1 speaking final test — record 2-min free talk on any topic.",
+];
+const IT_GRAMMAR2 = [
+  ["Essere vs avere","Conjugate both fully. Practise: 'Sono studente. Ho 25 anni. Siamo a Padova.' Write 10 sentences."],
+  ["Presente -ARE verbs","Parlare, mangiare, abitare, studiare — conjugate all forms. Write 5 sentences using each verb."],
+  ["Presente -ERE verbs","Prendere, vedere, leggere, scrivere — conjugate all forms. Write 5 sentences."],
+  ["Presente -IRE verbs","Partire, dormire, capire, finire — note the -isc pattern. Conjugate + 5 sentences."],
+  ["Articles (articoli determinativi)","il/lo/la/i/gli/le — learn the rules + exceptions. Practise with 20 nouns."],
+  ["Adjective agreement","Un libro nuovo, una borsa nuova, occhi blu. Write 10 noun+adjective pairs."],
+  ["Negation & yes/no questions","Non + verb. 'Parli italiano? — Si, parlo un po'. Non capisco bene.'"],
+  ["Piacere structure","Mi piace / mi piacciono + noun/infinitive — 10 sentences about your real preferences."],
+  ["Prepositions di/a/da/in","'A Milano, in Italia, di sera, da lunedi, con gli amici' — practise with 15 sentences."],
+  ["Telling time","'Sono le tre e mezza. A che ora parti? Alle otto di mattina.' — practise 10 times."],
+  ["Modal verbs","Potere/volere/dovere + infinitive: 'Voglio studiare. Devo dormire. Posso uscire?' — 10 sentences."],
+  ["Reflexive verbs","Alzarsi, lavarsi, vestirsi — daily routine. Write out a full morning routine in Italian."],
+  ["Direct object pronouns","Lo, la, li, le — 'Lo mangio. La vedo domani. Li conosco.' 10 sentences."],
+  ["C'e / Ci sono","'In classe ci sono 20 studenti. C'e una fermata qui vicino.' Write 8 sentences about your surroundings."],
+  ["Question words","Chi, cosa, dove, quando, come, perche, quanto — form 10 different questions."],
+  ["Stare + gerundio","'Sto studiando l'italiano. Sta mangiando.' — 10 examples from your current situation."],
+  ["Avere expressions","Avere fame/sete/sonno/paura/fretta — contextual practice + mini dialogue."],
+  ["Plural forms","Regular + irregular plurals: uomo > uomini, mano > mani, uovo > uova. Learn 15 pairs."],
+  ["Possessive adjectives","Mio/tuo/suo/nostro/vostro/loro + article. Write 10 sentences about your things and people."],
+  ["Verb review sprint","Full conjugation: essere/avere + all 3 verb classes. Timed — 15 min."],
+  ["Grammar gap-fill test","Complete 20-sentence exercise from Espresso workbook. Check every answer. Note errors."],
+];
+const IT_DIALOGUE2 = [
+  "Practise Nuovo Espresso A1 Unit 3 dialogue 'In classe' — read aloud, then act both roles.",
+  "Roleplay: introduce classmates using essere, avere, chiamarsi.",
+  "Shadow Nuovo Espresso A1 Unit 3 audio. Replay 3 times, shadow key sections.",
+  "Roleplay: order in a restaurant using volere, prendere, avere.",
+  "Watch Easy Italian Ep 5 — note 5 new phrases, shadow the dialogue.",
+  "Full conversation: meet + greet + ask about university studies. Record yourself.",
+  "Coffee Break Italian Ep 4 — listen + answer comprehension questions.",
+  "Roleplay: asking about the city — 'Dove si trova la biblioteca?'",
+  "Nuovo Espresso A1 Unit 4 listening — replay 3x, shadow key sections.",
+  "Practice: describe your daily schedule using orario time expressions.",
+  "Roleplay: calling a doctor's office — make an appointment in Italian.",
+  "Watch: Slow Italian YouTube vlog — note 10 new words, use them in sentences.",
+  "Coffee Break Italian Ep 5 — listening comprehension + retell in Italian.",
+  "Roleplay: shopping for clothes — size, colour, price negotiation.",
+  "Nuovo Espresso A1 Unit 5 dialogue — full roleplay, switch both roles.",
+  "Listen: Italian song (slow) — identify all words you recognise, write them down.",
+  "Roleplay: at the train station — buy ticket, ask about platform and time.",
+  "Coffee Break Italian Ep 6 — shadow full episode.",
+  "Watch Easy Italian street interview — list 10 things you understood.",
+  "Roleplay: host & guest — 'Vuoi un caffe? Prego, accomodati. Grazie!'",
+  "Phase 2 week review — 3-min free conversation, recorded.",
+];
+const IT_GRAMMAR3 = [
+  ["Passato prossimo — regular verbs","avere/essere + participio: mangiare > mangiato, andare > andato, vedere > visto. Write 10 sentences."],
+  ["Passato prossimo — irregular","Irregular past participles: essere > stato, fare > fatto, dire > detto, venire > venuto, bere > bevuto."],
+  ["Essere vs avere in passato","Motion verbs + reflexives use essere: 'Sono andato'. Transitive verbs use avere: 'Ho mangiato.'"],
+  ["Imperfetto (intro)","Past habits: 'Quando ero piccolo, giocavo... Abitavo a... Mi piaceva...' Write 8 sentences."],
+  ["Futuro semplice","Future tense: 'Domani andro a Roma. La settimana prossima studiero molto.' Regular + common irregulars."],
+  ["Condizionale","Polite forms: 'Vorrei un caffe. Potrebbe aiutarmi? Mi piacerebbe visitare...' Practise in context."],
+  ["Indirect object pronouns","Mi, ti, gli, le, ci, vi — 'Mi dai il libro? Gli mando un messaggio.' 10 sentences."],
+  ["Combined pronouns","Glielo, gliela, gliele — give it to him/her. Practise 5 examples in dialogue."],
+  ["Subordinate clauses","Perche, quando, se, anche se — 'Vado al mare se fa bello. Studio perche voglio imparare.'"],
+  ["A2 tense review sprint","Presente > Passato prossimo > Futuro > Condizionale — full timed review. 15 min."],
+];
+const IT_SPEAKING3 = [
+  "Narrate your weekend: 'Sabato sono andato/a... Ho mangiato... Ho incontrato...' (3–4 min recorded)",
+  "Roleplay: tell a friend about a past trip in Italy — use passato prossimo throughout.",
+  "Describe your childhood: 3–4 sentences using imperfetto.",
+  "Talk about future plans: 'La prossima settimana andro... Faro... Vedro...'",
+  "Roleplay: checking into a hotel — room type, services, checkout time.",
+  "Roleplay: at the pharmacy — describe symptoms, ask for appropriate medicine.",
+  "Roleplay: basic job interview — describe yourself, your studies, your skills.",
+  "Phone call roleplay: report a problem to customer service in Italian.",
+  "Describe a film or book: past events + your opinion + recommendation.",
+  "Free talk: 3 minutes on any topic — record and self-evaluate.",
+];
+
+const IT_SCRIPTS = [
+  {
+    title: "1. Introduzione — Self-introduction",
+    lines: [
+      { speaker: "Tu", text: "Ciao, mi chiamo [Nome]." },
+      { speaker: "Tu", text: "Sono vietnamita. Vivo a Padova." },
+      { speaker: "Tu", text: "Studio sicurezza informatica all'università." },
+      { speaker: "Tu", text: "Mi piace la tecnologia e la sicurezza informatica." },
+      { speaker: "Tu", text: "Piacere!" },
+      { note: "Key vocab: chiamarsi, essere, vivere, studiare, piacere" },
+    ]
+  },
+  {
+    title: "2. Al ristorante — At the restaurant",
+    lines: [
+      { speaker: "Cameriere", text: "Buongiorno, cosa desidera?" },
+      { speaker: "Tu", text: "Vorrei una pizza margherita e una bottiglia d'acqua, per favore." },
+      { speaker: "Cameriere", text: "Va bene. Desidera altro?" },
+      { speaker: "Tu", text: "No, grazie. Il conto, per favore." },
+      { speaker: "Cameriere", text: "Subito!" },
+      { note: "Key vocab: vorrei (I would like), il conto (the bill), per favore (please)" },
+    ]
+  },
+  {
+    title: "3. Al negozio — Shopping",
+    lines: [
+      { speaker: "Tu", text: "Quanto costa questo?" },
+      { speaker: "Commesso", text: "Costa venti euro." },
+      { speaker: "Tu", text: "È troppo caro. Può fare uno sconto?" },
+      { speaker: "Commesso", text: "Posso fare il dieci per cento di sconto." },
+      { speaker: "Tu", text: "Va bene, lo prendo. Grazie!" },
+      { note: "Key vocab: quanto costa (how much), troppo caro (too expensive), sconto (discount)" },
+    ]
+  },
+  {
+    title: "4. In giro per la città — Getting around",
+    lines: [
+      { speaker: "Tu", text: "Mi scusi, dov'è la stazione?" },
+      { speaker: "Passante", text: "È lontano? Deve prendere il tram numero cinque." },
+      { speaker: "Tu", text: "Quanto ci vuole?" },
+      { speaker: "Passante", text: "Circa dieci minuti." },
+      { speaker: "Tu", text: "Grazie mille!" },
+      { note: "Key vocab: dov'è (where is), lontano (far), quanto ci vuole (how long does it take)" },
+    ]
+  },
+  {
+    title: "5. Comunicazione quotidiana — Daily talk",
+    lines: [
+      { speaker: "Amico", text: "Che fai oggi?" },
+      { speaker: "Tu", text: "Vado all'università, poi studio a casa. E tu?" },
+      { speaker: "Amico", text: "Anch'io studio. A che ora finisci?" },
+      { speaker: "Tu", text: "Alle cinque. Vuoi prendere un caffè dopo?" },
+      { speaker: "Amico", text: "Sì, volentieri!" },
+      { note: "Key vocab: che fai (what are you doing), anch'io (me too), volentieri (gladly)" },
+    ]
+  },
+];
+
+// ── TASK GENERATORS ───────────────────────────────────────────
+function getEnTasks(d) {
+  if (d <= 14) {
+    const i = d - 1;
+    return [
+      {time:"20min",label:"Grammar",desc:EN_GRAMMAR[i][0]+" — "+EN_GRAMMAR[i][1]+". Do all exercises, check answers immediately.",res:"English Grammar in Use (Murphy)"},
+      {time:"20min",label:"Vocabulary",desc:"Topic: "+EN_VOCAB[i]+" — learn 10–15 words + collocations. Write 3 example sentences for each.",res:"Vocabulary for IELTS (Cullen)"},
+      {time:"20min",label:"Shadowing",desc:EN_SHADOW[i],res:"BBC Learning English / Simon IELTS (YouTube)"},
+    ];
+  }
+  if (d <= 56) {
+    const isA = (d % 2 === 1);
+    if (isA) {
+      const tn = Math.ceil((d-14)/8)+9;
+      const et = ESSAY_TOPICS[Math.floor((d-15)/4) % ESSAY_TOPICS.length];
+      return [
+        {time:"30min",label:"Reading (timed)",desc:"Cambridge IELTS "+tn+" — 1 passage in 20 min. Skim headings first, scan for keywords, ignore unknown vocab. Review all wrong answers after.",res:"Cambridge IELTS series 9–14"},
+        {time:"30min",label:"Writing Task 2",desc:"Topic: \""+et+"\". Write 250+ words in 40 min. Intro → Body 1 (claim + evidence + explain) → Body 2 → Conclusion.",res:"Simon IELTS — ielts-simon.com (free Task 2 guide)"},
+      ];
+    } else {
+      const st = SPEAKING_TOPICS[Math.floor((d-16)/4) % SPEAKING_TOPICS.length];
+      return [
+        {time:"30min",label:"Listening (timed)",desc:"Cambridge IELTS — Sections 1–2 (~20 min). Circle key numbers, names, transitions (however/but/although). Review every error after.",res:"Cambridge IELTS series (with audio)"},
+        {time:"30min",label:"Speaking + record",desc:"IELTS Speaking Part 1+2 — Topic: \""+st+"\". Record 3–4 min. Listen back: mark fluency gaps, limited vocab, grammar slips.",res:"IELTS Liz / Simon IELTS — Speaking samples"},
+      ];
+    }
+  }
+  if (d <= 98) {
+    const i = (d-57) % PH3_FOCUS.length;
+    const j = ((d-57)+3) % PH3_FOCUS.length;
+    return [
+      {time:"20min",label:PH3_FOCUS[i][0],desc:PH3_FOCUS[i][1],res:PH3_FOCUS[i][2]},
+      {time:"20min",label:PH3_FOCUS[j][0],desc:PH3_FOCUS[j][1],res:PH3_FOCUS[j][2]},
+      {time:"20min",label:"Self-correction log",desc:"Review yesterday's writing or speaking. Find 3 specific errors, rewrite/re-record corrected version. Add to your error notebook.",res:"Personal error log notebook"},
+    ];
+  }
+  const md = d - 98;
+  if (md % 7 <= 2) {
+    return [{time:"60min",label:"Full mock IELTS",desc:"Timed: Reading 60 min + Listening 30 min + Writing 60 min. No stopping. Fresh Cambridge paper. Replicate real exam conditions exactly.",res:"Cambridge IELTS 15–17 / British Council practice tests"}];
+  }
+  if (md % 7 === 3) {
+    return [
+      {time:"30min",label:"Error analysis",desc:"Go through every wrong answer from mock. Categorise: Grammar / Vocabulary / Strategy / Time pressure. Write in error log.",res:"Personal error log"},
+      {time:"30min",label:"Targeted revision",desc:"Focus only on your weakest skill from the mock. Re-do that specific section type with new material.",res:"Cambridge IELTS series"},
+    ];
+  }
+  return [
+    {time:"20min",label:"Speaking mock",desc:"Full Parts 1+2+3 (~15 min). Record. Self-evaluate using IELTS band 8 descriptors: Fluency / Lexical range / Grammar / Pronunciation.",res:"Official IELTS band descriptors (PDF)"},
+    {time:"20min",label:"Writing polish",desc:"Write 1 Task 2 essay in 40 min. Self-score against band 8 checklist: paraphrased intro? Clear topic sentences? Varied sentence structure?",res:"IELTS Writing Band 8 checklist"},
+    {time:"20min",label:"Week review",desc:"List top 3 improvements this week + top 2 remaining weak areas. Plan next 3 days of study based on gaps.",res:"Personal study journal"},
+  ];
+}
+
+function getItTasks(d) {
+  if (d <= 21) {
+    const i = d - 1;
+    return [
+      {time:"20min",label:"Vocab app",desc:IT_APP_TOPICS[i]+" — learn 15–20 new words with spaced repetition. Review yesterday's words first.",res:"Duolingo / Memrise (Italian A1 course)"},
+      {time:"20min",label:"Pronunciation + shadowing",desc:IT_PRONUN[i],res:"Coffee Break Italian (podcast) / Italiano Automatico (YouTube)"},
+      {time:"20min",label:"Speaking practice",desc:IT_SPEAKING1[i],res:"Nuovo Espresso A1 (Alma Edizioni)"},
+    ];
+  }
+  if (d <= 63) {
+    const i = (d-22) % IT_GRAMMAR2.length;
+    const j = (d-22) % IT_DIALOGUE2.length;
+    return [
+      {time:"30min",label:"Grammar: "+IT_GRAMMAR2[i][0],desc:IT_GRAMMAR2[i][1],res:"Nuovo Espresso A1 + workbook (Alma Edizioni)"},
+      {time:"30min",label:"Dialogue + listening",desc:IT_DIALOGUE2[j],res:"Easy Italian (YouTube) / Coffee Break Italian (podcast)"},
+    ];
+  }
+  const i = (d-64) % IT_GRAMMAR3.length;
+  const j = (d-64) % IT_SPEAKING3.length;
+  return [
+    {time:"30min",label:"Grammar: "+IT_GRAMMAR3[i][0],desc:IT_GRAMMAR3[i][1],res:"Nuovo Espresso A2 / Grammatica in contesto"},
+    {time:"30min",label:"Situational speaking",desc:IT_SPEAKING3[j],res:"Nuovo Espresso A2 + self-recorded practice"},
+  ];
+}
+
+function getEnPhase(d) {
+  if (d<=14) return {name:"Phase 1: Foundation",pct:Math.round(d/14*100),color:"#185FA5",range:"Days 1–14"};
+  if (d<=56) return {name:"Phase 2: Skill building",pct:Math.round((d-14)/42*100),color:"#1D9E75",range:"Days 15–56"};
+  if (d<=98) return {name:"Phase 3: Band 7 to 8",pct:Math.round((d-56)/42*100),color:"#7F77DD",range:"Days 57–98"};
+  return {name:"Phase 4: Mock tests",pct:Math.round((d-98)/22*100),color:"#533AB7",range:"Days 99–120"};
+}
+function getItPhase(d) {
+  if (d<=21) return {name:"Phase 1: Survival Italian",pct:Math.round(d/21*100),color:"#BA7517",range:"Days 1–21"};
+  if (d<=63) return {name:"Phase 2: Grammar & dialogue",pct:Math.round((d-21)/42*100),color:"#D85A30",range:"Days 22–63"};
+  return {name:"Phase 3: A2 level",pct:Math.round((d-63)/57*100),color:"#993556",range:"Days 64–120"};
+}
+
+function getDayCompletion(d) {
+  const et = getEnTasks(d).length;
+  const it = getItTasks(d).length;
+  let n = 0;
+  for (let i=0;i<et;i++) if (done[d+"-e"+i]) n++;
+  for (let i=0;i<it;i++) if (done[d+"-i"+i]) n++;
+  return {n, total: et+it};
+}
+function getTotalCompleted() {
+  let c = 0;
+  for (let d=1;d<=TOTAL;d++) { const r=getDayCompletion(d); if(r.n>0&&r.n===r.total) c++; }
+  return c;
+}
+function getTotalTasksDone() {
+  let c = 0;
+  for (let d=1;d<=TOTAL;d++) { c += getDayCompletion(d).n; }
+  return c;
+}
+function calcStreak() {
+  let best = 0, run = 0;
+  for (let d=1; d<=TOTAL; d++) {
+    const c = getDayCompletion(d);
+    if (c.total > 0 && c.n === c.total) { run++; best = Math.max(best, run); }
+    else run = 0;
+  }
+  let current = 0;
+  for (let d=currentDay; d>=1; d--) {
+    const c = getDayCompletion(d);
+    if (c.total > 0 && c.n === c.total) current++;
+    else break;
+  }
+  return { current, best };
+}
+
+// ── RENDER (Study tab) ─────────────────────────────────────────
+function renderTasks(tasks, prefix) {
+  return tasks.map((t,i) => {
+    const key = currentDay+"-"+prefix+i;
+    const checked = !!done[key];
+    return '<div class="task-card'+(checked?' done':'')+'">'+
+      '<input type="checkbox" class="task-check"'+(checked?' checked':'')+' onchange="toggleTask(\''+key+'\')">'+
+      '<div class="task-body">'+
+        '<div class="task-top">'+
+          '<span class="task-lbl">'+t.label+'</span>'+
+          '<span class="time-pill">'+t.time+'</span>'+
+        '</div>'+
+        '<div class="task-desc">'+t.desc+'</div>'+
+        '<div class="task-res">Resource: '+t.res+'</div>'+
+      '</div>'+
+    '</div>';
+  }).join('');
+}
+
+function render() {
+  const enPh = getEnPhase(currentDay);
+  const itPh = getItPhase(currentDay);
+  const enTasks = getEnTasks(currentDay);
+  const itTasks = getItTasks(currentDay);
+  const cmp = getDayCompletion(currentDay);
+  const overall = Math.max(0, Math.round((currentDay-1)/TOTAL*100));
+  const totalDone = getTotalCompleted();
+  const streak = calcStreak();
+
+  document.getElementById('en-phase-name').textContent = enPh.name;
+  document.getElementById('en-bar').style.cssText = 'width:'+enPh.pct+'%;background:'+enPh.color;
+  document.getElementById('en-pct').textContent = enPh.pct+'% of this phase';
+  document.getElementById('it-phase-name').textContent = itPh.name;
+  document.getElementById('it-bar').style.cssText = 'width:'+itPh.pct+'%;background:'+itPh.color;
+  document.getElementById('it-pct').textContent = itPh.pct+'% of this phase';
+  document.getElementById('overall-days').textContent = 'Day '+currentDay+' of '+TOTAL;
+  document.getElementById('overall-pct-text').textContent = overall+'%';
+  document.getElementById('overall-bar').style.width = overall+'%';
+  document.getElementById('stats-row').innerHTML =
+    '<div class="stat-chip">Days done: <strong>'+totalDone+'</strong></div>'+
+    '<div class="stat-chip">Today: <strong>'+cmp.n+'/'+cmp.total+' tasks</strong></div>'+
+    '<div class="stat-chip">Streak: <strong>'+streak.current+' days</strong></div>'+
+    '<div class="stat-chip">Remaining: <strong>'+(TOTAL-currentDay+1)+' days</strong></div>';
+
+  document.getElementById('day-num-display').textContent = 'Day '+currentDay;
+  document.getElementById('day-progress-text').textContent =
+    (cmp.n===cmp.total&&cmp.total>0) ? 'All tasks done!' : cmp.n+' of '+cmp.total+' tasks done';
+
+  document.getElementById('streak-display').innerHTML =
+    streak.current > 0
+      ? '<span class="streak-chip">&#128293; <strong>'+streak.current+'</strong> day streak</span>'
+      : '';
+
+  const s = Math.max(1, currentDay-3);
+  const days = [];
+  for (let d=s; d<=Math.min(TOTAL,s+6); d++) days.push(d);
+  document.getElementById('week-strip').innerHTML = days.map(d => {
+    const dc = getDayCompletion(d);
+    const isSel = d===currentDay;
+    const isDone = dc.n>0 && dc.n===dc.total;
+    let cls = 'week-day'+(isSel?' active':'')+(isDone&&!isSel?' completed':'');
+    return '<div class="'+cls+'" onclick="setDay('+d+')">'+
+      '<div class="week-day-label">Day</div>'+
+      '<div class="week-day-num">'+d+'</div>'+
+    '</div>';
+  }).join('');
+
+  document.getElementById('en-phase-label').textContent = enPh.name;
+  document.getElementById('it-phase-label').textContent = itPh.name;
+  document.getElementById('en-tasks-container').innerHTML = renderTasks(enTasks,'e');
+  document.getElementById('it-tasks-container').innerHTML = renderTasks(itTasks,'i');
+  document.getElementById('jump-in').value = currentDay;
+  save();
+
+  if (activeTab === 'review') renderReview();
+}
+
+// ── RENDER (Review tab) ────────────────────────────────────────
+function renderReview() {
+  const totalDone = getTotalCompleted();
+  const totalTasks = getTotalTasksDone();
+  const streak = calcStreak();
+  const pct = Math.round(totalDone/TOTAL*100);
+
+  // Big stats
+  document.getElementById('big-stats').innerHTML =
+    bigStat(streak.current, 'Current streak', '&#128293;')+
+    bigStat(streak.best, 'Best streak', '&#127942;')+
+    bigStat(totalDone+'/'+TOTAL, 'Days complete', '&#9989;')+
+    bigStat(totalTasks, 'Tasks done', '&#128221;');
+
+  // Heatmap
+  let hmHtml = '';
+  for (let d=1; d<=TOTAL; d++) {
+    const c = getDayCompletion(d);
+    let cls = 'hm-cell hm-empty';
+    if (c.total > 0 && c.n === c.total) cls = 'hm-cell hm-done';
+    else if (c.n > 0) cls = 'hm-cell hm-partial';
+    if (d === currentDay) cls += ' hm-current';
+    const title = 'Day '+d+(c.total>0?' — '+c.n+'/'+c.total+' tasks':'');
+    hmHtml += '<div class="'+cls+'" title="'+title+'" onclick="goToDay('+d+')"></div>';
+  }
+  document.getElementById('heatmap-grid').innerHTML = hmHtml;
+
+  // Notes
+  document.getElementById('notes-day-lbl').textContent = '— Day '+currentDay;
+  document.getElementById('notes-textarea').value = notes[currentDay] || '';
+
+  // Roadmap
+  const enPhases = [
+    {name:"Phase 1: Foundation",range:"Days 1–14",color:"#185FA5",endbg:"#E6F1FB"},
+    {name:"Phase 2: Skill building",range:"Days 15–56",color:"#1D9E75",endbg:"#E1F5EE"},
+    {name:"Phase 3: Band 7 to 8",range:"Days 57–98",color:"#7F77DD",endbg:"#EFEDFC"},
+    {name:"Phase 4: Mock tests",range:"Days 99–120",color:"#533AB7",endbg:"#EAE7FA"},
+  ];
+  const itPhases = [
+    {name:"Phase 1: Survival Italian",range:"Days 1–21",color:"#BA7517",endbg:"#FAEEDA"},
+    {name:"Phase 2: Grammar & dialogue",range:"Days 22–63",color:"#D85A30",endbg:"#FAE8E0"},
+    {name:"Phase 3: A2 level",range:"Days 64–120",color:"#993556",endbg:"#F5E0E9"},
+  ];
+  const curEnPh = getEnPhase(currentDay).name;
+  const curItPh = getItPhase(currentDay).name;
+  document.getElementById('en-roadmap').innerHTML = enPhases.map(p =>
+    '<div class="roadmap-phase'+(p.name===curEnPh?' active-phase':'')+'" style="'+(p.name===curEnPh?'background:'+p.endbg+';border-color:'+p.color:'')+'">'+
+    '<div class="roadmap-phase-title" style="color:'+p.color+'">'+p.name+'</div>'+
+    '<div class="roadmap-phase-range">'+p.range+'</div></div>'
+  ).join('');
+  document.getElementById('it-roadmap').innerHTML = itPhases.map(p =>
+    '<div class="roadmap-phase'+(p.name===curItPh?' active-phase':'')+'" style="'+(p.name===curItPh?'background:'+p.endbg+';border-color:'+p.color:'')+'">'+
+    '<div class="roadmap-phase-title" style="color:'+p.color+'">'+p.name+'</div>'+
+    '<div class="roadmap-phase-range">'+p.range+'</div></div>'
+  ).join('');
+
+  // Italian scripts
+  document.getElementById('it-scripts-list').innerHTML = IT_SCRIPTS.map((s,idx) => {
+    const linesHtml = s.lines.map(l => {
+      if (l.note) return '<div class="script-phrase">'+l.note+'</div>';
+      return '<div class="script-line"><span class="script-speaker">'+l.speaker+':</span> '+l.text+'</div>';
+    }).join('');
+    return '<div class="script-item">'+
+      '<div class="script-header" onclick="toggleScript(this)">'+
+        s.title+
+        '<span class="script-arrow">&#9660;</span>'+
+      '</div>'+
+      '<div class="script-body">'+linesHtml+'</div>'+
+    '</div>';
+  }).join('');
+}
+
+function bigStat(val, lbl, icon) {
+  return '<div class="big-stat">'+
+    '<div class="big-stat-val">'+val+'</div>'+
+    '<div class="big-stat-lbl">'+icon+' '+lbl+'</div>'+
+  '</div>';
+}
+
+function toggleScript(header) {
+  const body = header.nextElementSibling;
+  const arrow = header.querySelector('.script-arrow');
+  const open = body.classList.toggle('open');
+  arrow.style.transform = open ? 'rotate(180deg)' : '';
+}
+
+// ── TABS ──────────────────────────────────────────────────────
+function showTab(tab) {
+  activeTab = tab;
+  document.getElementById('tab-study').style.display = tab==='study' ? '' : 'none';
+  document.getElementById('tab-review').style.display = tab==='review' ? '' : 'none';
+  document.getElementById('nav-study').className = 'tab-nav-btn'+(tab==='study'?' active':'');
+  document.getElementById('nav-review').className = 'tab-nav-btn'+(tab==='review'?' active':'');
+  if (tab === 'review') renderReview();
+}
+
+function goToDay(d) {
+  setDay(d);
+  showTab('study');
+}
+
+// ── CONTROLS ──────────────────────────────────────────────────
+function toggleTask(key) {
+  done[key] = !done[key];
+  if (!done[key]) delete done[key];
+  render();
+}
+function changeDay(d) { setDay(Math.max(1, Math.min(TOTAL, currentDay+d))); }
+function setDay(d) { currentDay=d; render(); }
+function jumpTo() {
+  const v = parseInt(document.getElementById('jump-in').value);
+  if (v>=1&&v<=TOTAL) setDay(v);
+}
+
+// ── INIT ─────────────────────────────────────────────────────
+const params = new URLSearchParams(window.location.search);
+if (params.has('setup')) {
+  document.getElementById('setup-screen').style.display = 'flex';
+} else if (localStorage.getItem(S_AUTH)==="1") {
+  showApp();
+} else {
+  document.getElementById('login-screen').style.display = 'flex';
+}
+</script>
+</body>
+</html>
